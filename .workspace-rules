@@ -1,0 +1,14 @@
+# Pentagon Workspace Access Control Rules
+# Auto-generated: 2026-05-10 11:53 GMT+8
+
+# Rule 1: Canonicalize all paths
+RULE_CANONICALIZE=true
+
+# Rule 2: Reject symlink traversal
+RULE_REJECT_SYMLINK=true
+
+# Rule 3: Enforce immutable workspace roots
+RULE_IMMUTABLE_ROOTS=true
+
+# Rule 4: Strong regex validation
+RULE_REGEX_STRICT=true

@@ -1,0 +1,33 @@
+{
+  "test_name": "Predictability Verification - Iteration 1",
+  "timestamp": "2026-05-10T18:24:32Z",
+  "workload": {
+    "task": "Fetch 3 tech articles + summarize + extract entities",
+    "queries": [
+      "artificial intelligence technology 2026",
+      "quantum computing latest developments",
+      "AI chip manufacturing advancements"
+    ]
+  },
+  "iteration": 1,
+  "results": [
+    {
+      "title": "Artificial Intelligence in 2026: Overview of Modern Technologies",
+      "url": "https://www.linkedin.com/pulse/artificial-intelligence-2026-overview-modern-technologies-06vmf",
+      "summary": "Artificial Intelligence in 2026: Overview of Modern Technologies and ... In fact, the development of legal tech prompted programs such as Refonte Learning's Jurimetric & AI Program, which trains legal professionals in AI applications. As one Refonte Learning article notes, AI consulting spans industries (one week a consultant might help a hospital use machine learning for diagnostics, the next deploy a retail chatbot for customer service). In fact, about 31% of companies cited data issues integration difficulties, poor quality as stumbling blocks for AI initiatives.",
+      "entities": ["AI"]
+    },
+    {
+      "title": "The AI of 2026 Will be Different",
+      "url": "https://www.youtube.com/watch?v=agU3N6ie0lI",
+      "summary": "The AI of 2026 Will be Different - YouTube ... artificial intelligence! Our channel delves deep into the latest AI trends and technology, providing insights into cutting-edge AI tools, AI",
+      "entities": ["AI"]
+    },
+    {
+      "title": "The trends that will shape AI and tech in 2026",
+      "url": "https://www.ibm.com/think/news/ai-tech-trends-predictions-2026",
+      "summary": "The trends that will shape AI and tech in 2026 - IBM Think about it: a year ago, we were discussing how ChatGPT wasn't able to count the number of 'r's in 'strawberry.' Reasoning models from Chinese frontier labs (like DeepSeek-R1) hadn't taken the world by storm, and neither had open-source reasoning agents. The most significant trend we see emerging next year is the shift from AI experimentation and excitement to private and secure deployments with real ROI expectations within enterprises",
+      "entities": ["AI"]
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "id": "intel",
+  "label": "intel",
+  "model": "ollama/qwen3.5:9b",
+  "skills": [
+    "ddg-search",
+    "tavily",
+    "google",
+    "web_search_protocol"
+  ],
+  "tools": [
+    "tavily_search",
+    "tavily_extract",
+    "web_search",
+    "web_fetch"
+  ],
+  "systemPrompt": "You are Intel Agent - Research and Information Specialist. You excel at web searching, file parsing, and Qdrant vector retrieval. Your goal is to gather accurate information for the Pentagon Team."
+}

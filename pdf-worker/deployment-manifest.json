@@ -1,0 +1,70 @@
+{
+  "agent": {
+    "name": "task-router",
+    "type": "orchestrator",
+    "version": "1.0.0",
+    "status": "deployed"
+  },
+  "routing": {
+    "enabled": true,
+    "classification": [
+      {
+        "name": "pdf_ingestion",
+        "condition": "has_text_content && is_pdf_file",
+        "route": "qdrant_upsert",
+        "workers": ["cpu_worker_0", "cpu_worker_1", "cpu_worker_2", "cpu_worker_3"],
+        "priority": 1
+      },
+      {
+        "name": "rag_query",
+        "condition": "query_type == 'retrieval'",
+        "route": "qdrant_search",
+        "fallback": "semantic_expansion",
+        "workers": ["cpu_worker_0", "cpu_worker_1", "cpu_worker_2", "cpu_worker_3"],
+        "priority": 2
+      },
+      {
+        "name": "image_generation",
+        "condition": "has_image_prompt",
+        "route": "comfyui_pipeline",
+        "fallback": "gemini-2.5-flash",
+        "workers": ["gpu_comfyui"],
+        "priority": 3
+      },
+      {
+        "name": "multimodal",
+        "condition": "has_text && has_image",
+        "route": "hybrid_pipeline",
+        "workers": ["cpu_worker_0", "gpu_comfyui"],
+        "priority": 4
+      }
+    ],
+    "loadBalancing": {
+      "strategy": "round_robin",
+      "cpuWorkers": 4,
+      "gpuWorkers": 1,
+      "maxConcurrent": 8,
+      "vramAwareDispatch": true
+    },
+    "fallbackChain": {
+      "local": "cpu_worker_0",
+      "gpu": "gpu_comfyui",
+      "cloud": "gemini-2.5-flash",
+      "throttled": true
+    }
+  },
+  "h1_compliance": {
+    "gpuThreshold": "9.5gb",
+    "vramThreshold": "8.5gb",
+    "contextIdleMax": "60%",
+    "strictMode": true
+  },
+  "endpoints": {
+    "pdf_worker": "http://localhost:8001",
+    "comfyui_gpu": "http://localhost:8188",
+    "llava_worker": "http://localhost:8002",
+    "qdrant": "http://localhost:6333"
+  },
+  "deploymentTime": "2026-05-12T20:55:00+08:00",
+  "status": "active"
+}

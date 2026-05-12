@@ -1,0 +1,3 @@
+# Timeout Alert
+Severity: WARN
+Cooldown: 120s

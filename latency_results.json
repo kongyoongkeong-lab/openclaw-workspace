@@ -1,0 +1,212 @@
+{
+  "operation_results": [
+    {
+      "context-fill": [
+        {
+          "operation": "context-fill",
+          "tokens": 179,
+          "latency_ms": 0.3195899917045608,
+          "vram_used": 0,
+          "gpu_util": 0,
+          "temp_c": 75
+        },
+        {
+          "operation": "context-fill",
+          "tokens": 358,
+          "latency_ms": 0.3105000068899244,
+          "vram_used": 0,
+          "gpu_util": 0,
+          "temp_c": 75
+        },
+        {
+          "operation": "context-fill",
+          "tokens": 716,
+          "latency_ms": 0.33786000858526677,
+          "vram_used": 0,
+          "gpu_util": 0,
+          "temp_c": 75
+        },
+        {
+          "operation": "context-fill",
+          "tokens": 1433,
+          "latency_ms": 0.4365899949334562,
+          "vram_used": 0,
+          "gpu_util": 0,
+          "temp_c": 75
+        },
+        {
+          "operation": "context-fill",
+          "tokens": 2867,
+          "latency_ms": 0.5340600037015975,
+          "vram_used": 0,
+          "gpu_util": 0,
+          "temp_c": 75
+        },
+        {
+          "operation": "context-fill",
+          "tokens": 5734,
+          "latency_ms": 0.5313600122462958,
+          "vram_used": 0,
+          "gpu_util": 0,
+          "temp_c": 75
+        }
+      ]
+    },
+    {
+      "per-op": [
+        {
+          "operation": "per-op",
+          "tokens": 179,
+          "latency_ms": 0.3047400095965713,
+          "vram_used": 0,
+          "gpu_util": 0,
+          "temp_c": 68
+        },
+        {
+          "operation": "per-op",
+          "tokens": 358,
+          "latency_ms": 0.312299991492182,
+          "vram_used": 0,
+          "gpu_util": 0,
+          "temp_c": 68
+        },
+        {
+          "operation": "per-op",
+          "tokens": 716,
+          "latency_ms": 0.35828999534714967,
+          "vram_used": 0,
+          "gpu_util": 0,
+          "temp_c": 74
+        },
+        {
+          "operation": "per-op",
+          "tokens": 1433,
+          "latency_ms": 0.3789000038523227,
+          "vram_used": 0,
+          "gpu_util": 0,
+          "temp_c": 74
+        },
+        {
+          "operation": "per-op",
+          "tokens": 2867,
+          "latency_ms": 0.8840700029395521,
+          "vram_used": 0,
+          "gpu_util": 0,
+          "temp_c": 73
+        },
+        {
+          "operation": "per-op",
+          "tokens": 5734,
+          "latency_ms": 0.5356799956643954,
+          "vram_used": 0,
+          "gpu_util": 0,
+          "temp_c": 73
+        }
+      ]
+    },
+    {
+      "full-load": [
+        {
+          "operation": "full-load",
+          "tokens": 179,
+          "latency_ms": 0.30293999589048326,
+          "vram_used": 0,
+          "gpu_util": 0,
+          "temp_c": 73
+        },
+        {
+          "operation": "full-load",
+          "tokens": 358,
+          "latency_ms": 0.3619799972511828,
+          "vram_used": 0,
+          "gpu_util": 0,
+          "temp_c": 74
+        },
+        {
+          "operation": "full-load",
+          "tokens": 716,
+          "latency_ms": 0.37259999953676015,
+          "vram_used": 0,
+          "gpu_util": 0,
+          "temp_c": 74
+        },
+        {
+          "operation": "full-load",
+          "tokens": 1433,
+          "latency_ms": 0.3922199975932017,
+          "vram_used": 0,
+          "gpu_util": 0,
+          "temp_c": 74
+        },
+        {
+          "operation": "full-load",
+          "tokens": 2867,
+          "latency_ms": 0.5516999954124913,
+          "vram_used": 0,
+          "gpu_util": 0,
+          "temp_c": 74
+        },
+        {
+          "operation": "full-load",
+          "tokens": 5734,
+          "latency_ms": 0.539460001164116,
+          "vram_used": 0,
+          "gpu_util": 0,
+          "temp_c": 73
+        }
+      ]
+    },
+    {
+      "stress": [
+        {
+          "operation": "stress",
+          "tokens": 179,
+          "latency_ms": 0.29214000096544623,
+          "vram_used": 0,
+          "gpu_util": 0,
+          "temp_c": 73
+        },
+        {
+          "operation": "stress",
+          "tokens": 358,
+          "latency_ms": 0.3328200109535828,
+          "vram_used": 0,
+          "gpu_util": 0,
+          "temp_c": 73
+        },
+        {
+          "operation": "stress",
+          "tokens": 716,
+          "latency_ms": 0.41013000009115785,
+          "vram_used": 0,
+          "gpu_util": 0,
+          "temp_c": 72
+        },
+        {
+          "operation": "stress",
+          "tokens": 1433,
+          "latency_ms": 0.3868200001306832,
+          "vram_used": 0,
+          "gpu_util": 0,
+          "temp_c": 72
+        },
+        {
+          "operation": "stress",
+          "tokens": 2867,
+          "latency_ms": 0.5075100052636117,
+          "vram_used": 0,
+          "gpu_util": 0,
+          "temp_c": 72
+        },
+        {
+          "operation": "stress",
+          "tokens": 5734,
+          "latency_ms": 0.5650200037052855,
+          "vram_used": 0,
+          "gpu_util": 0,
+          "temp_c": 72
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,122 @@
+{
+  "lastnodeid": 42,
+  "lastlinkid": "link_41",
+  "version": 0.4,
+  "nodes": [
+    {
+      "type": "CheckpointLoaderSimple",
+      "id": 1,
+      "inputs": {
+        "ckpt_name": "sd_xl_base_1.0.safetensors"
+      },
+      "cls": "CheckpointLoaderSimple",
+      "pos": [125, 240],
+      "size": [315, 80],
+      "flags": {}
+    },
+    {
+      "type": "VAELoader",
+      "id": 2,
+      "inputs": {
+        "vae_name": "sdxl_vae.safetensors"
+      },
+      "cls": "VAELoader",
+      "pos": [125, 160],
+      "size": [315, 80],
+      "flags": {}
+    },
+    {
+      "type": "CLIPTextEncode",
+      "id": 3,
+      "inputs": {
+        "text": "Avery poster design, professional branding, clean typography, corporate aesthetic",
+        "clip": "CLIP",
+        "token_magnitude": 0
+      },
+      "cls": "CLIPTextEncode",
+      "pos": [500, 240],
+      "size": [210, 100],
+      "flags": {}
+    },
+    {
+      "type": "CLIPTextEncode",
+      "id": 4,
+      "inputs": {
+        "text": "blurry, low quality, watermark, text",
+        "clip": "CLIP",
+        "token_magnitude": 0
+      },
+      "cls": "CLIPTextEncode",
+      "pos": [500, 360],
+      "size": [210, 100],
+      "flags": {}
+    },
+    {
+      "type": "EmptyLatentImage",
+      "id": 5,
+      "inputs": {
+        "width": 1024,
+        "height": 1024,
+        "batch_size": 1
+      },
+      "cls": "EmptyLatentImage",
+      "pos": [125, 480],
+      "size": [210, 100],
+      "flags": {}
+    },
+    {
+      "type": "KSampler",
+      "id": 6,
+      "inputs": {
+        "cfg": 7.5,
+        "sampler_name": "dpmpp_2m_karras",
+        "scheduler": "karras",
+        "denoise": 1,
+        "model": "MODEL",
+        "positive": "POSITIVE",
+        "negative": "NEGATIVE",
+        "latent_image": "LATENT",
+        "seed": 42,
+        "steps": 20,
+        "start_at_step": 0,
+        "end_at_step": -1
+      },
+      "cls": "KSampler",
+      "pos": [400, 480],
+      "size": [210, 220],
+      "flags": {}
+    },
+    {
+      "type": "VAEDecode",
+      "id": 7,
+      "inputs": {
+        "samples": "SAMPLES",
+        "vae": "VAE"
+      },
+      "cls": "VAEDecode",
+      "pos": [700, 480],
+      "size": [210, 100],
+      "flags": {}
+    },
+    {
+      "type": "SaveImage",
+      "id": 8,
+      "inputs": {},
+      "cls": "SaveImage",
+      "pos": [1000, 240],
+      "size": [210, 100],
+      "flags": {}
+    }
+  ],
+  "links": [
+    {"name": "MODEL", "id": 1, "type": 1, "shape": [5, 0], "start": [1, 0], "start_idx": null, "end": [6, 0], "end_idx": null, "flags": []},
+    {"name": "VAE", "id": 2, "type": 2, "shape": [7, 0], "start": [2, 0], "start_idx": null, "end": [7, 0], "end_idx": null, "flags": []},
+    {"name": "CLIP", "id": 3, "type": 3, "shape": [3, 0], "start": [3, 0], "start_idx": null, "end": [5, 0], "end_idx": null, "flags": []},
+    {"name": "positive", "id": 4, "type": 4, "shape": [6, 2], "start": [4, 0], "start_idx": null, "end": [6, 2], "end_idx": null, "flags": []},
+    {"name": "negative", "id": 5, "type": 5, "shape": [6, 3], "start": [5, 0], "start_idx": null, "end": [6, 3], "end_idx": null, "flags": []},
+    {"name": "LATENT", "id": 6, "type": 7, "shape": [6, 1], "start": [6, 0], "start_idx": null, "end": [7, 0], "end_idx": null, "flags": []},
+    {"name": "IMAGE", "id": 8, "type": 9, "shape": [8, 0], "start": [7, 0], "start_idx": null, "end": [8, 0], "end_idx": null, "flags": []}
+  ],
+  "groups": [],
+  "config": {}
+}

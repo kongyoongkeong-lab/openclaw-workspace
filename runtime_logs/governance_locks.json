@@ -1,0 +1,40 @@
+{
+  "phase": "A",
+  "deployment_window": "6-12 hours",
+  "limits": {
+    "MAX_ACTIVE_AGENTS": 3,
+    "RETRIEVAL_TOP_K": 3,
+    "MAX_CONTEXT_USAGE": 0.70,
+    "COMPRESSION_MODE": "moderate",
+    "ALERT_MODE": "binary"
+  },
+  "locks": {
+    "hard_context_ceiling": {
+      "threshold": 0.85,
+      "action": "suppress_noncritical_retrieval"
+    },
+    "queue_admission": {
+      "threshold": 3,
+      "action": "reject_background_tasks"
+    },
+    "compression_deferral": {
+      "threshold_ms": 220,
+      "action": "defer_compression"
+    },
+    "retrieval_flood": {
+      "threshold": 50,
+      "action": "reduce_top_k_3_to_2"
+    }
+  },
+  "metrics_priority": [
+    "event_loop_p99",
+    "queue_depth",
+    "context_usage",
+    "control_delta",
+    "compression_latency",
+    "retrieval_accuracy",
+    "vram_baseline_drift"
+  ],
+  "status": "deploying",
+  "timestamp": "2026-05-09T22:04:00+08:00"
+}

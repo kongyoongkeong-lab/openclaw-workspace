@@ -1,0 +1,53 @@
+============================================================
+OCR 校对报告
+============================================================
+
+📄 输入文件：/home/jason2ykk/.openclaw/workspace/extracted_text_ocr_highres.txt
+📊 总行数：35
+✅ 可能有效：11 行
+⚠️  可疑乱码：24 行
+
+🔍 已识别关键字段:
+  【机构名称】: Care Centre, Care Centre
+  【电话】: 4851, 2448, 5000, 8732
+
+⚠️  可疑乱码行:
+  [?] \ZAve a Es EN
+  [?] ARMS LAWN BFRFSARSRKLZA !
+  [?] = Age
+  [?] Me | Gress
+  [?] A AHH:
+  [?] | FEJL: BateKF REET ZEA ENAR PSS.
+  [?] SRA: ABER, DREN RR PERRET.
+  [?] | ee THURS: N\SHRSBNSERUEL, TTR R AE.
+  [?] ASAE: HGR He RSG AEST
+  [?] o Wa MSS: GRBTN EE, Bott, NH. P=
+  [?] aS ABE: ARB, MAZZI. Belt
+  [?] > Aaa: RRART SOREN. ea
+  [?] a SARI, RRRM, Ret hverys | il
+  [?] AY 2 noe TN —
+  [?] PU Ua | AMER A a a Ped Pe abe
+  [?] “Aa “ b — a |_e
+  [?] Ate 1 Eee :
+  [?] Jalan Tok Ungku.. Jalan Tok Ungku AF) leoe AF SUB Lt On
+  [?] PAU ees] PACS roi) PLAS 1)8)- 10 BES oles)
+  [?] EUR. URG cane 18,0 (= gle) Nee ea cuts ce Paine aien ch
+  [?] Sees i4 06 - 631 4851 laa rps BAD) tu uy Negeri Sembilan.
+  [?] 012-611 2448 © Avery Care Centre (N50008732-1)
+  [?] 
+  [?] 
+
+✅ 可能有效行:
+  [OK] Vea ,
+  [OK] Care Centre eee
+  [OK] RF BOTA ,
+  [OK] AVERY CARE CENTRE
+  [OK] Fe FR a UF HY HE FEW
+  [OK] RAWANDA EHIDLAD, HWAPUSMMRI, ARBFHRSAKRASY.
+  [OK] a 6
+  [OK] eS OO WE WRATH. eS eseM.
+  [OK] a er ai
+  [OK] No. 700, Taman Yoon Chan, No. 786, Taman Yoon Chan, oma CRN Elite ler- enya Rc att
+  [OK] i pease
+
+============================================================

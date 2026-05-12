@@ -1,0 +1,10 @@
+{
+  "test": "burst_ingestion",
+  "status": "PASS",
+  "details": {
+    "events_written_per_probe": 100,
+    "ordering_valid": true,
+    "no_dropped_events": true,
+    "no_duplicates": true
+  }
+}

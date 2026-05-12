@@ -1,0 +1,6 @@
+# PENTAGON RUNTIME GUARD POLICY
+# Governance State: /home/jason2ykk/.openclaw/workspace/runtime_logs/
+# Memory Flush: ACTIVE (episodic/semantic writes BLOCKED)
+# Allowed Writes: alert_state.json, alert logs, cooldown state
+# Blocked Writes: memory/episodic.jsonl, memory/semantic.jsonl
+# Rule: runtime_logs → memory ingestion = NEVER

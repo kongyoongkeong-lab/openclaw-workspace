@@ -1,0 +1,50 @@
+{
+  "version": "1.0",
+  "registry": {
+    "main": {
+      "label": "main",
+      "role": "Primary Orchestrator",
+      "runtime": "subagent",
+      "capabilities": ["orchestrate", "synthesize", "delegate"],
+      "sessionKey": "current",
+      "fallback": "main"
+    },
+    "intel": {
+      "label": "intel",
+      "role": "Research Agent",
+      "runtime": "subagent",
+      "capabilities": ["web_search", "parse_files", "vector_search"],
+      "toolsAllow": ["tavily_search", "tavily_extract", "file_fetch", "read"],
+      "sessionKey": "session:intel"
+    },
+    "ops": {
+      "label": "ops",
+      "role": "Execution Agent",
+      "runtime": "subagent",
+      "capabilities": ["execute_code", "run_commands", "docker"],
+      "toolsAllow": ["exec", "process", "file_fetch", "file_write", "canvas"],
+      "sessionKey": "session:ops"
+    },
+    "comms": {
+      "label": "comms",
+      "role": "Communication Agent",
+      "runtime": "subagent",
+      "capabilities": ["format_reports", "send_messages"],
+      "toolsAllow": ["message", "pdf", "image"],
+      "sessionKey": "session:comms"
+    },
+    "sentinel": {
+      "label": "sentinel",
+      "role": "Guardian Agent",
+      "runtime": "subagent",
+      "capabilities": ["security_check", "vram_monitor", "hallucinate_check"],
+      "toolsAllow": ["read", "browser"],
+      "sessionKey": "session:sentinel"
+    }
+  },
+  "routing": {
+    "direct": "Use sessions_send(agent='agent_label', message='...')",
+    "broadcast": "Use sessions_send(agent='all', message='...')",
+    "fallback": "If agent fails, read sibling's memory/ directory"
+  }
+}

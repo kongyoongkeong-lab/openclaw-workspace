@@ -1,0 +1,12 @@
+{
+  "gpu_alert_active": true,
+  "last_gpu_alert": 1778240809.8454099,
+  "timeout_120s": true,
+  "last_timeout_alert": 1778240809.8462543,
+  "last_compression_alert": 1778240809.8469954,
+  "compression_alert_active": true,
+  "path_integrity_alert_active": false,
+  "last_path_alert": null,
+  "workspace_alert_active": false,
+  "last_workspace_alert": null
+}

@@ -1,0 +1,3 @@
+# Path Integrity Alert
+Severity: CRITICAL
+Cooldown: Immediate (critical)

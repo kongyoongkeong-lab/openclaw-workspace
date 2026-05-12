@@ -1,0 +1,2 @@
+{"id": "e1", "source_id": "sensor_a", "stream_id": "temp", "sequence_id": 100, "timestamp": "2026-05-10T17:28:00Z", "payload": {"temp": 23.5, "unit": "c"}, "key": "secret-key", "payload_hash": "e87c4c834a805fe2ba94dda5da3405a3128eb8fb7bea07c300f9c9098bd91806"}
+{"id": "e1", "source_id": "sensor_a", "stream_id": "temp", "sequence_id": 100, "timestamp": "2026-05-10T17:28:00Z", "payload": {"temp": 23.5, "unit": "c"}, "key": "secret-key", "payload_hash": "e87c4c834a805fe2ba94dda5da3405a3128eb8fb7bea07c300f9c9098bd91806"}

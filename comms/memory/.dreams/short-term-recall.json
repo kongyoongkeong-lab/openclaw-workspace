@@ -1,0 +1,808 @@
+{
+  "version": 1,
+  "updatedAt": "2026-05-07T17:54:39.831Z",
+  "entries": {
+    "memory:memory/2026-05-06.md:302:368": {
+      "key": "memory:memory/2026-05-06.md:302:368",
+      "path": "memory/2026-05-06.md",
+      "startLine": 302,
+      "endLine": 368,
+      "source": "memory",
+      "snippet": "## Protocol Flow 1. Verify all 4 LTM pipeline files exist 2. Run pipeline validation 3. Execute LTM repair 4. Store to disk ## Required Files (not yet available) - lmt_pipeline.py ## Current Status - Files exist in workspace but not in memory - Protocol initiated ## Waiting for execution results from `python3 lmt_pipeline.py` # Pre-Compaction Memory Flush **Timestamp:** 2026-05-06 17:35 GMT+8 **Type:** Protocol execution in progress ## Protocol Flow 1. Verify all 4 LTM pipeline files exist 2. Run pipeline validation 3. Execute LTM repair 4. Store to disk ## Required Files (not yet available) - lmt_pipeline.py ## Current Status - Files exist in workspace but not in memory - Protocol ini",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.9436050832271576,
+      "maxScore": 0.5198969542980194,
+      "firstRecalledAt": "2026-05-06T10:09:08.989Z",
+      "lastRecalledAt": "2026-05-07T04:18:08.332Z",
+      "queryHashes": [
+        "2e494320f758",
+        "f1ba2e092596"
+      ],
+      "recallDays": [
+        "2026-05-06",
+        "2026-05-07"
+      ],
+      "conceptTags": [
+        "lmt-pipeline.py",
+        "pre-compaction",
+        "protocol",
+        "flow",
+        "verify",
+        "all",
+        "ltm",
+        "pipeline"
+      ]
+    },
+    "memory:memory/2026-05-06.md:405:466": {
+      "key": "memory:memory/2026-05-06.md:405:466",
+      "path": "memory/2026-05-06.md",
+      "startLine": 405,
+      "endLine": 466,
+      "source": "memory",
+      "snippet": "## Waiting for execution results from `python3 lmt_pipeline.py` # Pre-Compaction Memory Flush **Timestamp:** 2026-05-06 17:35 GMT+8 **Type:** Protocol execution in progress ## Protocol Flow 1. Verify all 4 LTM pipeline files exist 2. Run pipeline validation 3. Execute LTM repair 4. Store to disk ## Required Files (not yet available) - lmt_pipeline.py ## Current Status - Files exist in workspace but not in memory - Protocol initiated ## Waiting for execution results from `python3 lmt_pipeline.py` # Pre-Compaction Memory Flush **Timestamp:** 2026-05-06 17:35 GMT+8 **Type:** Protocol execution in progress ## Protocol Flow 1. Verify all 4 LTM pipeline files exist 2. Run pipeline validation",
+      "recallCount": 4,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1.942988896369934,
+      "maxScore": 0.5194477409124374,
+      "firstRecalledAt": "2026-05-06T10:09:08.989Z",
+      "lastRecalledAt": "2026-05-07T17:54:39.831Z",
+      "queryHashes": [
+        "2e494320f758",
+        "c3725bd849e4",
+        "29d8b548f237",
+        "9ed7b0e78047"
+      ],
+      "recallDays": [
+        "2026-05-06",
+        "2026-05-07",
+        "2026-05-08"
+      ],
+      "conceptTags": [
+        "lmt-pipeline.py",
+        "pre-compaction",
+        "waiting",
+        "execution",
+        "results",
+        "python3",
+        "pre",
+        "compaction"
+      ]
+    },
+    "memory:memory/2026-05-06.md:99:160": {
+      "key": "memory:memory/2026-05-06.md:99:160",
+      "path": "memory/2026-05-06.md",
+      "startLine": 99,
+      "endLine": 160,
+      "source": "memory",
+      "snippet": "## Waiting for execution results from `python3 lmt_pipeline.py` # Pre-Compaction Memory Flush **Timestamp:** 2026-05-06 17:35 GMT+8 **Type:** Protocol execution in progress ## Protocol Flow 1. Verify all 4 LTM pipeline files exist 2. Run pipeline validation 3. Execute LTM repair 4. Store to disk ## Required Files (not yet available) - lmt_pipeline.py ## Current Status - Files exist in workspace but not in memory - Protocol initiated ## Waiting for execution results from `python3 lmt_pipeline.py` # Pre-Compaction Memory Flush **Timestamp:** 2026-05-06 17:35 GMT+8 **Type:** Protocol execution in progress ## Protocol Flow 1. Verify all 4 LTM pipeline files exist 2. Run pipeline validation",
+      "recallCount": 4,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1.942988896369934,
+      "maxScore": 0.5194477409124374,
+      "firstRecalledAt": "2026-05-06T10:09:08.989Z",
+      "lastRecalledAt": "2026-05-07T17:54:39.831Z",
+      "queryHashes": [
+        "2e494320f758",
+        "c3725bd849e4",
+        "29d8b548f237",
+        "9ed7b0e78047"
+      ],
+      "recallDays": [
+        "2026-05-06",
+        "2026-05-07",
+        "2026-05-08"
+      ],
+      "conceptTags": [
+        "lmt-pipeline.py",
+        "pre-compaction",
+        "waiting",
+        "execution",
+        "results",
+        "python3",
+        "pre",
+        "compaction"
+      ]
+    },
+    "memory:memory/2026-05-06.md:506:569": {
+      "key": "memory:memory/2026-05-06.md:506:569",
+      "path": "memory/2026-05-06.md",
+      "startLine": 506,
+      "endLine": 569,
+      "source": "memory",
+      "snippet": "## Required Files (not yet available) - lmt_pipeline.py ## Current Status - Files exist in workspace but not in memory - Protocol initiated ## Waiting for execution results from `python3 lmt_pipeline.py` # Pre-Compaction Memory Flush **Timestamp:** 2026-05-06 17:35 GMT+8 **Type:** Protocol execution in progress ## Protocol Flow 1. Verify all 4 LTM pipeline files exist 2. Run pipeline validation 3. Execute LTM repair 4. Store to disk ## Required Files (not yet available) - lmt_pipeline.py ## Current Status - Files exist in workspace but not in memory - Protocol initiated ## Waiting for execution results from `python3 lmt_pipeline.py` # Pre-Compaction Memory Flush **Timestamp:** 2026-05-",
+      "recallCount": 7,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 3.3476194053888317,
+      "maxScore": 0.5229650318622588,
+      "firstRecalledAt": "2026-05-06T10:09:08.989Z",
+      "lastRecalledAt": "2026-05-07T17:54:39.831Z",
+      "queryHashes": [
+        "2e494320f758",
+        "f1ba2e092596",
+        "c3725bd849e4",
+        "977ee339d6f1",
+        "aceeba34bc30",
+        "29d8b548f237",
+        "9ed7b0e78047"
+      ],
+      "recallDays": [
+        "2026-05-06",
+        "2026-05-07",
+        "2026-05-08"
+      ],
+      "conceptTags": [
+        "lmt-pipeline.py",
+        "pre-compaction",
+        "2026-05",
+        "required",
+        "not",
+        "yet",
+        "available",
+        "current"
+      ]
+    },
+    "memory:memory/2026-05-06.md:200:263": {
+      "key": "memory:memory/2026-05-06.md:200:263",
+      "path": "memory/2026-05-06.md",
+      "startLine": 200,
+      "endLine": 263,
+      "source": "memory",
+      "snippet": "## Required Files (not yet available) - lmt_pipeline.py ## Current Status - Files exist in workspace but not in memory - Protocol initiated ## Waiting for execution results from `python3 lmt_pipeline.py` # Pre-Compaction Memory Flush **Timestamp:** 2026-05-06 17:35 GMT+8 **Type:** Protocol execution in progress ## Protocol Flow 1. Verify all 4 LTM pipeline files exist 2. Run pipeline validation 3. Execute LTM repair 4. Store to disk ## Required Files (not yet available) - lmt_pipeline.py ## Current Status - Files exist in workspace but not in memory - Protocol initiated ## Waiting for execution results from `python3 lmt_pipeline.py` # Pre-Compaction Memory Flush **Timestamp:** 2026-05-",
+      "recallCount": 5,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 2.4465962797403336,
+      "maxScore": 0.5229650318622588,
+      "firstRecalledAt": "2026-05-06T10:09:08.989Z",
+      "lastRecalledAt": "2026-05-07T17:54:39.831Z",
+      "queryHashes": [
+        "2e494320f758",
+        "977ee339d6f1",
+        "aceeba34bc30",
+        "29d8b548f237",
+        "9ed7b0e78047"
+      ],
+      "recallDays": [
+        "2026-05-06",
+        "2026-05-07",
+        "2026-05-08"
+      ],
+      "conceptTags": [
+        "lmt-pipeline.py",
+        "pre-compaction",
+        "2026-05",
+        "required",
+        "not",
+        "yet",
+        "available",
+        "current"
+      ]
+    },
+    "memory:memory/2026-05-06.md:556:586": {
+      "key": "memory:memory/2026-05-06.md:556:586",
+      "path": "memory/2026-05-06.md",
+      "startLine": 556,
+      "endLine": 586,
+      "source": "memory",
+      "snippet": "2. Run pipeline validation 3. Execute LTM repair 4. Store to disk ## Required Files (not yet available) - lmt_pipeline.py ## Current Status - Files exist in workspace but not in memory - Protocol initiated ## Waiting for execution results from `python3 lmt_pipeline.py` # Pre-Compaction Memory Flush **Timestamp:** 2026-05-06 17:35 GMT+8 **Type:** Protocol execution in progress ## Protocol Flow 1. Verify all 4 LTM pipeline files exist 2. Run pipeline validation 3. Execute LTM repair 4. Store to disk ## Required Files (not yet available) - lmt_pipeline.py ## Current Status - Files exist in workspace but not in memory - Protocol initiated ## Waiting for execution results from `python3 lmt",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.5189876168966293,
+      "maxScore": 0.5189876168966293,
+      "firstRecalledAt": "2026-05-06T10:09:08.989Z",
+      "lastRecalledAt": "2026-05-06T10:09:08.989Z",
+      "queryHashes": [
+        "2e494320f758"
+      ],
+      "recallDays": [
+        "2026-05-06"
+      ],
+      "conceptTags": [
+        "lmt-pipeline.py",
+        "pre-compaction",
+        "run",
+        "pipeline",
+        "validation",
+        "execute",
+        "ltm",
+        "repair"
+      ]
+    },
+    "memory:memory/2026-05-06.md:456:518": {
+      "key": "memory:memory/2026-05-06.md:456:518",
+      "path": "memory/2026-05-06.md",
+      "startLine": 456,
+      "endLine": 518,
+      "source": "memory",
+      "snippet": "- Files exist in workspace but not in memory - Protocol initiated ## Waiting for execution results from `python3 lmt_pipeline.py` # Pre-Compaction Memory Flush **Timestamp:** 2026-05-06 17:35 GMT+8 **Type:** Protocol execution in progress ## Protocol Flow 1. Verify all 4 LTM pipeline files exist 2. Run pipeline validation 3. Execute LTM repair 4. Store to disk ## Required Files (not yet available) - lmt_pipeline.py ## Current Status - Files exist in workspace but not in memory - Protocol initiated ## Waiting for execution results from `python3 lmt_pipeline.py` # Pre-Compaction Memory Flush **Timestamp:** 2026-05-06 17:35 GMT+8 **Type:** Protocol execution in progress ## Protocol Flow 1",
+      "recallCount": 3,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1.4271517395973206,
+      "maxScore": 0.5237739831209183,
+      "firstRecalledAt": "2026-05-07T04:18:08.332Z",
+      "lastRecalledAt": "2026-05-07T13:00:00.714Z",
+      "queryHashes": [
+        "f1ba2e092596",
+        "c3725bd849e4",
+        "977ee339d6f1"
+      ],
+      "recallDays": [
+        "2026-05-07"
+      ],
+      "conceptTags": [
+        "lmt-pipeline.py",
+        "pre-compaction",
+        "exist",
+        "but",
+        "not",
+        "protocol",
+        "initiated",
+        "waiting"
+      ]
+    },
+    "memory:memory/2026-05-06.md:150:212": {
+      "key": "memory:memory/2026-05-06.md:150:212",
+      "path": "memory/2026-05-06.md",
+      "startLine": 150,
+      "endLine": 212,
+      "source": "memory",
+      "snippet": "- Files exist in workspace but not in memory - Protocol initiated ## Waiting for execution results from `python3 lmt_pipeline.py` # Pre-Compaction Memory Flush **Timestamp:** 2026-05-06 17:35 GMT+8 **Type:** Protocol execution in progress ## Protocol Flow 1. Verify all 4 LTM pipeline files exist 2. Run pipeline validation 3. Execute LTM repair 4. Store to disk ## Required Files (not yet available) - lmt_pipeline.py ## Current Status - Files exist in workspace but not in memory - Protocol initiated ## Waiting for execution results from `python3 lmt_pipeline.py` # Pre-Compaction Memory Flush **Timestamp:** 2026-05-06 17:35 GMT+8 **Type:** Protocol execution in progress ## Protocol Flow 1",
+      "recallCount": 3,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1.4271517395973206,
+      "maxScore": 0.5237739831209183,
+      "firstRecalledAt": "2026-05-07T04:18:08.332Z",
+      "lastRecalledAt": "2026-05-07T13:00:00.714Z",
+      "queryHashes": [
+        "f1ba2e092596",
+        "c3725bd849e4",
+        "977ee339d6f1"
+      ],
+      "recallDays": [
+        "2026-05-07"
+      ],
+      "conceptTags": [
+        "lmt-pipeline.py",
+        "pre-compaction",
+        "exist",
+        "but",
+        "not",
+        "protocol",
+        "initiated",
+        "waiting"
+      ]
+    },
+    "memory:memory/2026-05-06.md:353:418": {
+      "key": "memory:memory/2026-05-06.md:353:418",
+      "path": "memory/2026-05-06.md",
+      "startLine": 353,
+      "endLine": 418,
+      "source": "memory",
+      "snippet": "**Timestamp:** 2026-05-06 17:35 GMT+8 **Type:** Protocol execution in progress ## Protocol Flow 1. Verify all 4 LTM pipeline files exist 2. Run pipeline validation 3. Execute LTM repair 4. Store to disk ## Required Files (not yet available) - lmt_pipeline.py ## Current Status - Files exist in workspace but not in memory - Protocol initiated ## Waiting for execution results from `python3 lmt_pipeline.py` # Pre-Compaction Memory Flush **Timestamp:** 2026-05-06 17:35 GMT+8 **Type:** Protocol execution in progress ## Protocol Flow 1. Verify all 4 LTM pipeline files exist 2. Run pipeline validation 3. Execute LTM repair 4. Store to disk ## Required Files (not yet available) - lmt_pipeline.p",
+      "recallCount": 5,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 2.3275169730186462,
+      "maxScore": 0.5074219942092896,
+      "firstRecalledAt": "2026-05-07T04:18:08.332Z",
+      "lastRecalledAt": "2026-05-07T17:54:39.831Z",
+      "queryHashes": [
+        "f1ba2e092596",
+        "1e88160a45fb",
+        "aceeba34bc30",
+        "29d8b548f237",
+        "9ed7b0e78047"
+      ],
+      "recallDays": [
+        "2026-05-07",
+        "2026-05-08"
+      ],
+      "conceptTags": [
+        "lmt-pipeline.py",
+        "pre-compaction",
+        "lmt-pipeline.p",
+        "timestamp",
+        "gmt",
+        "type",
+        "protocol",
+        "execution"
+      ]
+    },
+    "memory:memory/2026-05-06.md:47:112": {
+      "key": "memory:memory/2026-05-06.md:47:112",
+      "path": "memory/2026-05-06.md",
+      "startLine": 47,
+      "endLine": 112,
+      "source": "memory",
+      "snippet": "**Timestamp:** 2026-05-06 17:35 GMT+8 **Type:** Protocol execution in progress ## Protocol Flow 1. Verify all 4 LTM pipeline files exist 2. Run pipeline validation 3. Execute LTM repair 4. Store to disk ## Required Files (not yet available) - lmt_pipeline.py ## Current Status - Files exist in workspace but not in memory - Protocol initiated ## Waiting for execution results from `python3 lmt_pipeline.py` # Pre-Compaction Memory Flush **Timestamp:** 2026-05-06 17:35 GMT+8 **Type:** Protocol execution in progress ## Protocol Flow 1. Verify all 4 LTM pipeline files exist 2. Run pipeline validation 3. Execute LTM repair 4. Store to disk ## Required Files (not yet available) - lmt_pipeline.p",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.8895372360944747,
+      "maxScore": 0.4679821521043777,
+      "firstRecalledAt": "2026-05-07T04:18:08.332Z",
+      "lastRecalledAt": "2026-05-07T17:40:37.735Z",
+      "queryHashes": [
+        "f1ba2e092596",
+        "aceeba34bc30"
+      ],
+      "recallDays": [
+        "2026-05-07",
+        "2026-05-08"
+      ],
+      "conceptTags": [
+        "lmt-pipeline.py",
+        "pre-compaction",
+        "lmt-pipeline.p",
+        "timestamp",
+        "gmt",
+        "type",
+        "protocol",
+        "execution"
+      ]
+    },
+    "memory:memory/2026-05-07.md:1:3": {
+      "key": "memory:memory/2026-05-07.md:1:3",
+      "path": "memory/2026-05-07.md",
+      "startLine": 1,
+      "endLine": 3,
+      "source": "memory",
+      "snippet": "{\"status\": \"error\", \"tool\": \"read\", \"error\": \"ENOENT: no such file or directory, access '/home/jason2ykk/.openclaw/workspace/comms/memory/2026-05-07.md'} {\"runtime\": \"2026-05-07 12:22 GMT+8\", \"system\": \"OpenClaw runtime event\", \"task\": \"user requested Google AI services\"} {\"runtime\": \"2026-05-07 12:26 GMT+8\", \"task\": \"user asked for solution to check previous OpenClaw logs\", \"method\": \"search openclaw logs documentation\", \"solution\": \"Check gateway control UI or CLI: openclaw gateway status\", \"files\": \"~/.openclaw/logs/\", \"session_logs_location\": \"~/.openclaw/sessions/\"}",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.5400683417916298,
+      "maxScore": 0.5400683417916298,
+      "firstRecalledAt": "2026-05-07T04:29:01.147Z",
+      "lastRecalledAt": "2026-05-07T04:29:01.147Z",
+      "queryHashes": [
+        "00dd22ceb1e5"
+      ],
+      "recallDays": [
+        "2026-05-07"
+      ],
+      "conceptTags": [
+        "gateway",
+        "home/jason2ykk",
+        "openclaw/logs",
+        "session-logs-location",
+        "openclaw/sessions",
+        "status",
+        "error",
+        "tool"
+      ]
+    },
+    "memory:memory/2026-05-06.md:713:777": {
+      "key": "memory:memory/2026-05-06.md:713:777",
+      "path": "memory/2026-05-06.md",
+      "startLine": 713,
+      "endLine": 777,
+      "source": "memory",
+      "snippet": "- Sources found: 5 intel security references - Status: ✅ Completed - Result: 9 vulnerabilities identified after 9 months ### Step 2: GATE - Protocol filtering: Validated - CVE analysis: CVE-2025-22889, CVE-2025-21208 identified - Filtered out non-critical info - Retained high-value intel sources - Protocol Status: ✅ VALIDATED ### Step 3: BUILD - Script: `python3 /home/jason2ykk/.openclaw/workspace/comms/lmt_pipeline.py` - Status: ⏳ **WAITING FOR EXECUTION** - Required files in workspace: None (pipeline file not found) - Error encountered: EISDIR when attempting to read workspace directory ### Step 4: STORE - Will update memory/2026-05-06.md - Current status: Not yet executed --- ## Prot",
+      "recallCount": 3,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1.451530259847641,
+      "maxScore": 0.513878521323204,
+      "firstRecalledAt": "2026-05-07T04:29:01.147Z",
+      "lastRecalledAt": "2026-05-07T16:12:03.404Z",
+      "queryHashes": [
+        "00dd22ceb1e5",
+        "b228c139e6de",
+        "ee27bf26bf28"
+      ],
+      "recallDays": [
+        "2026-05-07",
+        "2026-05-08"
+      ],
+      "conceptTags": [
+        "cve-2025-22889",
+        "cve-2025-21208",
+        "non-critical",
+        "high-value",
+        "home/jason2ykk",
+        "memory/2026-05-06.md",
+        "sources",
+        "found"
+      ]
+    },
+    "memory:memory/2026-05-06.md:1:62": {
+      "key": "memory:memory/2026-05-06.md:1:62",
+      "path": "memory/2026-05-06.md",
+      "startLine": 1,
+      "endLine": 62,
+      "source": "memory",
+      "snippet": "# OpenClaw Runtime Event Tracking ## Current Session Context ### Session Type: - **Type**: Control UI Event Handler - **Channel**: WebChat (WebSocket) - **User Context**: @comms (Communication & Delivery Agent) ### Event Details: **Message Received:** - Action: execute LTM Pipeline Self-Repair Protocol - Timestamp: 2026-05-06 17:21 GMT+8 - Sender: @ops - Type: untrusted metadata event - Component: openclaw-control-ui ### Protocol Status: - **LTM Pipeline:** ✅ Operational - **Self-Repair:** ✅ Configured - **Status:** Ready for execution ### Expected Output: Based on USER.md specification for @comms agent: - **Format:** Status -> Action Taken -> Next Steps - **Key Metrics:** LTM service",
+      "recallCount": 4,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 2.035845473408699,
+      "maxScore": 0.517683869600296,
+      "firstRecalledAt": "2026-05-07T04:29:01.147Z",
+      "lastRecalledAt": "2026-05-07T16:12:03.404Z",
+      "queryHashes": [
+        "00dd22ceb1e5",
+        "1e88160a45fb",
+        "2e23a34eff25",
+        "ee27bf26bf28"
+      ],
+      "recallDays": [
+        "2026-05-07",
+        "2026-05-08"
+      ],
+      "conceptTags": [
+        "self-repair",
+        "openclaw-control-ui",
+        "user.md",
+        "openclaw",
+        "runtime",
+        "event",
+        "tracking",
+        "current"
+      ]
+    },
+    "memory:memory/2026-05-06.md:556:618": {
+      "key": "memory:memory/2026-05-06.md:556:618",
+      "path": "memory/2026-05-06.md",
+      "startLine": 556,
+      "endLine": 618,
+      "source": "memory",
+      "snippet": "2. Run pipeline validation 3. Execute LTM repair 4. Store to disk ## Required Files (not yet available) - lmt_pipeline.py ## Current Status - Files exist in workspace but not in memory - Protocol initiated ## Waiting for execution results from `python3 lmt_pipeline.py` # Pre-Compaction Memory Flush **Timestamp:** 2026-05-06 17:35 GMT+8 **Type:** Protocol execution in progress ## Protocol Flow 1. Verify all 4 LTM pipeline files exist 2. Run pipeline validation 3. Execute LTM repair 4. Store to disk ## Required Files (not yet available) - lmt_pipeline.py ## Current Status - Files exist in workspace but not in memory - Protocol initiated ## Waiting for execution results from `python3 lmt",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.4990199118852615,
+      "maxScore": 0.4990199118852615,
+      "firstRecalledAt": "2026-05-07T04:29:01.147Z",
+      "lastRecalledAt": "2026-05-07T04:29:01.147Z",
+      "queryHashes": [
+        "00dd22ceb1e5"
+      ],
+      "recallDays": [
+        "2026-05-07"
+      ],
+      "conceptTags": [
+        "lmt-pipeline.py",
+        "pre-compaction",
+        "run",
+        "pipeline",
+        "validation",
+        "execute",
+        "ltm",
+        "repair"
+      ]
+    },
+    "memory:memory/2026-05-06.md:605:669": {
+      "key": "memory:memory/2026-05-06.md:605:669",
+      "path": "memory/2026-05-06.md",
+      "startLine": 605,
+      "endLine": 669,
+      "source": "memory",
+      "snippet": "- Required files in workspace: None (pipeline file not found) - Error encountered: EISDIR when attempting to read workspace directory ### Step 4: STORE - Will update `memory/2026-05-06.md` - Current status: Not yet executed --- ## Protocol Flow Progress | Step | Status | Complete | |------|--------|----------| | 1. RETRIEVE | ✅ Done | Yes | | 2. GATE | ✅ Done | Yes | | 3. BUILD | ⏳ Pending | No | | 4. STORE | ⏳ Pending | No | **Overall Progress:** 50% (2 of 4 steps) --- ## Required Action Execute the pipeline script to complete Steps 3 & 4: ```bash python3 /home/jason2ykk/.openclaw/workspace/comms/lmt_pipeline.py ``` **Note:** Pipeline script not found in workspace at the expected",
+      "recallCount": 3,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1.4619957447052,
+      "maxScore": 0.49175072014331817,
+      "firstRecalledAt": "2026-05-07T04:29:01.147Z",
+      "lastRecalledAt": "2026-05-07T16:12:03.404Z",
+      "queryHashes": [
+        "00dd22ceb1e5",
+        "2e23a34eff25",
+        "ee27bf26bf28"
+      ],
+      "recallDays": [
+        "2026-05-07",
+        "2026-05-08"
+      ],
+      "conceptTags": [
+        "memory/2026-05-06.md",
+        "home/jason2ykk",
+        "required",
+        "none",
+        "pipeline",
+        "not",
+        "found",
+        "error"
+      ]
+    },
+    "memory:memory/2026-05-06.md:661:724": {
+      "key": "memory:memory/2026-05-06.md:661:724",
+      "path": "memory/2026-05-06.md",
+      "startLine": 661,
+      "endLine": 724,
+      "source": "memory",
+      "snippet": "- **Status:** Ready for execution ### Expected Output: Based on USER.md specification for @comms agent: - **Format:** Status -> Action Taken -> Next Steps - **Key Metrics:** LTM service health, pipeline status, resource usage - **Format Requirements:** Bolding key metrics, using English with technical jargon ### Processing: ✅ Event has been logged in memory/2026-05-06.md --- ## Next Step Awaiting specific task or repair protocol execution details from @ops. --- ## Event Log **Message ID:** openclaw-control-ui:openclaw-control-ui **Timestamp:** 2026-05-06 17:21 GMT+8 **Type:** untrusted metadata event **Description:** Execute LTM Pipeline Self-Repair Protocol --- ## Pre-Compaction Me",
+      "recallCount": 4,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 2.1187152535365157,
+      "maxScore": 0.6578765780375535,
+      "firstRecalledAt": "2026-05-07T04:29:01.147Z",
+      "lastRecalledAt": "2026-05-07T16:12:03.404Z",
+      "queryHashes": [
+        "00dd22ceb1e5",
+        "2e23a34eff25",
+        "977ee339d6f1",
+        "ee27bf26bf28"
+      ],
+      "recallDays": [
+        "2026-05-07",
+        "2026-05-08"
+      ],
+      "conceptTags": [
+        "user.md",
+        "memory/2026-05-06.md",
+        "openclaw-control-ui",
+        "self-repair",
+        "pre-compaction",
+        "status",
+        "ready",
+        "execution"
+      ]
+    },
+    "memory:memory/2026-05-07.md:12:55": {
+      "key": "memory:memory/2026-05-07.md:12:55",
+      "path": "memory/2026-05-07.md",
+      "startLine": 12,
+      "endLine": 55,
+      "source": "memory",
+      "snippet": "- Model: Qwen 3.5 2B (Optimized for speed and prose) - Priority: High - Task execution required ## Current State - Status: Runtime event handling in progress - Next Steps: Await user message to begin work - Critical: Steer queue contains 1 pending task ## Memory Rules - Read-only workspace files (MEMORY.md, DREAMS.md, SOUL.md, TOOLS.md, AGENTS.md) - Memory/2026-05-07.md is the only writable memory storage - Append only, never overwrite existing entries # Memory/2026-05-07.md - Memory Storage **Pre-Flush Memory Storage** This document captures the pre-compaction memory flush for the 2026-05-07 session. ## Memory Summary - **Status:** Runtime event handling in progress - **Next Steps:** A",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.9811966478824615,
+      "maxScore": 0.5110594481229782,
+      "firstRecalledAt": "2026-05-07T09:00:41.588Z",
+      "lastRecalledAt": "2026-05-07T09:02:29.300Z",
+      "queryHashes": [
+        "b228c139e6de",
+        "1e88160a45fb"
+      ],
+      "recallDays": [
+        "2026-05-07"
+      ],
+      "conceptTags": [
+        "3.5",
+        "read-only",
+        "memory.md",
+        "dreams.md",
+        "soul.md",
+        "tools.md",
+        "agents.md",
+        "memory/2026-05-07.md"
+      ]
+    },
+    "memory:memory/2026-05-07.md:46:62": {
+      "key": "memory:memory/2026-05-07.md:46:62",
+      "path": "memory/2026-05-07.md",
+      "startLine": 46,
+      "endLine": 62,
+      "source": "memory",
+      "snippet": "- **Frequency:** Pulse Checks every 4 hours if active, otherwise on task completion or error - **Language:** English - **Output Format:** Markdown with bolding for key metrics ## Memory Rules - Read-only workspace files (MEMORY.md, DREAMS.md, SOUL.md, TOOLS.md, AGENTS.md) - Append-only memory storage in memory/2026-05-07.md - Never overwrite existing entries ## Next Actions 1. Await new conversation message from user 2. Process steer queue (1 pending task blocking execution) 3. Execute pending task 4. Continue OpenClaw runtime event --- **Memory Storage Complete**",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.9636600732803344,
+      "maxScore": 0.5179250299930572,
+      "firstRecalledAt": "2026-05-07T09:00:41.588Z",
+      "lastRecalledAt": "2026-05-07T09:02:29.300Z",
+      "queryHashes": [
+        "b228c139e6de",
+        "1e88160a45fb"
+      ],
+      "recallDays": [
+        "2026-05-07"
+      ],
+      "conceptTags": [
+        "read-only",
+        "memory.md",
+        "dreams.md",
+        "soul.md",
+        "tools.md",
+        "agents.md",
+        "append-only",
+        "memory/2026-05-07.md"
+      ]
+    },
+    "memory:memory/2026-05-07.md:1:21": {
+      "key": "memory:memory/2026-05-07.md:1:21",
+      "path": "memory/2026-05-07.md",
+      "startLine": 1,
+      "endLine": 21,
+      "source": "memory",
+      "snippet": "{\"runtime\": \"2026-05-07 12:39 GMT+8\", \"task\": \"analyze improvements needed for speed, accuracy, and stability\", \"analysis\": \"Based on our records, identify enhancement areas for the OpenClaw runtime system.\", \"recommended_improvements\": [\"Optimize protocol execution speed\", \"Reduce memory fragmentation for stability\", \"Improve error handling for accuracy\", \"Add automated recovery mechanisms\"], \"priority_order\": [\"accuracy\", \"speed\", \"stability\"]} {\"runtime\": \"2026-05-07 12:39 GMT+8\", \"task\": \"document improvements needed for speed, accuracy, and stability\", \"findings\": [\"Protocol execution can be optimized\", \"Memory management needs attention\", \"Error handling needs improvement\", \"Add automa",
+      "recallCount": 3,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1.454992601275444,
+      "maxScore": 0.5249897569417953,
+      "firstRecalledAt": "2026-05-07T09:00:41.588Z",
+      "lastRecalledAt": "2026-05-07T12:59:52.616Z",
+      "queryHashes": [
+        "b228c139e6de",
+        "1e88160a45fb",
+        "2e23a34eff25"
+      ],
+      "recallDays": [
+        "2026-05-07"
+      ],
+      "conceptTags": [
+        "recommended-improvements",
+        "priority-order",
+        "runtime",
+        "gmt",
+        "task",
+        "analyze",
+        "improvements",
+        "needed"
+      ]
+    },
+    "memory:memory/2026-05-06.md:868:925": {
+      "key": "memory:memory/2026-05-06.md:868:925",
+      "path": "memory/2026-05-06.md",
+      "startLine": 868,
+      "endLine": 925,
+      "source": "memory",
+      "snippet": "- **Max Memory:** Current (600GB) → Reduce to 200-400GB - **Index Type:** Hybrid (Vector + Metadata) - **Vector Size:** Optimize based on use case (<256D recommended) ### **2. Storage Strategy** - **Compression:** Enable for index files - **Index Compression Ratio:** Target 10-20:1 - **Disk Usage:** 15-30% reduction achievable ### **3. Performance Tuning** - **Memory Pool:** Optimize to 300-500GB - **CPU Overhead:** Reduce from 30% to <15% - **Query Latency:** Target <5ms per query - **Throughput:** Increase to 10k+ queries/second ### **4. Memory Overhead Reduction** **Target Improvements:** - Memory: 60-70GB → 30-40GB (↓43%) - CPU: 20-30% → <15% (↓43%) - Overhead: 20-30% → 10-15% (↓43%)",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.9071381896734236,
+      "maxScore": 0.4679600805044174,
+      "firstRecalledAt": "2026-05-07T09:00:41.588Z",
+      "lastRecalledAt": "2026-05-07T17:40:37.735Z",
+      "queryHashes": [
+        "b228c139e6de",
+        "aceeba34bc30"
+      ],
+      "recallDays": [
+        "2026-05-07",
+        "2026-05-08"
+      ],
+      "conceptTags": [
+        "200-400gb",
+        "10-20",
+        "15-30",
+        "300-500gb",
+        "queries/second",
+        "60-70gb",
+        "30-40gb",
+        "20-30"
+      ]
+    },
+    "memory:memory/2026-05-06.md:764:821": {
+      "key": "memory:memory/2026-05-06.md:764:821",
+      "path": "memory/2026-05-06.md",
+      "startLine": 764,
+      "endLine": 821,
+      "source": "memory",
+      "snippet": "**Timestamp:** 2026-05-06 18:10 GMT+8 ## Protocol Execution: Deep Audit to Qdrant Memory ### **Audit Objective** Validate Qdrant cluster health, memory utilization, and performance metrics. --- ## **Current Status:** ### **1. Qdrant Service Status** - **Service:** Not Running - **Command Output:** Exit code 7 (no output from service) - **Connection:** Cannot connect to cluster - **Health:** **FAILED** ### **2. Memory Pool Configuration** - **Pool Size:** 600+ GB (estimated) - **Active Collections:** 2 - **Memory Usage:** Not measurable (service down) - **CPU Usage:** Not measurable (service down) ### **3. Performance Indicators** | Metric | Status | Notes | |--|--|-----| | Vector Sear",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.5178040951490402,
+      "maxScore": 0.5178040951490402,
+      "firstRecalledAt": "2026-05-07T09:02:29.300Z",
+      "lastRecalledAt": "2026-05-07T09:02:29.300Z",
+      "queryHashes": [
+        "1e88160a45fb"
+      ],
+      "recallDays": [
+        "2026-05-07"
+      ],
+      "conceptTags": [
+        "timestamp",
+        "gmt",
+        "protocol",
+        "execution",
+        "deep",
+        "audit",
+        "qdrant",
+        "objective"
+      ]
+    },
+    "memory:memory/2026-05-07.md:46:110": {
+      "key": "memory:memory/2026-05-07.md:46:110",
+      "path": "memory/2026-05-07.md",
+      "startLine": 46,
+      "endLine": 110,
+      "source": "memory",
+      "snippet": "- **Frequency:** Pulse Checks every 4 hours if active, otherwise on task completion or error - **Language:** English - **Output Format:** Markdown with bolding for key metrics ## Memory Rules - Read-only workspace files (MEMORY.md, DREAMS.md, SOUL.md, TOOLS.md, AGENTS.md) - Append-only memory storage in memory/2026-05-07.md - Never overwrite existing entries ## Next Actions 1. Await new conversation message from user 2. Process steer queue (1 pending task blocking execution) 3. Execute pending task 4. Continue OpenClaw runtime event --- **Memory Storage Complete** # Session Memory - May 7th, 2026 ## Agent Status: Qwen 9B (Qwen 9B) ### Current Session Details: - **Model**: Qwen 9B (Qwen",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.5000017017126083,
+      "maxScore": 0.5000017017126083,
+      "firstRecalledAt": "2026-05-07T12:59:52.616Z",
+      "lastRecalledAt": "2026-05-07T12:59:52.616Z",
+      "queryHashes": [
+        "2e23a34eff25"
+      ],
+      "recallDays": [
+        "2026-05-07"
+      ],
+      "conceptTags": [
+        "read-only",
+        "memory.md",
+        "dreams.md",
+        "soul.md",
+        "tools.md",
+        "agents.md",
+        "append-only",
+        "memory/2026-05-07.md"
+      ]
+    },
+    "memory:memory/2026-05-08.md:1:32": {
+      "key": "memory:memory/2026-05-08.md:1:32",
+      "path": "memory/2026-05-08.md",
+      "startLine": 1,
+      "endLine": 32,
+      "source": "memory",
+      "snippet": "# OpenClaw Session 2026-05-08 ## Runtime Details - **Agent**: @comms - **Host**: jason - **Repo**: /home/jason2ykk/.openclaw/workspace/comms - **OS**: Linux 6.6.87.2-microsoft-standard-WSL2 (x64) - **Node**: v22.22.2 - **Model**: ollama/qwen3.5:2b - **Default Model**: ollama/qwen3.5:2b ## Session Status - Active: Yes - Memory: Pre-compaction mode - Time Zone: Asia/Kuala_Lumpur (Friday, May 8th, 2026 - 12:10 AM) ## Next Steps 1. Monitor Telegram Webhook for authentication errors 2. Watch UI WebSocket connectivity at ws://127.0.0.1:18789 3. Track message queue buffer levels 4. Check @sentinel for any system failure alerts ## Known Issues None yet. Monitor for: - 401 Unauthorized errors on",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.5141751319169998,
+      "maxScore": 0.5141751319169998,
+      "firstRecalledAt": "2026-05-07T16:12:03.404Z",
+      "lastRecalledAt": "2026-05-07T16:12:03.404Z",
+      "queryHashes": [
+        "ee27bf26bf28"
+      ],
+      "recallDays": [
+        "2026-05-08"
+      ],
+      "conceptTags": [
+        "home/jason2ykk",
+        "openclaw/workspace/comms",
+        "6.6.87.2-microsoft-standard-wsl2",
+        "v22.22.2",
+        "ollama/qwen3.5",
+        "pre-compaction",
+        "asia/kuala-lumpur",
+        "127.0.0.1"
+      ]
+    },
+    "memory:memory/2026-05-08.md:1:37": {
+      "key": "memory:memory/2026-05-08.md:1:37",
+      "path": "memory/2026-05-08.md",
+      "startLine": 1,
+      "endLine": 37,
+      "source": "memory",
+      "snippet": "# Email Generation Script - LMT Pipeline ## Status: In Progress ### Progress - [x] Initial script structure created - [x] Function `generate_personalized_email` is defined - [x] Basic CSV reading functionality implemented - [x] Environment variable handling implemented ### In Progress - [ ] Refining the email templating logic - [ ] Implementing error handling for CSV parsing and email generation ### Blocked - None ### Context Summary - **CSV File Format**: Standard CSV with columns: name, email, product - **Environment Variables**: API key, template variables, output format (text/html/markdown) - **Error Handling**: try/except blocks for file reading, CSV parsing, email generation - **T",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1.0022699356079101,
+      "maxScore": 0.5582015067338943,
+      "firstRecalledAt": "2026-05-07T17:54:38.607Z",
+      "lastRecalledAt": "2026-05-07T17:54:39.831Z",
+      "queryHashes": [
+        "29d8b548f237",
+        "9ed7b0e78047"
+      ],
+      "recallDays": [
+        "2026-05-08"
+      ],
+      "conceptTags": [
+        "generate-personalized-email",
+        "text/html/markdown",
+        "try/except",
+        "email",
+        "generation",
+        "script",
+        "lmt",
+        "pipeline"
+      ]
+    }
+  }
+}

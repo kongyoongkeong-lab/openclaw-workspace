@@ -1,0 +1,3 @@
+# Compression Alert
+Severity: WARN
+Cooldown: 300s

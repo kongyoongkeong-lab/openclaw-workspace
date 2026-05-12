@@ -1,0 +1,5 @@
+{"id":1,"type":"event","text":"User initiated OpenClaw LTM architecture build","importance":0.9,"timestamp":1700000001}
+{"id":2,"type":"event","text":"Memory gate system implemented for token control","importance":0.8,"timestamp":1700000002}
+{"id":3,"type":"event","text":"Context overflow issue diagnosed and resolved via retrieval-gate architecture","importance":1.0,"timestamp":1700000003}
+{"id":4,"type":"fact","text":"System uses retrieve → gate → build → LLM pipeline","importance":1.0,"timestamp":1700000004}
+{"id":5,"type":"system","text":"LTM pipeline v1 initialized successfully","importance":0.7,"timestamp":1700000005}

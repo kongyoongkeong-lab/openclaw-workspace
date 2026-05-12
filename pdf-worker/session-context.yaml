@@ -1,0 +1,37 @@
+session_context:
+  qdrant_collection: pentagon_brain
+  embeddings_model: qwen3.5-embedding
+  ocr_engine: tesseract5
+  gpu_pipeline: comfyui
+  fallback_model: gemini-2.5-flash
+
+task_types:
+  pdf_ingestion:
+    workers: [cpu_worker]
+    route: qdrant_upsert
+    priority: 1
+  rag_query:
+    workers: [cpu_worker]
+    route: qdrant_search
+    fallback: semantic_expansion
+    priority: 2
+  image_generation:
+    workers: [gpu_comfyui]
+    route: comfyui_pipeline
+    fallback: gemini-2.5-flash
+    priority: 3
+  multimodal:
+    workers: [cpu_worker, gpu_comfyui]
+    route: hybrid_pipeline
+    priority: 4
+
+load_balancing:
+  cpu_workers: 4
+  gpu_workers: 1
+  fallback_enabled: true
+
+h1_compliance:
+  gpu_threshold: 9.5gb
+  vram_threshold: 8.5gb
+  context_idle_max: 60%
+  strict_mode: true

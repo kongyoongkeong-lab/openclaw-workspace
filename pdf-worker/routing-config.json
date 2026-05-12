@@ -1,0 +1,67 @@
+{
+  "gateway": {
+    "routing": {
+      "enabled": true,
+      "sessionContext": {
+        "qdrantCollection": "pentagon_brain",
+        "embeddingsModel": "qwen3.5-embedding",
+        "ocrEngine": "tesseract5",
+        "gpuPipeline": "comfyui",
+        "fallbackModel": "gemini-2.5-flash"
+      },
+      "taskTypes": {
+        "pdf_ingestion": {
+          "workers": ["cpu_worker_0", "cpu_worker_1", "cpu_worker_2", "cpu_worker_3"],
+          "route": "qdrant_upsert",
+          "fallback": null,
+          "priority": 1
+        },
+        "rag_query": {
+          "workers": ["cpu_worker_0", "cpu_worker_1", "cpu_worker_2", "cpu_worker_3"],
+          "route": "qdrant_search",
+          "fallback": "semantic_expansion",
+          "priority": 2
+        },
+        "image_generation": {
+          "workers": ["gpu_comfyui"],
+          "route": "comfyui_pipeline",
+          "fallback": "gemini-2.5-flash",
+          "priority": 3
+        },
+        "multimodal": {
+          "workers": ["cpu_worker_0", "gpu_comfyui"],
+          "route": "hybrid_pipeline",
+          "priority": 4
+        }
+      },
+      "loadBalancing": {
+        "cpuWorkers": 4,
+        "gpuWorkers": 1,
+        "fallbackEnabled": true,
+        "strategy": "round_robin",
+        "maxConcurrent": 8,
+        "vramAwareDispatch": true
+      },
+      "fallbackChain": {
+        "local": "cpu_worker_0",
+        "gpu": "gpu_comfyui",
+        "cloud": "gemini-2.5-flash",
+        "throttled": true
+      },
+      "classificationRules": {
+        "pdf": {
+          "condition": "has_text_content && is_pdf_file",
+          "routeTo": "pdf_worker"
+        },
+        "image_generation": {
+          "condition": "has_image_prompt",
+          "routeTo": "comfyui_gpu"
+        },
+        "multimodal": {
+          "condition": "has_text && has_image",
+          "routeTo": "llava_worker"
+        }
+      }
+    }
+  }
+}

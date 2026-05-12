@@ -1,0 +1,10 @@
+{
+  "test": "interleaved_execution",
+  "status": "PASS",
+  "details": {
+    "probes_tested": 5,
+    "events_per_probe": 10,
+    "clean_separation": true,
+    "no_state_leakage": true
+  }
+}

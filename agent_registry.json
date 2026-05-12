@@ -1,0 +1,34 @@
+{
+  "agents": {
+    "intel": {
+      "label": "@intel",
+      "role": "Research & Web Retrieval",
+      "sessionTarget": "isolated",
+      "toolsAllow": ["tavily_search", "tavily_extract", "web_fetch", "pdf", "read", "file_fetch", "memory_search"]
+    },
+    "ops": {
+      "label": "@ops",
+      "role": "Execution & Terminal",
+      "sessionTarget": "isolated",
+      "toolsAllow": ["exec", "process", "browser", "canvas", "nodes", "file_write", "file_fetch", "edit", "write", "read"]
+    },
+    "comms": {
+      "label": "@comms",
+      "role": "Communication & Reporting",
+      "sessionTarget": "isolated",
+      "toolsAllow": ["message", "web_search", "web_fetch", "read", "memory_get"]
+    },
+    "sentinel": {
+      "label": "@sentinel",
+      "role": "Guardian & Validation",
+      "sessionTarget": "isolated",
+      "toolsAllow": ["read", "exec", "nodes", "device_status", "device_health"]
+    }
+  },
+  "scheduler": {
+    "mode": "round_robin",
+    "parallelism": 4,
+    "ownershipTokens": true,
+    "backpressure": "enabled"
+  }
+}

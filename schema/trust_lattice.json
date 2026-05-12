@@ -1,0 +1,91 @@
+{
+  "schema_version": "1.0",
+  "name": "TrustLattice",
+  "description": "Hierarchical trust scoring framework for multi-source evidence attribution",
+  "components": {
+    "authority_tiers": {
+      "description": "Four-tier authority hierarchy",
+      "tiers": [
+        {
+          "tier_id": "L0",
+          "name": "Kernel Truth",
+          "trust_weight": 1.0,
+          "sources": ["/proc/1/cmdline", "dmesg", "kernel syslog"],
+          "verification": "Direct hardware interrupt / syscall trace",
+          "bypassable": false
+        },
+        {
+          "tier_id": "L1",
+          "name": "Runtime Wrapper",
+          "trust_weight": 0.6,
+          "sources": ["systemd-journald", "openclaw logs", "ollama daemon"],
+          "verification": "Syslog daemon (may filter/aggregate)",
+          "bypassable": true
+        },
+        {
+          "tier_id": "L1.5",
+          "name": "Agent Wrapper",
+          "trust_weight": 0.3,
+          "sources": ["python logs", "shell outputs", "openclaw logs"],
+          "verification": "Python wrapper (may omit/syslog)",
+          "bypassable": true
+        },
+        {
+          "tier_id": "L2",
+          "name": "Model Output",
+          "trust_weight": 0.1,
+          "sources": ["LLM responses", "agent transcripts"],
+          "verification": "Inferred/generated content",
+          "bypassable": true
+        }
+      ]
+    },
+    "trust_scoring_formula": {
+      "description": "Weighted trust aggregation",
+      "formula": "Trust_Score = Σ(tier_weight × source_count)",
+      "normalization": {
+        "min": 0.0,
+        "max": 1.0,
+        "thresholds": {
+          "secure": {"min": 0.8, "description": "High confidence (>80% kernel sources)"},
+          "questionable": {"min": 0.5, "max": 0.8, "description": "Moderate confidence (50-80%)"},
+          "unverified": {"max": 0.5, "description": "Low confidence (<50%)"}
+        }
+      }
+    },
+    "boundary_checks": {
+      "description": "Trust boundary enforcement rules",
+      "rules": [
+        {
+          "id": "BIND_MOUNT_ISOLATION",
+          "description": "Prevent /mnt/c access without approval",
+          "condition": "destination_path.startswith('/mnt/')",
+          "action": "REQUIRE_APPROVAL",
+          "approval_level": "OWNER_ONLY"
+        },
+        {
+          "id": "SYMLINK_ESCAPE_PREVENTION",
+          "description": "Block symlink resolution to /mnt/*",
+          "condition": "symlink.target.startswith('/mnt/')",
+          "action": "BLOCK_OR_NORMALIZE",
+          "fallback": "return_target_path_without_follow"
+        },
+        {
+          "id": "PATH_TRAVERSAL_BLOCK",
+          "description": "Prevent path traversal via ../ sequences",
+          "condition": "path.contains('..')",
+          "action": "NORMALIZE_PATH",
+          "fallback": "reject_operation"
+        }
+      ]
+    },
+    "evidence_classification": {
+      "description": "Evidence source categorization",
+      "types": [
+        {"type": "REAL", "description": "Direct syscall execution", "verification": "kernel_log_match"},
+        {"type": "PROXIED", "description": "Runtime wrapper invocation", "verification": "python_log_trace"},
+        {"type": "SIMULATED", "description": "Model-generated content", "verification": "LLM_output_hash"}
+      ]
+    }
+  }
+}

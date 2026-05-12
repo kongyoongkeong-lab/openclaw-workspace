@@ -1,0 +1,83 @@
+=== Page 1 ===
+Test PDF for OCR Validation
+This is a test PDF containing various elements for OCR pi...
+Page 1: Text Content
+====================
+Welcome to the OpenClaw PDF Processing Pipeline.
+This document contains:
+- Plain text paragraphs
+- Numbered lists
+- Technical specifications
+- Table data
+- Charts and diagrams (simulated)
+Purpose:
+- Validate OCR extraction
+- Test text preprocessing
+- Verify table recognition
+- Check image processing
+- Measure processing speed
+
+
+=== Page 2 ===
+Sample Data Table
+ID
+Name
+Value
+Status
+Timestamp
+001
+Test Item A
+123.45
+Active
+2026-05-12 18:00:00
+002
+Test Item B
+234.56
+Active
+2026-05-12 18:05:00
+003
+Test Item C
+345.67
+Pending
+2026-05-12 18:10:00
+004
+Test Item D
+456.78
+Completed
+2026-05-12 18:15:00
+005
+Test Item E
+567.89
+Active
+2026-05-12 18:20:00
+
+
+=== Page 3 ===
+Lists and Mixed Content
+Numbered List:
+1. This is list item number 1 for testing.
+2. This is list item number 2 for testing.
+3. This is list item number 3 for testing.
+4. This is list item number 4 for testing.
+5. This is list item number 5 for testing.
+Bulleted List:
+• Item 1: Testing bullet point extraction
+• Item 2: Testing bullet point extraction
+• Item 3: Testing bullet point extraction
+• Item 4: Testing bullet point extraction
+• Item 5: Testing bullet point extraction
+
+
+=== Page 4 ===
+Processing Complete
+This test PDF has been successfully generated.
+Pipeline Validation Checklist:
+[] Text extraction
+[] Table recognition
+[] List parsing
+[] OCR validation
+[] Page structure detection
+The PDF is ready for OCR + preprocessing pipeline testing.
+End of Test Document.
+
+

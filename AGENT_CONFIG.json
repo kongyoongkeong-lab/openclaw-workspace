@@ -1,0 +1,56 @@
+{
+  "memory_system": {
+    "enabled": true,
+    "version": "1.0.0",
+    "base_path": "/home/jason2ykk/.openclaw/workspace/memory"
+  },
+  "agents": {
+    "@main": {
+      "role": "orchestrator",
+      "memory_access": "full",
+      "model": "qwen3.5:9b"
+    },
+    "@ops": {
+      "role": "executor",
+      "memory_access": "recent",
+      "episodic_limit": 100,
+      "semantic_limit": 50,
+      "model": "qwen3.5:9b"
+    },
+    "@intel": {
+      "role": "researcher",
+      "memory_access": "full",
+      "model": "qwen3.5:9b"
+    },
+    "@comms": {
+      "role": "communicator",
+      "memory_access": "full",
+      "model": "qwen3.5:9b"
+    },
+    "@sentinel": {
+      "role": "guardian",
+      "memory_access": "all",
+      "model": "qwen3.5:9b"
+    }
+  },
+  "memory_rules": {
+    "episodic_path": "episodic.jsonl",
+    "semantic_path": "semantic.jsonl",
+    "compressed_path": "compressed.jsonl",
+    "agent_logs_path": "agents",
+    "compression_threshold": 3000,
+    "compression_ratio": 0.5
+  },
+  "hooks": {
+    "inject_memory_into_prompt": {
+      "enabled": true,
+      "default_context": "runtime",
+      "max_context_tokens": 4000
+    }
+  },
+  "deployment": {
+    "step": 6,
+    "timestamp": "2026-05-06T05:04:00+08:00",
+    "status": "deploying"
+  }
+}

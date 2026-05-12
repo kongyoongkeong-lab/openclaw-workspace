@@ -1,0 +1,33 @@
+llava_worker:
+  name: "llava-vision-worker"
+  description: "Local LLaVA Multimodal Worker (7B) for OpenClaw"
+  model: "llava:7b-v1.5-q4_K_S"
+  host: "http://localhost:11434"
+  gpu_enabled: true
+  gpu_limit: "8.5GB"
+  memory_limit: "6GB"
+  fallback_model: "qwen3.5:9b"
+  capabilities:
+    - image_analysis
+    - text_recognition
+    - visual_reasoning
+    - screenshot_qa
+    - poster_generation
+    - hybrid_cpu_gpu_routing
+
+routing:
+  priority: 1
+  agents:
+    - label: "intel"
+      role: "visual_intelligence"
+      tasks:
+        - image_qa
+        - object_detection
+        - text_ocr
+        - scene_understanding
+        - visual_reasoning
+
+  fallback:
+    trigger: "local_vram_exceeded"
+    model: "gemini-2.5-flash-lite"
+    threshold: "8.5GB"

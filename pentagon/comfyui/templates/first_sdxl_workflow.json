@@ -1,0 +1,73 @@
+{
+  "1": {
+    "class_type": "EmptyLatentImage",
+    "inputs": {
+      "width": 1024,
+      "height": 1024,
+      "batch_size": 1
+    }
+  },
+  "2": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "text": "cute children learning Chinese in classroom, storybook illustration, educational vector art, flat colors, friendly atmosphere",
+      "clip": 3
+    }
+  },
+  "3": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "text": "blurry, watermark, ugly, distorted face, low quality",
+      "clip": 4
+    }
+  },
+  "4": {
+    "class_type": "CheckpointLoaderSimple",
+    "inputs": {
+      "ckpt_name": "sd_xl_base_1.0.safetensors"
+    }
+  },
+  "5": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "clip": 1,
+      "text": "cute children learning Chinese in classroom, storybook illustration, educational vector art"
+    }
+  },
+  "6": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "clip": 2,
+      "text": "blurry, watermark, ugly, distorted face, low quality"
+    }
+  },
+  "7": {
+    "class_type": "KSampler",
+    "inputs": {
+      "cfg": 6.5,
+      "denoise": 1,
+      "latent_image": 0,
+      "model": 3,
+      "negative": 4,
+      "positive": 5,
+      "sampler_name": "dpmpp_2m",
+      "scheduler": "karras",
+      "steps": 28,
+      "seed": 1234567
+    }
+  },
+  "8": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": 6,
+      "vae": 3
+    }
+  },
+  "9": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "filename_prefix": "ComfyUI_Output",
+      "image": 7
+    }
+  }
+}

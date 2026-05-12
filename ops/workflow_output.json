@@ -1,0 +1,55 @@
+{
+  "infrastructure": {
+    "queue_folders": {
+      "input": "/input",
+      "processing": "/processing",
+      "completed": "/completed",
+      "cache": "/cache"
+    },
+    "dependencies": [
+      "PyMuPDF",
+      "pytesseract",
+      "opencv-python",
+      "Pillow",
+      "pandas"
+    ],
+    "ocr_engine": "Tesseract OCR",
+    "pdf_engine": "PyMuPDF"
+  },
+  "preprocessing_pipeline": {
+    "steps": [
+      "resize",
+      "crop",
+      "denoise"
+    ],
+    "parameters": {
+      "max_dimension": 1024,
+      "crop_mode": "edges",
+      "denoise_strength": 3.0
+    }
+  },
+  "metadata_extraction": {
+    "image_fields": [
+      "filename",
+      "dimensions",
+      "format",
+      "mode",
+      "file_size",
+      "timestamp",
+      "exif"
+    ],
+    "pdf_fields": [
+      "filename",
+      "page_count",
+      "file_size",
+      "timestamp",
+      "pdf_info",
+      "pdf_metadata"
+    ]
+  },
+  "validation": {
+    "cpu_monitoring": true,
+    "error_handling": "try-except with continue",
+    "queue_processing": "non-blocking worker loop"
+  }
+}

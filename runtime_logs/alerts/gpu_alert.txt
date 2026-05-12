@@ -1,0 +1,4 @@
+# GPU Utilization Alert
+Severity: INFO
+Threshold: 70-85% sustained, 95% burst allowed
+Cooldown: 60s

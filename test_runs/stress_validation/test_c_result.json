@@ -1,0 +1,10 @@
+{
+  "test": "rapid_fire",
+  "status": "PASS",
+  "details": {
+    "events_per_probe": 200,
+    "sequence_monotonicity": true,
+    "no_duplicates": true,
+    "race_condition_safe": true
+  }
+}

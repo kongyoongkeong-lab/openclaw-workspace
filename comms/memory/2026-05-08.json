@@ -1,0 +1,14 @@
+{
+  "timestamp": "2026-05-08T00:09:00Z",
+  "source": "openclaw-control-ui",
+  "label": "openclaw-control-ui",
+  "id": "openclaw-control-ui",
+  "channel_type": "control_channel",
+  "message": "continue",
+  "reason": "User: 'Continue the OpenClaw runtime event'",
+  "session": "openclaw-control-ui",
+  "capabilities": "none",
+  "thinking": "off",
+  "next_action": "Continue the OpenClaw runtime event",
+  "memory_id": "session-2026-05-08"
+}

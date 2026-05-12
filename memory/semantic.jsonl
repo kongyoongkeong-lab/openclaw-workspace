@@ -1,0 +1,10 @@
+{"id":1,"agent":"vault","immutable":true,"payload":{"fact":"RTX 4070 SUPER (12GB VRAM) operational","source":"hardware_check"},"ts":1715223600,"datetime":"2026-05-08T22:00:00Z"}
+{"id":2,"agent":"vault","immutable":true,"payload":{"fact":"qwen3.5:9b local model primary","source":"vault_pulse"},"ts":1715223601,"datetime":"2026-05-08T22:00:01Z"}
+{"id":3,"agent":"vault","immutable":true,"payload":{"fact":"gemini-2.5-flash-lite cloud fallback","source":"vault_pulse"},"ts":1715223602,"datetime":"2026-05-08T22:00:02Z"}
+{"id":4,"agent":"vault","immutable":true,"payload":{"fact":"VRAM ceiling: 9.5GB hard limit","source":"vault_pulse"},"ts":1715223603,"datetime":"2026-05-08T22:00:03Z"}
+{"id":5,"agent":"vault","immutable":true,"payload":{"fact":"workspace: /home/jason2ykk/.openclaw/workspace/","source":"vault_pulse"},"ts":1715223604,"datetime":"2026-05-08T22:00:04Z"}
+{"id":6,"agent":"vault","immutable":true,"payload":{"fact":"@main orchestrator: gemini-2.5-flash-lite","source":"vault_pulse"},"ts":1715223605,"datetime":"2026-05-08T22:00:05Z"}
+{"id":7,"agent":"vault","immutable":true,"payload":{"fact":"@intel research: qwen3.5:4b","source":"vault_pulse"},"ts":1715223606,"datetime":"2026-05-08T22:00:06Z"}
+{"id":8,"agent":"vault","immutable":true,"payload":{"fact":"@ops execution: qwen3.5:4b","source":"vault_pulse"},"ts":1715223607,"datetime":"2026-05-08T22:00:07Z"}
+{"id":9,"agent":"vault","immutable":true,"payload":{"fact":"@comms communication: qwen3.5:4b","source":"vault_pulse"},"ts":1715223608,"datetime":"2026-05-08T22:00:08Z"}
+{"id":10,"agent":"vault","immutable":true,"payload":{"fact":"@sentinel guardian: qwen3.5:4b","source":"vault_pulse"},"ts":1715223609,"datetime":"2026-05-08T22:00:09Z"}}

@@ -1,0 +1,28 @@
+collection_name: pentagon_brain
+vector_size: 1024
+distance_metric: cosine
+huggingface_features:
+  task: embedding
+  model_id: BAAI/bge-large-zh-v1.5
+on_disk: true
+timeout_seconds: 300
+
+# H1 Compliance
+gpu_reservation: 8.5gb
+vram_threshold: 9.5gb
+context_max_idle: 60%
+
+# Routing endpoints
+pdf_ingestion:
+  workers: 4
+  timeout: 300
+
+rag_query:
+  min_similarity: 0.85
+  top_k: 10
+  fallback: semantic_expansion
+
+image_generation:
+  comfyui_endpoint: http://localhost:8188
+  max_gpu_util: 85%
+  timeout: 600

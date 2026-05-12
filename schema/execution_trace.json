@@ -1,0 +1,91 @@
+{
+  "schema_version": "1.0",
+  "name": "ExecutionTrace",
+  "description": "Maps agent actions → runtime wrappers → kernel syscalls → kernel logs with attribution integrity",
+  "fields": {
+    "agent_id": {
+      "type": "string",
+      "required": true,
+      "description": "Pentagon agent identifier (e.g., @ops, @intel)"
+    },
+    "action_id": {
+      "type": "string",
+      "required": true,
+      "description": "Unique action identifier (UUID or monotonically increasing counter)"
+    },
+    "agent_intent": {
+      "type": "string",
+      "required": true,
+      "description": "Intentional agent action from transcript"
+    },
+    "runtime_wrapper": {
+      "type": "object",
+      "required": true,
+      "description": "Python/Shell script executed by agent",
+      "fields": {
+        "script_path": {"type": "string"},
+        "exec_command": {"type": "string"},
+        "exit_code": {"type": "integer"},
+        "stdout": {"type": "string"},
+        "stderr": {"type": "string"}
+      }
+    },
+    "syscall_trace": {
+      "type": "array",
+      "required": true,
+      "description": "Kernel syscall events from openclaw process",
+      "items": {
+        "type": "object",
+        "fields": {
+          "syscall_name": {"type": "string"},
+          "syscall_args": {"type": "string"},
+          "timestamp": {"type": "timestamp"},
+          "pid": {"type": "integer"}
+        }
+      }
+    },
+    "kernel_log_ref": {
+      "type": "object",
+      "required": true,
+      "description": "Reference to kernel log entry (dmesg/journalctl)",
+      "fields": {
+        "journal_id": {"type": "string"},
+        "dmesg_line": {"type": "string"},
+        "timestamp": {"type": "timestamp"}
+      }
+    },
+    "attribution_confidence": {
+      "type": "float",
+      "required": true,
+      "description": "Confidence score (0.0-1.0) that this agent caused this syscall"
+    },
+    "trust_chain": {
+      "type": "array",
+      "required": true,
+      "description": "Full trust chain: agent → wrapper → syscall → log",
+      "items": {
+        "type": "object",
+        "fields": {
+          "layer": {"type": "string"},
+          "truth_level": {"type": "string"},
+          "verification_status": {"type": "string"}
+        }
+      }
+    },
+    "boundary_check": {
+      "type": "object",
+      "required": true,
+      "description": "Trust boundary verification for this action",
+      "fields": {
+        "path_traversal_blocked": {"type": "boolean"},
+        "symlink_escape_prevented": {"type": "boolean"},
+        "mount_boundary_intact": {"type": "boolean"}
+      }
+    },
+    "timestamp": {
+      "type": "timestamp",
+      "required": true,
+      "description": "Action timestamp (ISO 8601)"
+    }
+  }
+}

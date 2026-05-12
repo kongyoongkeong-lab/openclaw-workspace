@@ -1,0 +1,5 @@
+{"timestamp":"2026-05-09T23:16:13+08:00","fault_id":1,"fault_type":"inference_timeout","status":"INJECTED"}
+{"timestamp":"2026-05-09T23:16:15+08:00","fault_id":1,"fault_type":"inference_timeout","status":"RECOVERED","attempts":1,"mttr":2}
+{"timestamp":"2026-05-09T23:16:23+08:00","fault_id":2,"fault_type":"gpu_degradation","status":"INJECTED"}
+{"timestamp":"2026-05-09T23:16:23+08:00","fault_id":2,"fault_type":"gpu_degradation","status":"RECOVERED","attempts":1,"mttr":0}
+{"timestamp":"2026-05-09T23:16:31+08:00","fault_id":3,"fault_type":"model_disconnect","status":"INJECTED"}

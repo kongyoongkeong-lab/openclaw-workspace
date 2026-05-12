@@ -1,0 +1,150 @@
+{
+  "version": "1.0",
+  "generated": "2026-05-12T21:00+08:00",
+  "gateways": {
+    "workflow-manager": {
+      "enabled": true,
+      "routes": [
+        {
+          "name": "pdf-ingestion",
+          "description": "OCR → Chunk → Embed → Qdrant Upsert",
+          "inputDir": "/pdf-worker/input/",
+          "outputDir": "/completed/",
+          "errorDir": "/failed/",
+          "pipeline": [
+            {
+              "name": "pdf-ocr",
+              "tool": "pdf",
+              "config": {
+                "prompt": "Extract full text with layout preservation"
+              }
+            },
+            {
+              "name": "chunk-split",
+              "tool": "exec",
+              "command": "python -m pdf_worker.chunk --max-len 512"
+            },
+            {
+              "name": "embed-upsert",
+              "tool": "pdf",
+              "config": {
+                "model": "ollama/bge-small-en-v1.5"
+              }
+            },
+            {
+              "name": "qdrant-store",
+              "tool": "exec",
+              "command": "python -m qdrant_client --upsert-batch"
+            }
+          ],
+          "fallback": {
+            "condition": "tool-error",
+            "action": "move-to-failed"
+          }
+        },
+        {
+          "name": "comfyui-generation",
+          "description": "VAE Decode → GFPGAN → IOPaint → RealESRGAN → Save",
+          "inputMethod": "queue-or-api",
+          "outputDir": "/output/",
+          "pipeline": [
+            {
+              "name": "vae-decode",
+              "tool": "exec",
+              "command": "python -m comfyui_pipeline vae-decode"
+            },
+            {
+              "name": "face-fusion",
+              "tool": "exec",
+              "command": "python -m comfyui_pipeline gfpgan --threshold 0.5"
+            },
+            {
+              "name": "detail-paint",
+              "tool": "exec",
+              "command": "python -m comfyui_pipeline iopaint --detail-mode"
+            },
+            {
+              "name": "upscaling",
+              "tool": "exec",
+              "command": "python -m comfyui_pipeline realesrgan --scale 4"
+            },
+            {
+              "name": "save-output",
+              "tool": "exec",
+              "command": "python -m comfyui_pipeline save --path /output/"
+            }
+          ],
+          "constraints": {
+            "maxVram": 9000000000,
+            "fallback": {
+              "condition": "vram-overflow",
+              "action": "downscale-or-cloud"
+            }
+          }
+        },
+        {
+          "name": "rag-query",
+          "description": "Retrieve Chunks → Embed → Qdrant → LLM Answer",
+          "inputMethod": "user-query",
+          "contextWindow": 32000,
+          "pipeline": [
+            {
+              "name": "embed-query",
+              "tool": "exec",
+              "command": "python -m qdrant_client --embed-query"
+            },
+            {
+              "name": "retrieve-chunks",
+              "tool": "exec",
+              "command": "python -m qdrant_client --retrieve --top-k 8"
+            },
+            {
+              "name": "context-build",
+              "tool": "exec",
+              "command": "python -m rag_pipeline build-context"
+            },
+            {
+              "name": "llm-answer",
+              "tool": "exec",
+              "command": "ollama run qwen3.5:9b 'Answer based on context'"
+            }
+          ],
+          "fallback": {
+            "condition": "context-exceeds",
+            "action": "partial-result-with-notification"
+          }
+        },
+        {
+          "name": "multimodal-processing",
+          "description": "Image + Text Routing → LLaVA → ComfyUI Post-Processing",
+          "inputMethod": "mixed-content",
+          "pipeline": [
+            {
+              "name": "route-input",
+              "tool": "exec",
+              "command": "python -m multimodal_router classify"
+            },
+            {
+              "name": "llava-process",
+              "tool": "exec",
+              "command": "python -m llava_pipeline process"
+            },
+            {
+              "name": "optional-comfyui",
+              "tool": "exec",
+              "command": "python -m comfyui_pipeline enhance"
+            }
+          ],
+          "constraints": {
+            "cpuFallback": true,
+            "vramThrottling": true,
+            "fallback": {
+              "condition": "vram-pressure",
+              "action": "cpu-only-inference"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

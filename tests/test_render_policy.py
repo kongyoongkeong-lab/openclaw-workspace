@@ -28,6 +28,26 @@ class TestRenderPolicy:
         assert result == expected, f"Expected '{expected}', got '{result}'"
         print(f"✅ progress returns: {result}")
     
+    def test_live_progress_handler_uses_render_policy(self):
+        """Live progress must collapse stable verbose status through locked render policy."""
+        verbose_status = """Progress — current state:
+
+- H1 Strict Validation: active / passive telemetry mode.
+- Qdrant RAG status: validated; runtime unchanged.
+- Workspace: ready for commands.
+- Active subagents: none.
+- Model/session/context: main, 9%.
+- Gateway uptime: 1h 23m.
+- Next state: awaiting your next command.
+"""
+        output = RenderPolicy.route_render("progress", verbose_status)
+        assert output == "Stable. No user action required."
+        assert "Progress — current state" not in output
+        assert "Gateway uptime" not in output
+        assert "context" not in output
+        assert "Qdrant" not in output
+        assert "subagents" not in output
+    
     def test_status_returns_stable_response(self):
         """Test: status returns exactly 'Stable. No user action required.'"""
         result = RenderPolicy.route_render("status", "")
@@ -86,7 +106,7 @@ class TestRenderPolicy:
     
     def test_full_telemetry_not_suppressed(self):
         """Test: Full telemetry command is NOT suppressed."""
-        command = "full telemetry"
+        command = "show full telemetry"
         message = "GPU: 74% | VRAM: 69% | Invariants: HOLDING | 🚀 System Stable 🤖"
         result = RenderPolicy.route_render(command, message)
         # Should return full telemetry, NOT stable response
@@ -151,6 +171,7 @@ def run_all_tests():
     
     # Run all test methods
     test.test_progress_returns_stable_response()
+    test.test_live_progress_handler_uses_render_policy()
     test.test_status_returns_stable_response()
     test.test_h1_status_returns_stable_response()
     test.test_quiet_soak_status_returns_stable_response()

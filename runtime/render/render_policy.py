@@ -21,6 +21,37 @@ class RenderPolicy:
     """Enforces command-aware render policy to prevent context overflow."""
     
     @classmethod
+    def _has_warning_failure_degradation(cls, message: str) -> bool:
+        """
+        Detect only actual warning/failure/degradation signals.
+
+        This intentionally avoids treating stable phrases like
+        "no invariant break" as an invariant break.
+        """
+        text = message.lower() if message else ''
+
+        negative_invariant_phrases = (
+            'no invariant break',
+            'no invariant breaks',
+            'invariant break: no',
+            'invariant break: false',
+            'invariant_break: false',
+        )
+        if any(phrase in text for phrase in negative_invariant_phrases):
+            text = text.replace('no invariant breaks', '')
+            text = text.replace('no invariant break', '')
+            text = text.replace('invariant break: no', '')
+            text = text.replace('invariant break: false', '')
+            text = text.replace('invariant_break: false', '')
+
+        signal_patterns = (
+            'warning', 'failure', 'failed', 'error', 'degraded', 'degradation',
+            'invariant break', 'invariant_break', 'violation', 'critical',
+            'unstable', 'alert', 'exception'
+        )
+        return any(pattern in text for pattern in signal_patterns)
+    
+    @classmethod
     def should_apply_stable_response(cls, command: str, message: str) -> bool:
         """
         Determine if stable response should be applied.
@@ -38,12 +69,8 @@ class RenderPolicy:
             # Normal commands (questions, troubleshooting, etc.) -> NO stable response
             return False
         
-        # Check for warnings/failures/invariant breaks in message
-        if any(pattern in message.lower() for pattern in [
-            'warning', 'failure', 'error', 'degraded', 
-            'break', 'violation', 'critical', 'unstable',
-            'block', 'alert', 'exception'
-        ]):
+        # Check for warnings/failures/degradations/invariant breaks in message.
+        if cls._has_warning_failure_degradation(message):
             return False
         
         # Check for blocked tokens
@@ -163,21 +190,23 @@ class RenderPolicy:
             - Normal response for all other cases (including non-status commands)
             - Empty string only if blocked tokens present
         """
-        # Special case for progress command: use render_progress
         cmd_lower = command.lower().strip() if command else ''
         if cmd_lower == 'progress':
-            return cls.render_progress()
+            if cls.should_apply_stable_response(command, message):
+                return cls.render_progress()
+            return cls.strip_blocked_tokens(message) if message else ""
         
         # Continue runtime event with stable status
         cmd_contain_continue = 'continue the openclaw runtime event' in cmd_lower
         if cmd_contain_continue:
             return cls.render_runtime_event_stable()
         
-        # Check for explicit full telemetry request
-        if 'full telemetry' in cmd_lower or 'telemetry' in cmd_lower:
-            # Only render full if it's an explicit request (not just 'telemetry' in a question)
-            if 'how do' not in cmd_lower and 'what is' not in cmd_lower and 'explain' not in cmd_lower:
-                return cls.render_full_telemetry(message)
+        # Check for explicit full-status requests only.
+        if cmd_lower == 'show full telemetry':
+            return cls.render_full_telemetry(message)
+
+        if cmd_lower == 'show full protocol' or cmd_lower.startswith('protocol show '):
+            return cls.strip_blocked_tokens(message) if message else ""
         
         # Status-only commands that trigger stable response
         if cmd_lower in STATUS_COMMANDS:

@@ -14,7 +14,7 @@ Test cases:
 
 import sys
 import os
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from runtime.render.render_policy import RenderPolicy
 
@@ -118,7 +118,7 @@ class TestRenderPolicy:
         expected = "Stable. No user action required."
         result = RenderPolicy.generate_stable_response()
         assert result == expected, f"Expected '{expected}', got '{result}'"
-        assert len(result) == 30, f"Length should be 30, got {len(result)}"
+        assert len(result) == 32, f"Length should be 32, got {len(result)}"
         print(f"✅ Stable response exact string: '{result}'")
     
     def test_status_command_detection(self):

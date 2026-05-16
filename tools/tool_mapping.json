@@ -1,0 +1,62 @@
+{
+  "tools": {
+    "web_fetch": {"tri": 0.95, "fallback": "tavily_search"},
+    "tavily_search": {"tri": 0.98, "fallback": "web_search"},
+    "read": {"tri": 0.90, "fallback": "file_fetch"},
+    "exec": {"tri": 0.85, "fallback": "sessions_spawn"},
+    "sessions_spawn": {"tri": 0.70, "fallback": "wait"},
+    "file_write": {"tri": 0.88, "fallback": "file_fetch"},
+    "memory_search": {"tri": 0.92, "fallback": "memory_get"},
+    "memory_get": {"tri": 0.95, "fallback": "memory_search"},
+    "browser": {"tri": 0.88, "fallback": "web_fetch"},
+    "image": {"tri": 0.92, "fallback": "image_generate"},
+    "pdf": {"tri": 0.95, "fallback": "tavily_extract"},
+    "sessions_send": {"tri": 0.65, "fallback": "sessions_yield"},
+    "sessions_yield": {"tri": 0.95, "fallback": "sessions_send"},
+    "file_fetch": {"tri": 0.88, "fallback": "read"},
+    "web_search": {"tri": 0.95, "fallback": "browser"},
+    "edit": {"tri": 0.82, "fallback": "create_new"},
+    "dir_list": {"tri": 0.88, "fallback": "read"},
+    "sessions_history": {"tri": 0.88, "fallback": "fetch"},
+    "process": {"tri": 0.82, "fallback": "spawn"},
+    "session_status": {"tri": 0.85, "fallback": "status"},
+    "message": {"tri": 0.88, "fallback": "send"},
+    "image_generate": {"tri": 0.85, "fallback": "audio_ref"},
+    "tavily_extract": {"tri": 0.80, "fallback": "partial"},
+    "subagents": {"tri": 0.85, "fallback": "list"},
+    "cron": {"tri": 0.85, "fallback": "schedule"},
+    "gateway": {"tri": 0.82, "fallback": "status"}
+  },
+  "task_complexity": {
+    "simple": {
+      "web_fetch": ["web_fetch"],
+      "search": ["tavily_search"],
+      "read": ["file_fetch", "read"],
+      "image": ["image"],
+      "exec": ["exec"],
+      "pdf": ["pdf"]
+    },
+    "medium": {
+      "research": ["web_search", "memory_search", "web_fetch"],
+      "browser": ["browser", "web_fetch", "screenshot"],
+      "multi_file": ["file_fetch", "read", "write", "edit"],
+      "code_exec": ["exec", "read", "file_write"],
+      "session_msg": ["sessions_send", "sessions_yield"]
+    },
+    "high": {
+      "complex_reason": ["memory_search", "memory_get", "web_search"],
+      "multi_pdf": ["pdf", "pdfs", "memory_search"],
+      "media_gen": ["image_generate", "video_generate", "music_generate"],
+      "full_analysis": ["browser", "snapshot", "evaluate", "write"],
+      "subagent": ["sessions_spawn", "subagents", "sessions_history"]
+    }
+  },
+  "fallback_chain": [
+    {"tool": "web_search", "tri": 0.95},
+    {"tool": "memory_search", "tri": 0.92},
+    {"tool": "browser", "tri": 0.88},
+    {"tool": "tavily_search", "tri": 0.98},
+    {"tool": "file_fetch", "tri": 0.88},
+    {"tool": "tavily_extract", "tri": 0.80}
+  ]
+}

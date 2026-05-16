@@ -1,0 +1,43 @@
+{
+  "test_cases": [
+    {
+      "name": "determinism-basic",
+      "signal": "latency",
+      "value": 2.5,
+      "expected_bucket": 4,
+      "description": "Simple latency bucketing"
+    },
+    {
+      "name": "idempotency-check",
+      "signal": "retry_count",
+      "value": 3,
+      "expected_bucket": 3,
+      "description": "Verify normalize(normalize(x)) == normalize(x)"
+    },
+    {
+      "name": "purity-check",
+      "signal": "trace_gap",
+      "value": 0.5,
+      "expected_primitive": true,
+      "description": "Verify signal stays primitive"
+    },
+    {
+      "name": "corruption-test",
+      "signal": "entropy_drift",
+      "value": ["bucket1", "bucket2"],
+      "expected_primitive": false,
+      "description": "Should fail purity check"
+    }
+  ],
+  "trace_samples": [
+    {
+      "id": "trace-001",
+      "content": [
+        {"signal": "latency", "value": 1.2},
+        {"signal": "retry", "value": 2.0},
+        {"signal": "gap", "value": 0.5}
+      ],
+      "description": "Multi-signal trace for replay test"
+    }
+  ]
+}

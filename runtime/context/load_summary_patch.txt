@@ -1,0 +1,11 @@
+# Add load_memory_summary function after get_context_policy()
+
+def load_memory_summary() -> str:
+    """Load state_summary.md for context compression."""
+    summary_path = "/home/jason2ykk/.openclaw/workspace/memory/state_summary.md"
+    try:
+        with open(summary_path, "r") as f:
+            return f.read()
+    except FileNotFoundError:
+        return ""
+

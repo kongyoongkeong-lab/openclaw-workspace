@@ -1,0 +1,3 @@
+# Telemetry logs directory
+# Raw telemetry JSON files are stored here
+# Aggregated by phase8_aggregator.py

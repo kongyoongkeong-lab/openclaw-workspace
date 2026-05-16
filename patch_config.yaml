@@ -1,0 +1,51 @@
+# Pentagon Render Regression Patch v0.0.1
+# Applied: 2026-05-16 00:33
+
+render_fixes:
+  progress:
+    condition:
+      - command == progress
+      - system_stable == true
+      - no_warning == true
+      - no_invariant_break == true
+      - no_degradation == true
+      - no_user_decision == true
+    output: "Stable. No user action required."
+    exclude:
+      - title
+      - status_label
+      - output_label
+      - verification_sentence
+      - emoji
+      - metrics
+      - telemetry
+      - protocol_explanation
+  
+  continue_runtime_event:
+    condition:
+      - event_stable == true
+      - no_user_action_required == true
+    output: "Stable. No user action required."
+    include_details_if:
+      - new_state_change_requires_awareness
+      - warning_occurs
+      - invariant_breaks
+      - degradation_detected
+      - user_asks_for_full_event_details
+  
+  full_telemetry:
+    allowed: true
+    metric_labels_locked:
+      RPR: "Retrieval Pollution Ratio"
+      GAF: "Governance Amplification Factor"
+    forbidden:
+      - "Target <0.10" (when GAF 0.25 is stable)
+
+tests:
+  - progress_exact_one_line
+  - continue_runtime_event_stable_one_line
+  - progress_no_header_no_emoji
+  - progress_no_status_label
+  - full_telemetry_allowed_on_explicit_request
+  - metric_names_locked
+  - blocked_tokens_never_render

@@ -1,0 +1,55 @@
+# Trigger Map for Daily News Intent Routing
+# Author: Pentagon Orchestrator @main
+# Created: 2026-05-13
+triggers:
+  - keyword: "今日新闻"
+    priority: 1
+    route: "@intel"
+    prompt: "/home/jason2ykk/.openclaw/workspace/daily_news.md"
+    pruning_enabled: true
+    cache_ttl: 3600
+
+  - keyword: "今日 AI"
+    priority: 2
+    route: "@intel"
+    prompt: "/home/jason2ykk/.openclaw/workspace/AI_News.md"
+    pruning_enabled: true
+    cache_ttl: 3600
+
+  - keyword: "daily headlines"
+    priority: 2
+    route: "@intel"
+    prompt: "/home/jason2ykk/.openclaw/workspace/daily_news.md"
+    pruning_enabled: true
+    cache_ttl: 3600
+
+  - keyword: "最新新闻"
+    priority: 2
+    route: "@intel"
+    prompt: "/home/jason2ykk/.openclaw/workspace/daily_news.md"
+    pruning_enabled: true
+    cache_ttl: 3600
+
+  - keyword: "morning news"
+    priority: 2
+    route: "@intel"
+    prompt: "/home/jason2ykk/.openclaw/workspace/daily_news.md"
+    pruning_enabled: true
+    cache_ttl: 3600
+
+routing_rules:
+  - pattern: ".*新闻.*"
+    action: "route_to_intel"
+    cache_result: true
+  - pattern: ".*news.*"
+    action: "route_to_intel"
+    cache_result: true
+  - pattern: ".*headline.*"
+    action: "route_to_intel"
+    cache_result: true
+
+pruning_config:
+  rpr_threshold: 0.10
+  max_context_size: 12000
+  prune_strategy: "last_access_time"
+  fallback: "gemini-2.5-flash-lite"

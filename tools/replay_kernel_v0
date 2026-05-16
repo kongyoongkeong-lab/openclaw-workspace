@@ -1,0 +1,3 @@
+# Replay Kernel v0
+# 工业级最小实现：Event Log → Deterministic State Replay
+# 解决 "reset sensation" 的终极解法

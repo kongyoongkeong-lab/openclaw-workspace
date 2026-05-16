@@ -1,0 +1,67 @@
+# Context Manager v0 - Test 3: Oversized Prompt Simulation (BLOCKED)
+
+This is a deliberately oversized prompt for testing the blocking mechanism.
+
+The purpose of this test is to validate that:
+
+1. The system correctly identifies oversized prompts
+2. The system blocks the prompt before model invocation
+3. A clear reason is provided for blocking
+4. The user is suggested on how to resolve the issue
+
+This section contains the simulated oversized content:
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
+
+Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugit quo voluptas nulla pariatur?
+
+The above text is repeated multiple times to simulate an oversized prompt. In a real scenario, this could be a lengthy documentation dump, extensive API reference, or multi-hundred-page report that exceeds the context window capacity.
+
+The Context Manager v0 should detect this as oversized (estimated >30k tokens) and block the model call, providing clear guidance on how to reduce the prompt size through summarization, chunking, or retrieval of only relevant sections.
+
+This test validates the critical safety feature of preventing context window overflow, which is essential for maintaining system stability and preventing unnecessary resource consumption.
+
+Additional simulated content for oversize testing:
+
+Section 1: Historical Context
+The development of context management systems has evolved significantly over the past decade. Early systems relied on simple fixed-size windows, which led to frequent information loss and context degradation. The introduction of sliding windows and adaptive context strategies marked a significant improvement.
+
+Section 2: Current Challenges
+Modern AI systems face numerous context management challenges, including:
+- Multi-modal content integration
+- Long-term memory consistency
+- Cross-session state preservation
+- Real-time context updates
+- Semantic coherence maintenance
+
+Section 3: Future Directions
+Emerging approaches include:
+- Hierarchical memory structures
+- Compressive attention mechanisms
+- Dynamic context prioritization
+- External memory integration
+- Semantic summarization layers
+
+Section 4: Implementation Considerations
+When implementing context management, consider:
+- Token estimation accuracy
+- Compaction strategy selection
+- State preservation mechanisms
+- Recovery procedures
+- Performance overhead
+
+Section 5: Best Practices
+Recommended practices include:
+- Always estimate token usage
+- Implement warning thresholds
+- Block oversized prompts proactively
+- Summarize historical state
+- Use retrieval for relevant chunks
+
+[Content continues with repeated sections and additional documentation to reach oversized threshold...]
+
+This test file is intentionally lengthy to simulate real-world scenarios where users might paste extensive documentation, API references, or lengthy explanations into the system. The Context Manager v0 must handle these gracefully by blocking oversized inputs and suggesting alternatives.
+
+End of simulated oversized content.

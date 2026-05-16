@@ -1,0 +1,6 @@
+pytest
+pytest-cov
+ruff
+mypy
+discord.py
+websockets

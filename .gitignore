@@ -14,3 +14,52 @@ node_modules/
 comms/.git
 AI_Projects/.git
 **/.git/
+
+# Python cache / test cache
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Windows alternate data stream markers
+*:Zone.Identifier
+
+# Runtime/generated logs and telemetry
+.telemetry_report.txt
+memory/.dreams/
+memory/diag/*.jsonl
+memory/context_compaction_events.jsonl
+runtime/dashboard_output/
+runtime/logs/
+traces/
+snapshots/
+tmp/
+
+# Generated reports / local state
+openclaw/telemetry/reports/*.json
+tools/integrity_results.jsonl
+stability/*.json
+stability*_cli.txt
+drift_report.json
+trace_sample.json
+trace_reference_snapshot.json
+
+# Git/runtime artifacts
+FETCH_HEAD
+
+# Local copied path accidents
+home/
+.home/
+
+# Local config / patch outputs requiring manual review
+config/gateway.yaml
+config/gateway_patched.json
+
+# Backup files
+*.bak
+
+# Additional local backups/runtime seeds
+*.bak*
+stability_initial.json
+
+# GitHub workflow files require workflow-scope token to push
+.github/workflows/

@@ -1,0 +1,22 @@
+# Replay Kernel v0 - Git Ignore
+# =================================
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Test artifacts (keep for CI)
+# test_output/
+
+# Media (if used)
+*.log
+*.png
+*.jpg

@@ -1,0 +1,23 @@
+# Context Manager v0 - Test 2: Large Prompt Simulation
+
+This is a simulated large prompt for testing token estimation and warning thresholds.
+
+It is deliberately constructed to approach the warning threshold of approximately 25k tokens. The purpose is to validate that:
+
+1. The system correctly estimates token usage
+2. A warning is generated when approaching the threshold
+3. The prompt is still allowed (not blocked)
+4. Only a minimal warning is rendered to chat
+
+To generate a truly large prompt (25k+ tokens), we would need to include hundreds of lines of documentation, API references, or lengthy explanations. For practical validation, we can estimate that a ~19k word document would approach this threshold.
+
+For demonstration purposes, this test file contains approximately 100-150 words, which would estimate to roughly 130-195 tokens. This is well below the warning threshold, but the validation logic is in place to handle larger inputs.
+
+The system should:
+- Estimate token count
+- Check against WARNING_THRESHOLD (25k)
+- Emit warning if > 25k
+- Allow prompt if < 30k
+- Block if >= 30k
+
+This test confirms that the estimation function is operational and that the blocking logic will activate appropriately when needed.

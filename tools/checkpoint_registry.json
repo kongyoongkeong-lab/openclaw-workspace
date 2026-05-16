@@ -1,0 +1,28 @@
+{
+  "checkpoint_id": "base_2026-05-15T11:00:00Z",
+  "timestamp": "2026-05-15T11:00:00Z",
+  "state": {
+    "summary": "Replay Kernel with snapshot checkpointing. H1 Strict Mode active. GAF=0.25. RPR=0.09.",
+    "open_loops": ["MTS Observer"],
+    "active_entities": ["@main", "@intel", "@ops", "@sentinel", "@comms"],
+    "decisions": [
+      "Option A locked: Monitor & Observe",
+      "Passive telemetry only",
+      "Snapshot-based reconstruction",
+      "Event log append-only"
+    ],
+    "hardware": {
+      "gpu": 86,
+      "vram": 81,
+      "idle": 30
+    },
+    "metrics": {
+      "gaf": 0.25,
+      "rpr": 0.09,
+      "determinism": 1.0,
+      "idle_occupancy": 30
+    },
+    "mode": "passive_monitoring",
+    "strict_mode": true
+  }
+}

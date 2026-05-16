@@ -1,0 +1,102 @@
+# Trace Infrastructure Configuration
+# Version: 1.0.0
+# Purpose: Define trace schema and export formats
+
+workflow:
+  name: "daily_news_pipeline"
+  max_events: 1000
+  max_tool_calls: 100
+  retention_days: 30
+  compress_after_events: 100
+
+phases:
+  - name: COLLECTING
+    description: "Browser/news collection"
+    timeout_ms: 30000
+    resource_check: true
+  - name: FILTERING
+    description: "Quality filtering"
+    timeout_ms: 15000
+    resource_check: true
+  - name: SUMMARIZING
+    description: "AI summarization"
+    timeout_ms: 60000
+    resource_check: true
+  - name: FORMATTING
+    description: "Markdown formatting"
+    timeout_ms: 10000
+    resource_check: false
+  - name: COMPRESSING
+    description: "Payload compression"
+    timeout_ms: 5000
+    resource_check: false
+
+status_enum:
+  values:
+    - INITIATED
+    - COLLECTING
+    - FILTERING
+    - SUMMARIZING
+    - FORMATTING
+    - COMPRESSING
+    - COMPLETED
+    - FAILED
+    - DEGRADED
+    - TIMEOUT
+    - CANCELLED
+    - RETRYING
+
+degradation_reasons:
+  - CONTEXT_PRESSURE
+  - BROWSER_TIMEOUT
+  - INSUFFICIENT_SOURCES
+  - TOKEN_LIMIT
+  - VRAM_LIMIT
+  - GPU_OVERRUN
+  - RATE_LIMIT
+  - API_ERROR
+  - NETWORK_ERROR
+  - UNKNOWN
+  - TOOL_TIMEOUT
+  - SUMMARY_DRIFT
+  - MEMORY_EVICTION
+
+resource_thresholds:
+  gpu_util_warn: 90
+  gpu_util_crit: 95
+  vram_warn: 90
+  vram_crit: 95
+  context_tokens_warn: 18000
+  context_tokens_crit: 22000
+
+export_formats:
+  - json
+  - parquet
+  - prometheus
+
+storage:
+  backend: "local"  # local | qdrant | lance
+  path: "/home/jason2ykk/.openclaw/workspace/traces"
+  compression: "zstd"
+
+workload_classification:
+  enabled: true
+  types:
+    - SHORT_SIMPLE
+    - LONG_CONTEXT
+    - TOOL_HEAVY
+    - BROWSER_HEAVY
+    - MULTI_AGENT
+    - HIGH_COMPRESSION
+
+trace_sampling:
+  enabled: true
+  completed_workflow:
+    sample_rate: 0.1  # 10% for healthy COMPLETED
+    keep_all:
+      - FAILED
+      - DEGRADED
+      - TIMEOUT
+      - RETRYING
+  degraded_workflow:
+    sample_rate: 1.0  # 100% for failed/degraded

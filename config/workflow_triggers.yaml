@@ -1,0 +1,21 @@
+# Gateway Workflow Trigger Registry
+# Path: ~/.openclaw/workspace/config/workflow_triggers.yaml
+
+triggers:
+  - keyword: "今日新闻"
+    workflow: "daily_news"
+
+  - keyword: "/今日新闻"
+    workflow: "daily_news"
+
+  - keyword: "今天有什么新闻"
+    workflow: "daily_news"
+
+  - keyword: "最新 AI 动态"
+    workflow: "daily_news"
+
+  - keyword: "马来西亚新闻"
+    workflow: "daily_news"
+
+workflow_paths:
+  - "/home/jason2ykk/.openclaw/workspace/workflows"

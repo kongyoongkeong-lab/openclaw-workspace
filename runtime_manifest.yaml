@@ -1,0 +1,61 @@
+# ============================================================
+# Pentagon Stack Runtime Manifest v1.0 (Control Plane Core)
+# ============================================================
+# Purpose: Deterministic rebuild contract for control plane only
+# Security: Explicitly excludes data plane state (vector DB, traces, etc.)
+# Rebuild: docker-compose up -d --build
+# ============================================================
+
+version: "1.0"
+
+System:
+  name: "Pentagon Stack"
+  mode: "deterministic-runtime"
+  description: "AI workflow orchestration + agent pipeline system"
+
+components:
+  workflows:
+    path: "workflows/"
+    required: true
+
+  agents:
+    path: "agents/"
+    required: true
+
+  tools:
+    path: "tools/"
+    required: true
+
+runtime_state:
+  vector_db: excluded
+  traces: excluded
+  cache: excluded
+  logs: excluded
+  memory_runtime: excluded
+
+determinism_contract:
+  enabled: true
+  seed_lock: false
+  note: "determinism enforced at workflow level, not ML weights"
+
+rebuild_protocol:
+  steps:
+    - git clone repo
+    - install dependencies
+    - load workflows
+    - initialize agents
+    - start runtime engine
+
+  command: "docker-compose up -d"
+
+backup_policy:
+  include:
+    - workflows
+    - agents
+    - tools
+    - configs
+
+  exclude:
+    - runtime state
+    - memory
+    - vector db

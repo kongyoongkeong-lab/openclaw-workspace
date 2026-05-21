@@ -1,51 +1,83 @@
 {
+  "version": "3.0.0",
+  "updated": "2026-05-22",
+  "status": "deployed",
   "memory_system": {
     "enabled": true,
-    "version": "1.0.0",
+    "version": "2.0.0",
     "base_path": "/home/jason2ykk/.openclaw/workspace/memory"
   },
   "agents": {
     "@main": {
       "role": "orchestrator",
-      "memory_access": "full"
-    },
-    "@ops": {
-      "role": "executor",
-      "memory_access": "recent",
-      "episodic_limit": 100,
-      "semantic_limit": 50
+      "model": "deepseek/deepseek-v4-flash",
+      "fallback": "google/gemini-2.5-flash-lite",
+      "memory_access": "full",
+      "skills": ["agent-team-orchestration", "skill-vetter"],
+      "timeout_seconds": 600,
+      "max_concurrent": 3
     },
     "@intel": {
       "role": "researcher",
-      "memory_access": "full"
+      "model": "deepseek/deepseek-v4-flash",
+      "fallback": "google/gemini-2.5-flash-lite",
+      "memory_access": "full",
+      "tools": ["web_search", "web_fetch", "tavily_extract", "exec", "read"],
+      "skills": ["tavily", "pdf"],
+      "timeout_seconds": 120,
+      "max_searches_per_run": 10
+    },
+    "@ops": {
+      "role": "executor",
+      "model": "deepseek/deepseek-v4-flash",
+      "fallback": "google/gemini-2.5-flash-lite",
+      "memory_access": "recent",
+      "tools": ["exec", "process", "read", "write", "edit"],
+      "skills": ["terminal-command-execution", "python-executor"],
+      "timeout_seconds": 300,
+      "github_enabled": true
     },
     "@comms": {
       "role": "communicator",
-      "memory_access": "full"
+      "model": "deepseek/deepseek-v4-flash",
+      "fallback": "google/gemini-2.5-flash-lite",
+      "memory_access": "full",
+      "tools": ["message", "write", "read"],
+      "skills": ["file-organizer-skill"],
+      "timeout_seconds": 60,
+      "output_format": "markdown"
     },
     "@sentinel": {
       "role": "guardian",
-      "memory_access": "all"
+      "model": "deepseek/deepseek-v4-flash",
+      "fallback": "google/gemini-2.5-flash-lite",
+      "memory_access": "all",
+      "tools": ["exec", "read", "memory_search"],
+      "skills": ["skill-vetter", "python-executor"],
+      "timeout_seconds": 30,
+      "scan_depth": "standard"
     }
   },
-  "memory_rules": {
-    "episodic_path": "episodic.jsonl",
-    "semantic_path": "semantic.jsonl",
-    "compressed_path": "compressed.jsonl",
-    "agent_logs_path": "agents",
-    "compression_threshold": 3000,
-    "compression_ratio": 0.5
+  "skills": {
+    "enabled": true,
+    "path": "/home/jason2ykk/.openclaw/workspace/skills",
+    "max_prompt_chars": 18000
   },
-  "hooks": {
-    "inject_memory_into_prompt": {
-      "enabled": true,
-      "default_context": "runtime",
-      "max_context_tokens": 4000
-    }
+  "inter_agent": {
+    "routing": "sessions_send",
+    "fallback_timeout_ms": 5000,
+    "registry_path": "/home/jason2ykk/.openclaw/workspace/agent_registry.json",
+    "peer_trust": true
+  },
+  "compaction": {
+    "model": "deepseek/deepseek-v4-flash",
+    "reserve_tokens_floor": 8000
   },
   "deployment": {
-    "step": 7,
-    "timestamp": "2026-05-22T00:04:00+08:00",
-    "status": "deployed"
+    "mode": "cloud-native",
+    "gpu": false,
+    "local_llm": false,
+    "step": 8,
+    "timestamp": "2026-05-22T05:55:00+08:00"
   }
 }

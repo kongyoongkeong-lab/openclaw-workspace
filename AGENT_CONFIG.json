@@ -44,8 +44,8 @@
     }
   },
   "deployment": {
-    "step": 6,
-    "timestamp": "2026-05-06T05:04:00+08:00",
-    "status": "deploying"
+    "step": 7,
+    "timestamp": "2026-05-22T00:04:00+08:00",
+    "status": "deployed"
   }
 }

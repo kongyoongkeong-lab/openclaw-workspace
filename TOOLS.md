@@ -39,5 +39,38 @@ Skills are shared. Your setup is yours. Keeping them apart means you can update 
 ## 📡 INTER-AGENT ROUTING (A2A)
 - **Registry First:** Before calling a specialized agent, read `agent_registry.json`.
 - **Addressing:** If a direct `sessionKey` is missing, use the `broadcast` routing method to target the agent's `label`.
-- **Fallback:** If @sentinel does not respond within 5 seconds, @main must assume 'Sentinel Role' and read the GPU logs directly via `@ops`.
+- **Fallback:** If @sentinel does not respond within 5 seconds, @main must assume 'Sentinel Role'.
+
+---
+
+## 🐙 GITHUB TOOLS
+
+| Tool | Description |
+|------|-------------|
+| `gh repo list` | List repos for kongyoongkeong-lab |
+| `gh pr create` | Create pull requests |
+| `gh issue list` | Manage issues |
+| `gh api ...` | Raw GitHub API access |
+| `git push/pull` | Standard git via gh credential helper |
+
+**Credentials:** `~/.config/gh/hosts.yml` (not in git)
+**Auto-backup:** Runs daily via OpenClaw cron, tags commits as `backup-YYYY-MM-DD`
+
+---
+
+## 🔐 KNOWN REPOS
+
+- `kongyoongkeong-lab/openclaw-workspace` — Agent configs + memory
+- `kongyoongkeong-lab/openclaw-config` — Gateway config
+
+---
+
+## 🤖 LOCAL SERVICES
+
+| Service | URL | Purpose |
+|---------|-----|---------|
+| ComfyUI | `http://127.0.0.1:8188` | Image generation (CPU mode) |
+| Qdrant  | `http://127.0.0.1:6333` | Vector memory store |
+| Redis   | `tcp://127.0.0.1:6379` | Queue/cache |
+| GitHub  | `gh` CLI | Source control |
 

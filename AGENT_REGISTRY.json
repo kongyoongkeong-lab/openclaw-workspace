@@ -21,7 +21,7 @@
       "label": "ops",
       "role": "Execution Agent",
       "runtime": "subagent",
-      "capabilities": ["execute_code", "run_commands", "docker"],
+      "capabilities": ["execute_code", "run_commands", "docker", "github"],
       "toolsAllow": ["exec", "process", "file_fetch", "file_write", "canvas"],
       "sessionKey": "session:ops"
     },
@@ -37,7 +37,7 @@
       "label": "sentinel",
       "role": "Guardian Agent",
       "runtime": "subagent",
-      "capabilities": ["security_check", "vram_monitor", "hallucinate_check"],
+      "capabilities": ["security_check", "git_secret_scan", "hallucinate_check"],
       "toolsAllow": ["read", "browser"],
       "sessionKey": "session:sentinel"
     }

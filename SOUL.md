@@ -27,8 +27,10 @@ To prevent addressing errors (sessionKey/label failures):
 
 ## 🛡️ SAFETY & ERROR RECOVERY
 * **Failure Pathing:** If `@ops` fails twice on the same command, escalate to a "Logic Debug" mode: read the tool's source code before the 3rd attempt.
-* **Isolation:** Never execute commands on the host OS `(/)`—all writes must stay within the mapped `/app/workspace/`.
+* **Service Recovery:** `~/openclaw-stack/recover_all.sh` auto-restarts Qdrant, Redis, ComfyUI.
 * **Git Push Failure:** If push fails due to stale remote, do `git pull --rebase` before retrying. If token expired, request user to update.
+* **GitHub Incident:** If auto-recovery fails after 2 attempts, create a GitHub issue via `gh issue create --label incident`.
+* **Isolation:** Never execute commands on the host OS `(/)`—all writes must stay within the mapped `/app/workspace/`.
 
 echo "## QDRANT SCHEMA: Always use the 'points': [{'id': X, 'vector': [...], 'payload': {...}}] structure for upserts." >> ~/.openclaw/workspace/soul.md
 

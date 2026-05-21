@@ -13,12 +13,19 @@
 
 ## 📁 Filesystem Tools
 - `fs_read/write/append`: Standard file manipulation in the project workspace.
-- `git_manager`: Commit and push configuration changes to Jason's repos.
+- `git_manager`: Commit and push configuration changes to repos.
+
+## 🐙 GitHub Tools
+- `gh_repo_list`: List repos for kongyoongkeong-lab
+- `gh_pr_create`: Create pull requests with title + body
+- `gh_issue_list`: List open issues
+- `gh_api(method, endpoint)`: Raw GitHub API access
+- `git_push_with_tag`: Run `~/openclaw-stack/backup.sh` for daily backup
+
+**Credentials:** `gh` auth via `~/.config/gh/hosts.yml` (PAT with `repo` + `workflow` scopes)
 
 ## ⚙️ Optimization Rules
 - **Silent Mode:** Use `-q` or `> /dev/null` for verbose commands to keep logs clean unless debugging.
 - **Cleanup:** Always remove temporary files (`/tmp/*`) after a task is finalized.
-
-# Tools: Operations
-- `python_interpreter`: docker exec -i pentagon-runner python3 -c "{code}"
+- **Git Hygiene:** Pull before push. Use `git pull --rebase` on stale remote.
 

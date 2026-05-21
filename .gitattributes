@@ -1,0 +1,13 @@
+# Auto-detect text files and enforce LF line endings
+* text=auto eol=lf
+
+# Batch files (Windows) need CRLF
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.ps1 text eol=crlf
+
+# Binary files
+*.png binary
+*.jpg binary
+*.ico binary
+*.ttf binary

@@ -1,0 +1,17 @@
+{
+  "version": "1.0",
+  "default_level": "L1",
+  "users": {
+    "jason2ykk": {
+      "name": "Jason",
+      "level": "L5",
+      "grants": {
+        "agents": ["@main", "@intel", "@ops", "@comms", "@sentinel"],
+        "tools": ["exec", "gh", "docker", "write", "delete"],
+        "config": ["read", "write"],
+        "credentials": ["read"],
+        "github": ["push", "pr", "issue"]
+      }
+    }
+  }
+}

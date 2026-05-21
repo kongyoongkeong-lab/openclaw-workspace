@@ -1,0 +1,1 @@
+{"timestamp": "2026-05-09T14:58:02+08:00", "event_id": "test_evt_003", "source": "stress_test", "type": "episodic", "context": "compression_validation", "content": "Test event 3: Testing retrieval fidelity after compression - VRAM at 8.2GB"}

@@ -1,0 +1,23 @@
+{
+  "observation_period": {
+    "start": "2026-05-08T20:29:23.909085",
+    "end": "2026-05-08T20:59:40.885417",
+    "duration_seconds": 0
+  },
+  "latency": {
+    "p50": 100.0,
+    "p95": 100.0
+  },
+  "resource_stability": {
+    "vram_drift": 0.0,
+    "cpu_stability": 1.26
+  },
+  "runtime_behavior": {
+    "max_event_delay": 100.0,
+    "avg_event_delay": 100.0
+  },
+  "system_quietness": {
+    "zero_latency_events": 0,
+    "total_snapshots": 56
+  }
+}

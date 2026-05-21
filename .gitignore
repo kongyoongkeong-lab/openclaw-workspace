@@ -1,0 +1,94 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Node
+node_modules/
+package-lock.json
+
+# Logs / Runtime
+*.jsonl
+*.log
+runtime_logs/
+stability_logs/
+telegram_audit/
+test_contention/
+__pycache__/
+
+# Temp / Backup
+*.bak
+*.bak.*
+*Zone.Identifier
+
+# Build artifacts
+deploy_production.sh
+run_stress_test.sh
+check_stability.sh
+start_sentinel_governor.sh
+
+# Deprecated / test files (one-time build artifacts)
+compressor_ltm.py
+ltm_pipeline.py
+memory_store.py
+memory_v1.py
+pcg.py
+spg.py
+orchestrator.py
+runtime_kernels.py
+sentinel_context.py
+sentinel_memory.py
+search_integration.py
+search_protocol.py
+workspace_guard.py
+alerting_system.py
+alerting_system_final.py
+baseline_monitor.py
+retrieval_intelligence.py
+self_repair_orchestrator.py
+crash_simulation_test.py
+inject_failures.py
+memory_router.py
+repair_test_harness.py
+test_orchestrator.py
+test_resource_efficiency.py
+test_self_repair.py
+agent_wrapper_utils.py
+dashboard_compression.py
+
+# Test reports (historical, don't need in repo)
+cycle_1_report.md
+self_repair_report.md
+self_repair_test.md
+self_repair_test_final.md
+test_context_saturation.md
+test_summary.md
+fault_injection_results.md
+stability_test.md
+intel_search_chain.md
+agentic_2026.md
+team_summary.md
+llama3.1-8b-harness.py
+repair_faults.jsonl
+repair_logs.jsonl
+
+# Skills
+skills/
+
+# TLA / g2 / ceg / ucg dirs (sub-agent internal)
+TLA/
+g2/
+ceg/
+ucg/
+
+# Nix / lock files
+package.json
+postcss.config.js
+tailwind.config.js
+
+# metrics
+metrics/

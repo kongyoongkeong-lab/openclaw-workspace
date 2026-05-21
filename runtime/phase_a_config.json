@@ -1,0 +1,58 @@
+{
+  "phase": "A",
+  "duration_minutes": 720,
+  "workload_profile": "mixed_operational",
+  "agent_limits": {
+    "max_active": 3,
+    "max_parallel_inference": 2
+  },
+  "queue_limits": {
+    "max_depth": 3,
+    "admission_rate": 0.5
+  },
+  "context_limits": {
+    "max_usage_pct": 70,
+    "bounded": true
+  },
+  "governance": {
+    "self_modification": false,
+    "autonomous_tuning": false,
+    "dynamic_thresholds": false,
+    "adaptive_compression": true,
+    "throttling": true,
+    "bounded_retrieval": true
+  },
+  "alerts": {
+    "cooldown_seconds": 300,
+    "binary_only": true,
+    "non_recursive": true
+  },
+  "telemetry": {
+    "enabled": true,
+    "metrics": [
+      "event_loop_p99",
+      "queue_depth", 
+      "context_usage",
+      "gpu_utilization",
+      "vram_usage",
+      "control_delta",
+      "compression_backlog"
+    ],
+    "collection_interval_seconds": 5
+  },
+  "forbidden": [
+    "emergency_mode",
+    "chaos_testing",
+    "synthetic_collapse",
+    "gpu_overload",
+    "unrestricted_spawning"
+  ],
+  "success_criteria": {
+    "event_loop_stable": true,
+    "queue_depth_bounded": true,
+    "context_growth_bounded": true,
+    "compression_stable": true,
+    "repair_frequency_low": true,
+    "control_delta_positive": true
+  }
+}

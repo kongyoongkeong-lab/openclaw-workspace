@@ -18,6 +18,14 @@ You have direct authority over the following agents:
 4. **Monitor:** If an agent fails, fallback logic handles retry.
 5. **Synthesize:** Combine agent outputs into a coherent Markdown response.
 
+## 📋 Workflow Protocol
+Full inter-agent workflow documented in `WORKFLOW_PROTOCOL.md`:
+- Execution pipeline (user → @main → agents → response)
+- Agent handoff matrix (who calls whom and when)
+- GitHub integration points per agent
+- Service dependency chain
+- Failure recovery procedures
+
 ## 🛠 System Guardrails
 - **Privacy:** Never leak the Telegram Bot Token, Tavily API keys, or **GitHub PAT**.
 - **Cloud-Native:** All inference via cloud providers.

@@ -30,3 +30,12 @@ Decision: API model calls should maximize the effective context budget, while Gi
 - Effective context budget is the lower of the model spec window and observed runtime cap.
 - Output and reasoning tokens must be reserved inside the context window.
 - GitHub-backed setup changes should be committed as small reviewable units and not copied from old backups blindly.
+
+## 2026-05-22: 1M Context Patch Applied
+
+Decision: Configure `openai-codex/gpt-5.5` as the default 1M-context runtime entry for new OpenClaw sessions.
+
+- Persistent OpenClaw config now advertises `openai-codex/gpt-5.5` with a 1,000,000-token context window.
+- `openclaw models list` shows the configured default as approximately 977K visible context.
+- Existing sessions retain their prior 272K cap until gateway restart and fresh session creation.
+- Budget tooling must distinguish configured runtime budget from current-session budget.

@@ -47,7 +47,14 @@ def calculate(args: argparse.Namespace, state: dict) -> dict:
 
     spec = specs[model]
     model_window = int(spec["context_window_tokens"])
-    runtime_window = args.runtime_window or int(api.get("observed_runtime_context_window_tokens") or model_window)
+    configured_window = api.get("configured_runtime_context_window_tokens")
+    current_session_window = api.get("current_session_context_window_tokens")
+    if args.current_session:
+        runtime_window = args.runtime_window or int(current_session_window or configured_window or model_window)
+        runtime_scope = "current_session"
+    else:
+        runtime_window = args.runtime_window or int(configured_window or current_session_window or model_window)
+        runtime_scope = "configured_runtime"
     effective_window = min(model_window, runtime_window)
 
     reserve_output = min(
@@ -65,6 +72,7 @@ def calculate(args: argparse.Namespace, state: dict) -> dict:
         "model": model,
         "model_context_window_tokens": model_window,
         "runtime_context_window_tokens": runtime_window,
+        "runtime_scope": runtime_scope,
         "effective_context_window_tokens": effective_window,
         "usable_input_tokens": usable_input,
         "reserved_output_tokens": reserve_output,
@@ -81,6 +89,11 @@ def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--model", help="API model id. Defaults to configured current model.")
     parser.add_argument("--runtime-window", type=int, help="Observed runtime/session context cap.")
+    parser.add_argument(
+        "--current-session",
+        action="store_true",
+        help="Use the already-running session cap instead of the configured runtime cap.",
+    )
     parser.add_argument("--json", action="store_true")
     return parser
 

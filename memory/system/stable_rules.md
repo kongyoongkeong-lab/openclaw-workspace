@@ -3,6 +3,8 @@
 - Default model routing is hybrid.
 - API model handles long-context, tool-heavy, current-knowledge, and final synthesis tasks.
 - API model calls must maximize the effective context window according to the selected model spec and current runtime cap.
+- `openai-codex/gpt-5.5` is configured as the default 1M-context API runtime entry for fresh sessions.
+- Existing sessions may retain a smaller cap until gateway restart and fresh session creation.
 - API context budgeting must reserve output and reasoning tokens; do not fill the whole window with input.
 - Ollama handles compact private reasoning, local summarization, embeddings, and low-risk worker tasks.
 - Treat context overflow as a preventable runtime failure.

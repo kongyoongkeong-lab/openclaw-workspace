@@ -74,15 +74,19 @@ API remains fallback for long-context or high-complexity work.
 
 Previous context overflow is treated as a design failure, not as an acceptable runtime condition.
 
-For API model calls, the system should maximize the effective context window according to the selected model spec and the actual OpenClaw runtime cap. Current verified baseline:
+For API model calls, the system should maximize the effective context window according to the selected model spec and the actual OpenClaw runtime cap. Current verified baseline after the 1M patch:
 
 - Current runtime model: `openai-codex/gpt-5.5`
 - Official `gpt-5.5` context window: 1M tokens
 - Official `gpt-5.5` max output: 128K tokens
-- Observed OpenClaw session context window this turn: 272K tokens
-- Effective budget rule: `min(model_spec_window, observed_runtime_window)`
+- Configured OpenClaw model entry: `openai-codex/gpt-5.5`
+- Configured OpenClaw context window: 1M tokens
+- `openclaw models list` visible budget: 977K tokens
+- Existing active session context window before gateway restart: 272K tokens
+- Effective budget rule for new sessions: `min(model_spec_window, configured_runtime_window)`
+- Effective budget rule for the current already-running session: `min(model_spec_window, current_session_window)`
 
-The current effective runtime budget is therefore 272K tokens, not the full 1M, until the OpenClaw runtime exposes the larger window.
+The persistent config now exposes the 1M model entry. Existing sessions keep their old 272K cap until the OpenClaw gateway is restarted and a fresh session is created.
 
 OpenAI context accounting includes input tokens, output tokens, and reasoning tokens. The budget must reserve space for output and reasoning instead of filling the entire window with input.
 
@@ -188,6 +192,7 @@ Show API context budget:
 
 ```bash
 python3 /home/jason2ykk/.openclaw/workspace/tools/api_context_budget.py
+python3 /home/jason2ykk/.openclaw/workspace/tools/api_context_budget.py --current-session
 python3 /home/jason2ykk/.openclaw/workspace/tools/api_context_budget.py --model gpt-5.5 --runtime-window 1000000
 python3 /home/jason2ykk/.openclaw/workspace/tools/api_context_budget.py --model gpt-5.2-codex
 ```

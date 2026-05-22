@@ -41,6 +41,46 @@
       ]
     }
   },
+  "context_management": {
+    "policy": "budgeted_context_with_artifact_offload",
+    "max_live_context_ratio": 0.65,
+    "compression_trigger_ratio": 0.5,
+    "hard_stop_ratio": 0.8,
+    "rules": [
+      "keep live chat context for intent, current plan, and active blockers only",
+      "move stable facts to MEMORY.md or memory/preferences, memory/decisions, and memory/system",
+      "move long reports and implementation notes to docs/ instead of keeping them in chat",
+      "summarize tool output before continuing when output is longer than the active decision needs",
+      "prefer file references over pasting full files into chat",
+      "start a fresh task artifact when context exceeds the compression trigger"
+    ],
+    "overflow_recovery": [
+      "write a compact handoff summary before continuing",
+      "persist current state in docs/ or memory/system",
+      "reload only the specific files needed for the next step",
+      "resume from committed artifacts instead of reconstructing from chat history"
+    ]
+  },
+  "fallback_policy": {
+    "api_unavailable": {
+      "primary": "ollama:qwen3.5:9b",
+      "degraded": "ollama:qwen3.5:4b",
+      "minimal": "ollama:qwen3.5:2b",
+      "behavior": [
+        "switch to local mode for compact reasoning and local file work",
+        "avoid internet-current claims unless a search tool is available",
+        "split long tasks into smaller artifacts before local processing",
+        "record degraded-mode decisions in memory/decisions when they affect architecture"
+      ]
+    },
+    "local_unavailable": {
+      "primary": "api",
+      "behavior": [
+        "continue API-first for orchestration",
+        "skip local-only private summarization until Ollama or GPU status recovers"
+      ]
+    }
+  },
   "routing_policy": {
     "hybrid": {
       "default": "API orchestrates; Ollama handles compact/private subwork when VRAM is safe.",

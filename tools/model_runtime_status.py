@@ -60,6 +60,8 @@ def ollama_status() -> str:
 def main() -> int:
     state = load_state()
     hardware = state.get("hardware", {})
+    context = state.get("context_management", {})
+    fallback = state.get("fallback_policy", {})
     ollama = state.get("providers", {}).get("ollama", {})
     models = ollama.get("models", {})
 
@@ -67,6 +69,11 @@ def main() -> int:
     print(f"active_mode={state.get('active_mode', 'unknown')}")
     print(f"default_mode={state.get('default_mode', 'unknown')}")
     print(f"vram_hard_ceiling_mib={hardware.get('vram_hard_ceiling_mib', 'unknown')}")
+    print(f"context_policy={context.get('policy', 'unknown')}")
+    print(f"context_compression_trigger_ratio={context.get('compression_trigger_ratio', 'unknown')}")
+    print(f"context_hard_stop_ratio={context.get('hard_stop_ratio', 'unknown')}")
+    api_fallback = fallback.get("api_unavailable", {})
+    print(f"api_unavailable_primary_fallback={api_fallback.get('primary', 'unknown')}")
     print(f"ollama_base_url={ollama.get('base_url', 'unknown')}")
     for role, model in models.items():
         print(f"model.{role}={model}")

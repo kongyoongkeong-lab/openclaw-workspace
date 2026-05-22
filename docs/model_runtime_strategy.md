@@ -10,6 +10,8 @@ Run OpenClaw as a hybrid model system:
 
 - API model handles orchestration, long context, tool-heavy workflows, current external knowledge, and high-stakes synthesis.
 - Local Ollama models handle compact private reasoning, routing, summarization, embeddings, and low-risk worker tasks.
+- Context is managed as a budgeted resource. Long outputs must be summarized into artifacts instead of accumulating in chat.
+- If API models are unavailable, the system degrades to local Ollama mode for compact reasoning and local file work.
 - GitHub stores reviewed configuration and docs only. It is not the source of runtime truth and should not be restored blindly from old backups.
 
 ## Hardware Baseline
@@ -68,6 +70,55 @@ Use when privacy, low cost, and local control matter more than peak capability.
 
 API remains fallback for long-context or high-complexity work.
 
+## Context Window Protection
+
+Previous context overflow is treated as a design failure, not as an acceptable runtime condition.
+
+Live context should contain only:
+
+- Current user intent
+- Active plan
+- Current blockers
+- Short summaries of relevant state
+- File paths and commit ids needed for continuation
+
+Long or stable content must move into artifacts:
+
+- Architecture decisions: `memory/decisions/`
+- Stable rules: `memory/system/`
+- User preferences: `memory/preferences/`
+- Longer strategy or implementation notes: `docs/`
+- Runtime logs and daily notes: `memory/YYYY-MM-DD.md` or future `memory/logs/`
+
+Budget rules:
+
+- At 50% estimated context pressure, summarize and offload before continuing.
+- At 65%, keep only current-step context and reload exact files from disk.
+- At 80%, stop expansion, write a handoff summary, and resume from artifacts.
+
+Tool output rules:
+
+- Do not paste large command outputs into future prompts.
+- Summarize high-signal lines and keep full output on disk only when needed.
+- Prefer `rg`, targeted file reads, and exact file references over broad dumps.
+
+## API Failure and Local Fallback
+
+When API models are unavailable:
+
+1. Switch active routing to local behavior for compact tasks.
+2. Use `qwen3.5:9b` when VRAM is safe.
+3. Use `qwen3.5:4b` when other GPU work is active.
+4. Use `qwen3.5:2b` for small classification, routing, and short summaries.
+5. Avoid claims that require current internet knowledge unless search tools are working.
+6. Split large work into file artifacts, then process one artifact at a time.
+
+When local models are unavailable:
+
+1. Continue API-first if API quota and network are available.
+2. Skip private local summarization and embeddings until Ollama/GPU recovers.
+3. Keep degraded-mode decisions visible in `memory/decisions/` if they affect architecture.
+
 ## Local Model Preflight
 
 Before local LLM or image-generation work:
@@ -108,4 +159,12 @@ Show runtime status:
 
 ```bash
 python3 /home/jason2ykk/.openclaw/workspace/tools/model_runtime_status.py
+```
+
+Show routing decision:
+
+```bash
+python3 /home/jason2ykk/.openclaw/workspace/tools/model_route_decision.py --task-type synthesis
+python3 /home/jason2ykk/.openclaw/workspace/tools/model_route_decision.py --task-type private --no-api-available
+python3 /home/jason2ykk/.openclaw/workspace/tools/model_route_decision.py --task-type long-context --context-ratio 0.55
 ```

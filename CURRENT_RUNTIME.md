@@ -4,8 +4,8 @@
 
 ## Agent Runtime
 
-- Active visible/spawn-allowed agent from `agents_list`: `main`
-- Pentagon roles (`@intel`, `@ops`, `@comms`, `@sentinel`) are currently protocol/logical roles unless gateway runtime allowlist exposes them.
+- Active visible/spawn-allowed agents from `agents_list`: `main`, `intel`, `ops`, `comms`, `sentinel`
+- Pentagon roles are now configured as spawnable runtime agents. A smoke test reached the `sentinel` runtime route but hit a transient session-file lock/takeover error before producing content; retry if execution proof is needed.
 
 ## Model Posture
 

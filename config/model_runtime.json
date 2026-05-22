@@ -1,0 +1,60 @@
+{
+  "schema": "openclaw.model_runtime.v1",
+  "default_mode": "hybrid",
+  "active_mode": "hybrid",
+  "updated_at": "2026-05-22T17:32:15+08:00",
+  "updated_by": "setup",
+  "hardware": {
+    "gpu": "NVIDIA GeForce RTX 4070 SUPER",
+    "vram_total_mib_observed": 12282,
+    "vram_hard_ceiling_mib": 9728,
+    "vram_target_utilization": "70-85%",
+    "ram_total_gb": 64
+  },
+  "providers": {
+    "api": {
+      "role": "orchestrator",
+      "use_for": [
+        "long-context reasoning",
+        "tool-heavy workflows",
+        "codebase-wide changes",
+        "multi-agent synthesis",
+        "tasks that need current external knowledge"
+      ]
+    },
+    "ollama": {
+      "base_url": "http://localhost:11434",
+      "role": "local_worker",
+      "models": {
+        "primary_reasoning": "qwen3.5:9b",
+        "fast_reasoning": "qwen3.5:4b",
+        "tiny_fallback": "qwen3.5:2b",
+        "vision": "llava:latest",
+        "embedding": "nomic-embed-text:latest"
+      },
+      "use_for": [
+        "compact private reasoning",
+        "local summarization",
+        "classification and routing",
+        "embeddings",
+        "vision inspection when accuracy risk is acceptable"
+      ]
+    }
+  },
+  "routing_policy": {
+    "hybrid": {
+      "default": "API orchestrates; Ollama handles compact/private subwork when VRAM is safe.",
+      "local_preflight": [
+        "check GPU memory before local LLM work",
+        "avoid loading local models if used VRAM would exceed 9728 MiB",
+        "prefer qwen3.5:4b or qwen3.5:2b when other GPU workloads are active"
+      ]
+    },
+    "api": {
+      "default": "API-first for orchestration, long context, and high reliability. Ollama remains available for private low-risk work."
+    },
+    "local": {
+      "default": "Ollama-first for compact/private work. API remains fallback for long context, external knowledge, or complex synthesis."
+    }
+  }
+}

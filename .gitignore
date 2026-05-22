@@ -1,0 +1,60 @@
+# Runtime and secrets
+.env
+.env.*
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+.tokens
+.secrets
+secrets/
+credentials/
+*.token
+*.secret
+*.credentials
+token.json
+tokens.json
+secrets.json
+credentials.json
+hosts.yml
+
+# OpenClaw runtime state
+.openclaw/
+**/.openclaw/
+workspace-state.json
+memory/.dreams/
+memory/logs/
+memory/runtime/
+news/
+
+# Local caches and generated files
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+node_modules/
+dist/
+build/
+.cache/
+
+# OS/editor artifacts
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*Zone.Identifier*
+
+# Large/generated media
+*.pdf
+*.png
+*.jpg
+*.jpeg
+*.webp
+*.gif
+*.mp4
+*.mov
+*.zip
+*.tar
+*.tar.gz

@@ -12,7 +12,7 @@ Run OpenClaw as a hybrid model system:
 - Local Ollama models handle compact private reasoning, routing, summarization, embeddings, and low-risk worker tasks.
 - Context is managed as a budgeted resource. Long outputs must be summarized into artifacts instead of accumulating in chat.
 - If API models are unavailable, the system degrades to local Ollama mode for compact reasoning and local file work.
-- GitHub stores reviewed configuration and docs only. It is not the source of runtime truth and should not be restored blindly from old backups.
+- GitHub stores reviewed configuration and docs only. It is the consultation/version-control layer, not the source of raw runtime truth, and old backups must not be restored blindly.
 
 ## Hardware Baseline
 
@@ -74,6 +74,18 @@ API remains fallback for long-context or high-complexity work.
 
 Previous context overflow is treated as a design failure, not as an acceptable runtime condition.
 
+For API model calls, the system should maximize the effective context window according to the selected model spec and the actual OpenClaw runtime cap. Current verified baseline:
+
+- Current runtime model: `openai-codex/gpt-5.5`
+- Official `gpt-5.5` context window: 1M tokens
+- Official `gpt-5.5` max output: 128K tokens
+- Observed OpenClaw session context window this turn: 272K tokens
+- Effective budget rule: `min(model_spec_window, observed_runtime_window)`
+
+The current effective runtime budget is therefore 272K tokens, not the full 1M, until the OpenClaw runtime exposes the larger window.
+
+OpenAI context accounting includes input tokens, output tokens, and reasoning tokens. The budget must reserve space for output and reasoning instead of filling the entire window with input.
+
 Live context should contain only:
 
 - Current user intent
@@ -92,9 +104,11 @@ Long or stable content must move into artifacts:
 
 Budget rules:
 
-- At 50% estimated context pressure, summarize and offload before continuing.
-- At 65%, keep only current-step context and reload exact files from disk.
-- At 80%, stop expansion, write a handoff summary, and resume from artifacts.
+- API mode should target up to 88% of the effective window after reserving output and reasoning budget.
+- At 75% estimated API context pressure, summarize/offload low-value history before continuing.
+- At 90%, compact aggressively and reload only exact files.
+- At 96%, stop expansion, write a handoff summary, and resume from artifacts.
+- Local mode remains more conservative because local models have smaller effective context and lower reasoning headroom.
 
 Tool output rules:
 
@@ -133,6 +147,7 @@ Before local LLM or image-generation work:
 
 The remote `kongyoongkeong-lab/openclaw-workspace` contains older backup material. The optimized setup should:
 
+- Use GitHub as the consultation and version-control layer for all setup decisions.
 - Keep local files as source of truth.
 - Avoid pulling old backup files into the live workspace.
 - Commit only reviewed docs, config, and safe scripts.
@@ -167,4 +182,12 @@ Show routing decision:
 python3 /home/jason2ykk/.openclaw/workspace/tools/model_route_decision.py --task-type synthesis
 python3 /home/jason2ykk/.openclaw/workspace/tools/model_route_decision.py --task-type private --no-api-available
 python3 /home/jason2ykk/.openclaw/workspace/tools/model_route_decision.py --task-type long-context --context-ratio 0.55
+```
+
+Show API context budget:
+
+```bash
+python3 /home/jason2ykk/.openclaw/workspace/tools/api_context_budget.py
+python3 /home/jason2ykk/.openclaw/workspace/tools/api_context_budget.py --model gpt-5.5 --runtime-window 1000000
+python3 /home/jason2ykk/.openclaw/workspace/tools/api_context_budget.py --model gpt-5.2-codex
 ```

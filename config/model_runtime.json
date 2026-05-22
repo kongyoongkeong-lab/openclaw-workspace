@@ -14,6 +14,57 @@
   "providers": {
     "api": {
       "role": "orchestrator",
+      "current_runtime_model": "openai-codex/gpt-5.5",
+      "context_strategy": "maximize_effective_window_with_reserved_output_and_reasoning_budget",
+      "observed_runtime_context_window_tokens": 272000,
+      "observed_runtime_context_used_tokens": 146000,
+      "observed_runtime_context_source": "OpenClaw session_status 2026-05-22T17:49+08:00",
+      "model_specs": {
+        "gpt-5.5": {
+          "context_window_tokens": 1000000,
+          "max_output_tokens": 128000,
+          "source": "https://developers.openai.com/api/docs/models"
+        },
+        "gpt-5.4": {
+          "context_window_tokens": 1000000,
+          "max_output_tokens": 128000,
+          "source": "https://developers.openai.com/api/docs/models"
+        },
+        "gpt-5.4-mini": {
+          "context_window_tokens": 400000,
+          "max_output_tokens": 128000,
+          "source": "https://developers.openai.com/api/docs/models"
+        },
+        "gpt-5.2": {
+          "context_window_tokens": 400000,
+          "max_output_tokens": 128000,
+          "source": "https://developers.openai.com/api/docs/models/gpt-5.2"
+        },
+        "gpt-5.2-codex": {
+          "context_window_tokens": 400000,
+          "max_output_tokens": 128000,
+          "source": "https://developers.openai.com/api/docs/models/gpt-5.2-codex"
+        },
+        "gpt-5-codex": {
+          "context_window_tokens": 400000,
+          "max_output_tokens": 128000,
+          "source": "https://platform.openai.com/docs/models/gpt-5-codex/"
+        },
+        "gpt-5-chat-latest": {
+          "context_window_tokens": 128000,
+          "max_output_tokens": 16384,
+          "source": "https://developers.openai.com/api/docs/models/gpt-5-chat-latest"
+        }
+      },
+      "budget_policy": {
+        "effective_window": "min(model_spec_context_window_tokens, observed_runtime_context_window_tokens when present)",
+        "reserve_output_ratio": 0.12,
+        "reserve_reasoning_ratio": 0.08,
+        "target_fill_ratio": 0.88,
+        "soft_compact_ratio": 0.75,
+        "hard_compact_ratio": 0.9,
+        "absolute_stop_ratio": 0.96
+      },
       "use_for": [
         "long-context reasoning",
         "tool-heavy workflows",
@@ -43,10 +94,11 @@
   },
   "context_management": {
     "policy": "budgeted_context_with_artifact_offload",
-    "max_live_context_ratio": 0.65,
-    "compression_trigger_ratio": 0.5,
-    "hard_stop_ratio": 0.8,
+    "max_live_context_ratio": 0.88,
+    "compression_trigger_ratio": 0.75,
+    "hard_stop_ratio": 0.96,
     "rules": [
+      "API model calls should maximize the effective model/runtime context window while reserving output and reasoning budget",
       "keep live chat context for intent, current plan, and active blockers only",
       "move stable facts to MEMORY.md or memory/preferences, memory/decisions, and memory/system",
       "move long reports and implementation notes to docs/ instead of keeping them in chat",
@@ -59,6 +111,18 @@
       "persist current state in docs/ or memory/system",
       "reload only the specific files needed for the next step",
       "resume from committed artifacts instead of reconstructing from chat history"
+    ]
+  },
+  "github_governance": {
+    "remote": "https://github.com/kongyoongkeong-lab/openclaw-workspace.git",
+    "default_branch": "main",
+    "policy": "github_consulted_versioned_setup",
+    "rules": [
+      "treat GitHub as reviewed setup history and consultation trail, not automatic restore source",
+      "before major setup changes, inspect current git status and remote metadata with gh",
+      "commit optimized setup changes as small reviewable units",
+      "do not import old backup files unless explicitly reviewed and approved",
+      "do not push public runtime state, tokens, memory logs, or generated bulk artifacts"
     ]
   },
   "fallback_policy": {

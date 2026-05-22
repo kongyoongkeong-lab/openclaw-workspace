@@ -20,3 +20,13 @@ Decision: Make context pressure and provider failure first-class routing concern
 - API unavailability triggers a local Ollama fallback path.
 - Local fallback is scoped to compact reasoning, local file work, summarization, routing, and embeddings.
 - Internet-current or high-complexity claims still require API/search recovery or explicit degraded-mode reporting.
+
+## 2026-05-22: API Context Maximization and GitHub Governance
+
+Decision: API model calls should maximize the effective context budget, while GitHub acts as the setup consultation and version-control trail.
+
+- Official OpenAI model specs define the upper context window.
+- OpenClaw runtime/session status defines the practical cap when it is smaller than the official model window.
+- Effective context budget is the lower of the model spec window and observed runtime cap.
+- Output and reasoning tokens must be reserved inside the context window.
+- GitHub-backed setup changes should be committed as small reviewable units and not copied from old backups blindly.

@@ -1,0 +1,33 @@
+name: Protocol Audit
+
+on:
+  push:
+    paths:
+      - '**/*PROTOCOL.md'
+      - 'AGENTS.md'
+      - 'AGENT_CONFIG.json'
+      - 'CURRENT_RUNTIME.md'
+      - 'PROVIDER_STATUS.md'
+      - 'PROTOCOL_INVARIANTS.md'
+      - 'scripts/protocol_audit.py'
+      - '.github/workflows/protocol-audit.yml'
+  pull_request:
+    paths:
+      - '**/*PROTOCOL.md'
+      - 'AGENTS.md'
+      - 'AGENT_CONFIG.json'
+      - 'CURRENT_RUNTIME.md'
+      - 'PROVIDER_STATUS.md'
+      - 'PROTOCOL_INVARIANTS.md'
+      - 'scripts/protocol_audit.py'
+
+jobs:
+  protocol-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run protocol audit
+        run: python scripts/protocol_audit.py

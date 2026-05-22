@@ -6,6 +6,8 @@
 
 ---
 
+**Invariants:** `PROTOCOL_INVARIANTS.md` applies when rules conflict or drift.
+
 ## Execution Pipeline
 
 ```

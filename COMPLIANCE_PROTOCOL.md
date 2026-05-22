@@ -4,6 +4,8 @@
 **Scope:** Audit trails, log retention compliance, access reviews
 **Updated:** 2026-05-22
 
+**Invariants:** `PROTOCOL_INVARIANTS.md` applies when rules conflict or drift.
+
 ## Audit Trail Requirements
 
 | Event | Logged To | Retention | Rationale |
@@ -91,6 +93,18 @@ gh api repos/kongyoongkeong-lab/openclaw-workspace/branches/master/protection \
 - [ ] Incident reports retained 12 months
 - [ ] GitHub branch protection enabled
 - [ ] Weekly audit report generated
+
+
+## External Write Guardrails
+
+Follow `PROTOCOL_INVARIANTS.md` for all external side effects:
+
+- Confirm user intent unless the user explicitly requested the write.
+- Prefer dry-run/preview where available.
+- Use idempotency or dedupe markers to avoid duplicate issues, messages, hooks, commits, or provider jobs.
+- Respect `429` / `Retry-After`; use bounded backoff, never tight loops.
+- Record outcome in an audit report, issue comment, git commit, or memory file when relevant.
+- State rollback steps or `[blocked]` if rollback is impossible.
 
 ## Files
 

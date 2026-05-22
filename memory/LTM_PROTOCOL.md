@@ -4,6 +4,8 @@
 **Storage:** JSONL + Qdrant + GitHub
 **Updated:** 2026-05-22
 
+**Invariants:** `PROTOCOL_INVARIANTS.md` applies when rules conflict or drift.
+
 ## Memory Architecture
 
 ```
@@ -89,6 +91,19 @@ User provides input
 └─────────────────────────────────────┘
 ```
 
+
+## Retrieval Fallback Order
+
+Use this order before answering questions about prior work, decisions, dates, people, preferences, or todos:
+
+1. `memory_search` across memory/wiki/session indexes.
+2. If semantic search fails or quota is exhausted, read direct files: `memory/YYYY-MM-DD.md`, `memory/STATUS.md`, `memory/vault.md`, and relevant workflow/report files.
+3. Search git history: `git log --since`, `git log --grep`, `git show`, and `git diff` for committed state.
+4. Check visible session history when the question is conversation-specific.
+5. Use GitHub/web only if local evidence is insufficient.
+
+If semantic memory is unavailable, disclose the named blocker briefly and continue with direct file/git evidence.
+
 ## Vault Pulse (Cold Boot)
 
 On session init, @main executes:
@@ -130,3 +145,15 @@ Use consistent tags for Qdrant upserts:
 | `github_{date}_{repo}` | GitHub search findings | 30 days |
 | `config_{date}_{file}` | Config changes | Permanent |
 | `conversation_{date}` | Session summaries | 30 days |
+
+
+## External Write Guardrails
+
+Follow `PROTOCOL_INVARIANTS.md` for all external side effects:
+
+- Confirm user intent unless the user explicitly requested the write.
+- Prefer dry-run/preview where available.
+- Use idempotency or dedupe markers to avoid duplicate issues, messages, hooks, commits, or provider jobs.
+- Respect `429` / `Retry-After`; use bounded backoff, never tight loops.
+- Record outcome in an audit report, issue comment, git commit, or memory file when relevant.
+- State rollback steps or `[blocked]` if rollback is impossible.

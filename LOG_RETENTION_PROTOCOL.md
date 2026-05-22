@@ -4,6 +4,8 @@
 **Scope:** Log rotation, compression, GitHub export
 **Updated:** 2026-05-22
 
+**Invariants:** `PROTOCOL_INVARIANTS.md` applies when rules conflict or drift.
+
 ## Log Locations
 
 | Path | Contents | Size | Retention |
@@ -112,6 +114,18 @@ tar -czf ~/openclaw-stack/log_export_$(date +%Y%m%d).tar.gz \
 
 # Store export in git LFS or external storage (not in workspace repo)
 ```
+
+
+## External Write Guardrails
+
+Follow `PROTOCOL_INVARIANTS.md` for all external side effects:
+
+- Confirm user intent unless the user explicitly requested the write.
+- Prefer dry-run/preview where available.
+- Use idempotency or dedupe markers to avoid duplicate issues, messages, hooks, commits, or provider jobs.
+- Respect `429` / `Retry-After`; use bounded backoff, never tight loops.
+- Record outcome in an audit report, issue comment, git commit, or memory file when relevant.
+- State rollback steps or `[blocked]` if rollback is impossible.
 
 ## Files
 

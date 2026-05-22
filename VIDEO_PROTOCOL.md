@@ -1,10 +1,16 @@
 # 🎬 Video Generation Protocol — v1
 
-**Engine:** ComfyUI v0.22.0 (CPU mode)
-**Models:** Wan 2.2, LTX 2.0/2.3, CogVideo, HunyuanVideo
-**API:** ComfyOrg API Key (remote GPU capable)
-**Templates:** Git-tracked workflow JSONs
+**Configured Runtime API:** Google Veo (`google/veo-3.1-fast-generate-preview`) as of 2026-05-22
+**Repository Templates:** Comfy/Wan/LTX workflow JSONs are retained as versioned assets, not active-provider proof
+**Provider Status:** See `PROVIDER_STATUS.md` before making user-facing capability claims
 **Updated:** 2026-05-22
+
+**Invariants:** `PROTOCOL_INVARIANTS.md` applies when rules conflict or drift.
+
+
+## Active Provider Check
+
+Before generating or describing video capability, check live provider state with `video_generate action=list` or read `PROVIDER_STATUS.md`. Current confirmed runtime provider is Google Veo; Comfy/Wan/LTX templates are fallback assets until their API keys/services are configured.
 
 ## Pipeline
 
@@ -186,3 +192,15 @@ fast action, explosion, speed ramp, slow reveal
 | Prompt library | ✅ Yes | `prompts/video/` |
 | Generated videos | ❌ No | `comfyui-native/output/` (temporary) |
 | Model weights | ❌ No | Too large for git |
+
+
+## External Write Guardrails
+
+Follow `PROTOCOL_INVARIANTS.md` for all external side effects:
+
+- Confirm user intent unless the user explicitly requested the write.
+- Prefer dry-run/preview where available.
+- Use idempotency or dedupe markers to avoid duplicate issues, messages, hooks, commits, or provider jobs.
+- Respect `429` / `Retry-After`; use bounded backoff, never tight loops.
+- Record outcome in an audit report, issue comment, git commit, or memory file when relevant.
+- State rollback steps or `[blocked]` if rollback is impossible.

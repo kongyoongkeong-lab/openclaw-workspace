@@ -58,3 +58,17 @@ Thumbs.db
 *.zip
 *.tar
 *.tar.gz
+
+# OpenClaw agent directories (managed by gateway)
+comms/
+intel/
+ops/
+sentinel/
+d_logs_link
+inbox_link
+media_link
+outbox_link
+projects_link
+init_d_drive.bat
+start_gateway_monitor.bat
+stop_gateway_shutdown.bat

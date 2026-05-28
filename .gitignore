@@ -72,3 +72,32 @@ projects_link
 init_d_drive.bat
 start_gateway_monitor.bat
 stop_gateway_shutdown.bat
+
+# Remote-backed files managed locally
+skills/
+vendor/
+scripts/
+spikes/
+tessdata/
+reports/
+package.json
+pnpm-lock.yaml
+pnpm-workspace.yaml
+suno_song_pack_sample.md
+shared/
+n8n/
+docker/
+tools/ahk/
+tools/bin/
+tools/chrome_cdp_bootstrap.ps1
+tools/doubao_cdp_controller.js
+tools/doubao_cdp_probe.js
+tools/doubao_submit_video.js
+tools/gemini_cdp_video.mjs
+tools/midscene_doubao_spike.js
+tools/playwright_cdp_smoke.js
+tools/playwright_cdp_smoke_windows.mjs
+tools/windows_ui/
+
+# GitHub workflows (no workflow scope on push token)
+.github/workflows/

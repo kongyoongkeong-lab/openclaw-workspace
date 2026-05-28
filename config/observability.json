@@ -1,0 +1,8 @@
+{
+  "langfuse": {
+    "public_key": "pklf51070849",
+    "secret_key": "sklf1ff10fcd4e174f68a140",
+    "url": "http://localhost:3000",
+    "updated_at": "2026-05-24T03:07:11.026963+08:00"
+  }
+}

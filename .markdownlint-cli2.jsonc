@@ -1,0 +1,43 @@
+{
+  "config": {
+    "default": true,
+    "MD013": false,
+    "MD022": false,
+    "MD024": {
+      "siblings_only": true
+    },
+    "MD032": false,
+    "MD033": false,
+    "MD034": false,
+    "MD047": false
+  },
+  "globs": [
+    "AGENTS.md",
+    "CURRENT_RUNTIME.md",
+    "HEARTBEAT.md",
+    "MEMORY.md",
+    "PROTOCOL_INVARIANTS.md",
+    "PROVIDER_STATUS.md",
+    ".github/copilot-instructions.md",
+    "docs/**/*.md",
+    "daily_news.md",
+    "daily_ai.md",
+    "shortcuts.md",
+    "intel/AGENTS.md",
+    "intel/HEARTBEAT.md",
+    "ops/AGENTS.md",
+    "ops/HEARTBEAT.md",
+    "comms/AGENTS.md",
+    "comms/HEARTBEAT.md",
+    "sentinel/AGENTS.md",
+    "sentinel/HEARTBEAT.md"
+  ],
+  "ignores": [
+    "reports/**",
+    "memory/20*.md",
+    "news/**",
+    "skills/**",
+    "vendor/**",
+    "node_modules/**"
+  ]
+}

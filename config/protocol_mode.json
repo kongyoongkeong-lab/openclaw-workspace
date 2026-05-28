@@ -1,0 +1,15 @@
+{
+  "schema": "openclaw.protocol_mode.v1",
+  "default_mode": "stable",
+  "active_mode": "stable",
+  "updated_at": "2026-05-22T21:45:24+08:00",
+  "updated_by": "remediation",
+  "safety_invariants": [
+    "production activation requires explicit approval",
+    "new agents require explicit approval",
+    "telemetry expansion requires explicit approval",
+    "Qdrant writes require explicit approval",
+    "workflow changes require explicit approval",
+    "persistent background tasks require explicit approval"
+  ]
+}

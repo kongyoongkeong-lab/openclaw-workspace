@@ -2,8 +2,8 @@
   "schema": "openclaw.model_runtime.v1",
   "default_mode": "hybrid",
   "active_mode": "hybrid",
-  "updated_at": "2026-05-22T18:05:00+08:00",
-  "updated_by": "context-1m-patch",
+  "updated_at": "2026-05-22T21:42:05+08:00",
+  "updated_by": "doctor-fix-protocol-remediation-2026-05-22",
   "hardware": {
     "gpu": "NVIDIA GeForce RTX 4070 SUPER",
     "vram_total_mib_observed": 12282,
@@ -14,15 +14,15 @@
   "providers": {
     "api": {
       "role": "orchestrator",
-      "current_runtime_model": "openai-codex/gpt-5.5",
+      "current_runtime_model": "openai/gpt-5.5",
       "context_strategy": "maximize_effective_window_with_reserved_output_and_reasoning_budget",
       "configured_runtime_context_window_tokens": 1000000,
       "configured_runtime_context_visible_budget": "977k",
-      "configured_runtime_context_source": "openclaw models list after 1M patch, 2026-05-22T18:02+08:00",
-      "current_session_context_window_tokens": 272000,
-      "current_session_context_used_tokens": 226000,
-      "current_session_context_source": "OpenClaw session_status before gateway restart, 2026-05-22T18:02+08:00",
-      "activation_note": "Gateway restart and a fresh session are required before existing sessions can use the configured 1M context budget.",
+      "configured_runtime_context_source": "openclaw doctor --fix migrated model refs to openai/gpt-5.5 with Codex agent runtime, 2026-05-22T21:58+08:00",
+      "current_session_context_window_tokens": 1000000,
+      "current_session_context_used_tokens": 59000,
+      "current_session_context_source": "OpenClaw session_status current session, 2026-05-22T21:37+08:00",
+      "activation_note": "Current session observed at 1,000,000-token context window via session_status.",
       "model_specs": {
         "gpt-5.5": {
           "context_window_tokens": 1000000,

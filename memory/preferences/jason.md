@@ -1,6 +1,20 @@
-# Jason Preferences
+# Jason 偏好记录
 
-- Prefer direct, technical, data-driven responses.
-- Prefer production-grade execution with verifiable outputs.
-- Prefer hybrid model routing for OpenClaw: API orchestration plus local Ollama workers.
-- Prefer not to follow old GitHub backup structure when building the optimized OpenClaw setup.
+## 海报处理要求
+
+- **审核流程**：所有照片/海报处理完成后，必须先发给 Jason 过目确认，确认OK才能算最终完成。
+- **头部完整性**：人像海报必须确保全部头部完整可见，不能有任何裁切（已修复到 `poster_layout_guard.py` 的 `_recommend_position` 函数中）。
+- **横屏照片处理**：横屏照片做竖版海报时，需上下填充到 2:3 比例，防止两侧人物被裁切。
+- **文案要求**：`\n` 会导致文字在终端被逐字打印为字符，需避免在 shell 参数中使用，改用自然语言分隔。
+
+## 沟通风格
+
+- 直接、技术导向
+- 数据驱动回复
+- 喜欢本地优先处理
+
+## 系统偏好
+
+- OpenClaw + Pentagon Team 架构
+- API 主模型 + local qwen3.5 为 worker
+- Telegram 为主要聊天通道

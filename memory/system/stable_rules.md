@@ -3,7 +3,7 @@
 - Default model routing is hybrid.
 - API model handles long-context, tool-heavy, current-knowledge, and final synthesis tasks.
 - API model calls must maximize the effective context window according to the selected model spec and current runtime cap.
-- `openai-codex/gpt-5.5` is configured as the default 1M-context API runtime entry for fresh sessions.
+- `openai/gpt-5.5` with Codex agent runtime is configured as the default 1M-context API runtime entry for fresh sessions.
 - Existing sessions may retain a smaller cap until gateway restart and fresh session creation.
 - API context budgeting must reserve output and reasoning tokens; do not fill the whole window with input.
 - Ollama handles compact private reasoning, local summarization, embeddings, and low-risk worker tasks.
@@ -16,3 +16,20 @@
 - Use GitHub as the consultation and version-control layer for setup decisions.
 - Do not restore old GitHub backup content into the live workspace without review.
 - Do not push runtime state, secrets, generated media, caches, or raw memory logs to GitHub.
+- For web automation, use Playwright/CDP as the default engine for authenticated browser services.
+- Authenticated browser automation must use the dedicated persistent Chrome profile `C:\OpenClawChrome`; do not use Jason's everyday Chrome profile or temporary profiles for login-dependent workflows.
+- Launch the automation browser with `--remote-debugging-address=127.0.0.1 --remote-debugging-port=9222 --remote-allow-origins=* --user-data-dir="C:\OpenClawChrome"`.
+- A persistent Chrome profile can only be owned by one Chrome process at a time; close existing Chrome processes before launching the automation profile unless intentionally attaching to an already-running CDP browser.
+- Treat CDP access as sensitive local control of the logged-in browser; do not browse sensitive unrelated sites while the remote debugging port is open.
+- For Windows desktop automation, prefer UI Automation for application controls, AutoHotkey for last-mile keyboard/mouse fallback, and PowerShell for system control.
+- Prefer local structured automation over screenshot/vision/browser-agent loops. UI Automation, AutoHotkey, PowerShell, and Playwright are lower-cost defaults; OCR, screen understanding, and Midscene are advanced fallbacks when structured control fails.
+- Use Midscene as an optional vision-driven automation layer for cross-platform UI tasks, especially when DOM selectors, browser accessibility, or Windows UI Automation are insufficient.
+- Web-interface automation must follow the state-machine protocol in `docs/web_interface_automation_protocol.md`: probe, prepare, upload, fill, submit, monitor, extract, and verify each transition before proceeding.
+- For repeated browser/Windows automation tasks, use `skills/automation-protocol/SKILL.md` as the operational wrapper: CDP/Playwright first, direct file input injection for uploads, filesystem verification for downloads, screenshot/OCR only as fallback.
+- Automation outputs must report path, nonzero size, modified timestamp, expected extension, and fallback/service-side failure reason when applicable.
+- For React/Vue/Svelte editors, do not rely on raw `innerText` or `value` mutation as the primary input method. Prefer Playwright locators, `fill`, keyboard input, or paste events, then verify the framework-visible UI state.
+- A successful upload or `pre_generate_id` is only preflight evidence. A generation task is not considered submitted until URL, DOM, network, WebSocket/SSE, task ID, progress card, or button-state transition proves submission.
+- The durable local capability registry is `memory/system/capability_map.md`; update it when adding shortcuts, services, workflows, tool scripts, skills, or external account dependencies.
+- The standard `服务检查` / `系统检查` entrypoint is `tools/system_health_check.py`; keep it read-only and do not restart or mutate services unless Jason explicitly asks.
+- Hugging Face downloads must use `tools/huggingface_download.py` for planning first; actual downloads require explicit `--yes`, and large model files should stay under `/mnt/d/models/huggingface/`.
+- Durable failure prevention rules live in `memory/errors/`; promote repeated or high-impact command/API/workflow failures there with sanitized error signals, root cause, recovery, and prevention rule.

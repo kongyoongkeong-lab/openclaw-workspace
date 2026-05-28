@@ -11,7 +11,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 STATE_FILE = ROOT / "config" / "model_runtime.json"
-GPU_CHECK = Path("/home/jason/check_gpu.sh")
+GPU_CHECK = ROOT / "tools" / "check_gpu.sh"
 
 LOCAL_FRIENDLY_TASKS = {
     "compact-reasoning",

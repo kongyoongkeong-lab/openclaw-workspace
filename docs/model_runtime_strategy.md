@@ -76,10 +76,10 @@ Previous context overflow is treated as a design failure, not as an acceptable r
 
 For API model calls, the system should maximize the effective context window according to the selected model spec and the actual OpenClaw runtime cap. Current verified baseline after the 1M patch:
 
-- Current runtime model: `openai-codex/gpt-5.5`
+- Current runtime model: `openai/gpt-5.5` with Codex agent runtime
 - Official `gpt-5.5` context window: 1M tokens
 - Official `gpt-5.5` max output: 128K tokens
-- Configured OpenClaw model entry: `openai-codex/gpt-5.5`
+- Configured OpenClaw model entry: `openai/gpt-5.5`
 - Configured OpenClaw context window: 1M tokens
 - `openclaw models list` visible budget: 977K tokens
 - Existing active session context window before gateway restart: 272K tokens
@@ -141,7 +141,7 @@ When local models are unavailable:
 
 Before local LLM or image-generation work:
 
-1. Check GPU memory with `/home/jason/check_gpu.sh` when available.
+1. Check GPU memory with `tools/check_gpu.sh` before local LLM or image-generation work.
 2. Confirm projected VRAM use stays below 9,728 MiB.
 3. Prefer `qwen3.5:4b` or `qwen3.5:2b` if other GPU jobs are active.
 4. Use `qwen3.5:9b` only when it fits comfortably.

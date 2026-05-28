@@ -1,0 +1,52 @@
+name: Protocol Audit
+
+on:
+  push:
+    branches: [main, master, develop]
+    paths:
+      - "AGENTS.md"
+      - "CURRENT_RUNTIME.md"
+      - "PROTOCOL_INVARIANTS.md"
+      - "PROVIDER_STATUS.md"
+      - "agent_registry.json"
+      - "config/model_runtime.json"
+      - "config/protocol_mode.json"
+      - "daily_ai.md"
+      - "daily_news.md"
+      - "docs/github_governance.md"
+      - ".github/copilot-instructions.md"
+      - ".github/workflows/protocol-audit.yml"
+      - "scripts/protocol_audit.py"
+      - "tools/check_gpu.sh"
+      - "tools/codex_quota_preflight.py"
+      - "tools/tavily_key_preflight.py"
+  pull_request:
+    branches: [main, master]
+    paths:
+      - "AGENTS.md"
+      - "CURRENT_RUNTIME.md"
+      - "PROTOCOL_INVARIANTS.md"
+      - "PROVIDER_STATUS.md"
+      - "agent_registry.json"
+      - "config/model_runtime.json"
+      - "config/protocol_mode.json"
+      - "daily_ai.md"
+      - "daily_news.md"
+      - "docs/github_governance.md"
+      - ".github/copilot-instructions.md"
+      - ".github/workflows/protocol-audit.yml"
+      - "scripts/protocol_audit.py"
+      - "tools/check_gpu.sh"
+      - "tools/codex_quota_preflight.py"
+      - "tools/tavily_key_preflight.py"
+
+jobs:
+  protocol-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Run protocol audit
+        run: python3 scripts/protocol_audit.py

@@ -48,7 +48,7 @@ def calculate(args: argparse.Namespace, state: dict) -> dict:
     spec = specs[model]
     model_window = int(spec["context_window_tokens"])
     configured_window = api.get("configured_runtime_context_window_tokens")
-    current_session_window = api.get("current_session_context_window_tokens")
+    current_session_window = args.current_session_window or api.get("current_session_context_window_tokens")
     if args.current_session:
         runtime_window = args.runtime_window or int(current_session_window or configured_window or model_window)
         runtime_scope = "current_session"
@@ -93,6 +93,11 @@ def build_parser() -> argparse.ArgumentParser:
         "--current-session",
         action="store_true",
         help="Use the already-running session cap instead of the configured runtime cap.",
+    )
+    parser.add_argument(
+        "--current-session-window",
+        type=int,
+        help="Observed current session context cap. Use this with --current-session when session_status has fresher data than config.",
     )
     parser.add_argument("--json", action="store_true")
     return parser

@@ -1,0 +1,8 @@
+{
+  "schema": "openclaw.huggingface_state.v1",
+  "selected_label": "token",
+  "selected_source": "/home/jason2ykk/.cache/huggingface/token",
+  "status": "requires_token_or_access_approval",
+  "updated_at": "2026-05-25T02:39:45+08:00",
+  "secret_policy": "token material is never stored here"
+}

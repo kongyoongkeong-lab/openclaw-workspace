@@ -1,0 +1,235 @@
+{
+  "schema": "openclaw.agent_registry.v2",
+  "updated_at": "2026-05-24T23:40:00+08:00",
+  "source_of_truth": [
+    "AGENTS.md",
+    "TASKS.md",
+    "intel/SOUL.md",
+    "ops/SOUL.md",
+    "comms/SOUL.md",
+    "sentinel/SOUL.md",
+    "PROTOCOL_INVARIANTS.md",
+    "CURRENT_RUNTIME.md",
+    "PROVIDER_STATUS.md"
+  ],
+  "runtime_note": "Pentagon team workspaces created and SOUL.md files assigned per agent-team-orchestration best practices. Task lifecycle tracked in TASKS.md. All agent deliverables go to /shared/{specs,artifacts,reviews,decisions}. Review rotation: sentinel reviews ops/intel; ops reviews sentinel scripts; intel reviews research quality.",
+  "routing_api": {
+    "preferred_tool": "sessions_send",
+    "addressing": {
+      "configured_agent": {
+        "parameter": "agentId",
+        "example": "sentinel"
+      },
+      "visible_session": {
+        "parameter": "sessionKey",
+        "example": "agent:main:main"
+      },
+      "label_fallback": {
+        "parameter": "label",
+        "example": "sentinel"
+      }
+    },
+    "do_not_use": [
+      "legacy sessions_send agent parameter"
+    ]
+  },
+  "global_invariants": {
+    "hardware": "NVIDIA GeForce RTX 4070 SUPER",
+    "vram_hard_ceiling_mib": 9728,
+    "gpu_target_sustained_utilization": "70-85%",
+    "gpu_burst_limit": "95% only while monitored",
+    "gpu_preflight": "/home/jason2ykk/.openclaw/workspace/tools/check_gpu.sh",
+    "qdrant_writes": "explicit_approval_required",
+    "github_push_merge": "explicit_approval_required",
+    "persistent_background_tasks": "explicit_approval_required",
+    "secret_policy": "never print, commit, or broadcast raw secrets",
+    "workspace_shared_paths": {
+      "specs": "/shared/specs/",
+      "artifacts": "/shared/artifacts/",
+      "reviews": "/shared/reviews/",
+      "decisions": "/shared/decisions/"
+    }
+  },
+  "agents": {
+    "main": {
+      "label": "@main",
+      "agentId": "main",
+      "workspace": "/home/jason2ykk/.openclaw/workspace",
+      "role": "orchestrator",
+      "responsibilities": [
+        "intent analysis",
+        "routing and priority decisions",
+        "cross-agent synthesis",
+        "final user reporting",
+        "task lifecycle management via TASKS.md",
+        "decision logging via /shared/decisions/",
+        "handoff template instantiation per task"
+      ],
+      "allowed_focus": [
+        "agent-team-orchestration",
+        "github consultation",
+        "skill vetting",
+        "summarization",
+        "task planning"
+      ],
+      "handoff_requires": [
+        "task_id",
+        "target_agent",
+        "artifact_path",
+        "verification_command_or_acceptance_criteria",
+        "risk_notes"
+      ]
+    },
+    "intel": {
+      "label": "@intel",
+      "agentId": "intel",
+      "workspace": "/home/jason2ykk/.openclaw/workspace/intel",
+      "role": "research_and_memory",
+      "responsibilities": [
+        "web and source research using multiple backends",
+        "file parsing and structured summarization",
+        "citation-backed verification with source quality flags",
+        "read-only memory lookup",
+        "write findings to /shared/specs/ with research methodology"
+      ],
+      "preferred_skills": [
+        "openclaw-tavily-search",
+        "ddg-web-search",
+        "multi-search-engine",
+        "pdf",
+        "summarize-pro"
+      ],
+      "restricted_actions": [
+        "code execution unless explicitly routed by @main",
+        "Qdrant writes without explicit approval",
+        "uncited current-knowledge claims",
+        "write outside /shared/specs/ without approval"
+      ],
+      "reviewed_by": "sentinel"
+    },
+    "ops": {
+      "label": "@ops",
+      "agentId": "ops",
+      "workspace": "/home/jason2ykk/.openclaw/workspace/ops",
+      "role": "execution_and_automation",
+      "responsibilities": [
+        "shell and Python execution",
+        "Docker and service diagnostics",
+        "filesystem changes inside the workspace",
+        "browser/CDP automation via Playwright",
+        "test and verification runs",
+        "write artifacts to /shared/artifacts/ with verification commands"
+      ],
+      "preferred_skills": [
+        "terminal-command-execution",
+        "python-executor",
+        "docker",
+        "testing-patterns",
+        "e2e-testing-patterns",
+        "browser-automation",
+        "agent-browser-core"
+      ],
+      "restricted_actions": [
+        "sudo or host-wide changes without @main approval",
+        "local LLM/image GPU work without GPU preflight (check_gpu.sh)",
+        "destructive git/filesystem commands unless explicitly requested",
+        "write outside /shared/artifacts/ without approval"
+      ],
+      "reviewed_by": "sentinel"
+    },
+    "comms": {
+      "label": "@comms",
+      "agentId": "comms",
+      "workspace": "/home/jason2ykk/.openclaw/workspace/comms",
+      "role": "communication_and_delivery",
+      "responsibilities": [
+        "destination-aware formatting (Markdown, JSON, plain text)",
+        "concise status summaries",
+        "report packaging into /shared/reports/",
+        "safe message delivery to Telegram/Slack/WebChat",
+        "file organization and archival"
+      ],
+      "preferred_skills": [
+        "summarize-pro",
+        "content-writer",
+        "file-organizer-skill",
+        "notion"
+      ],
+      "restricted_actions": [
+        "raw secret or credential transmission",
+        "unreviewed external channel delivery",
+        "terminal execution unless explicitly routed by @main",
+        "write outside /shared/reports/ without approval"
+      ],
+      "reviewed_by": "sentinel"
+    },
+    "sentinel": {
+      "label": "@sentinel",
+      "agentId": "sentinel",
+      "workspace": "/home/jason2ykk/.openclaw/workspace/sentinel",
+      "role": "guardian_reviewer",
+      "responsibilities": [
+        "security review and secret-leak checks",
+        "building review: verify @ops artifacts match spec",
+        "research review: verify @intel citations and source quality",
+        "VRAM and hardware safety verification before GPU tasks",
+        "hallucination and source-consistency review",
+        "procedural compliance: check handoff completeness and state transitions"
+      ],
+      "preferred_skills": [
+        "openclaw-security-toolkit",
+        "skill-vetter",
+        "terminal-command-execution",
+        "testing-patterns",
+        "openclaw-tavily-search"
+      ],
+      "restricted_actions": [
+        "write-capable remediation without explicit approval",
+        "Qdrant writes without explicit approval",
+        "credential printing or report leakage",
+        "reviewing own work (review rotation enforced)"
+      ],
+      "reviewed_by": "ops"
+    }
+  },
+  "review_rotation": {
+    "description": "Cross-role review prevents blind spots. Sentinel reviews ops and intel. Ops reviews sentinel scripts. Intel reviews research quality of comms reports.",
+    "pairs": [
+      {
+        "producer": "ops",
+        "reviewer": "sentinel",
+        "scope": "build artifacts, test results"
+      },
+      {
+        "producer": "intel",
+        "reviewer": "sentinel",
+        "scope": "research findings, citation quality"
+      },
+      {
+        "producer": "sentinel",
+        "reviewer": "ops",
+        "scope": "sentinel scripts and procedural documentation"
+      },
+      {
+        "producer": "comms",
+        "reviewer": "intel",
+        "scope": "report accuracy, fact-checking"
+      }
+    ]
+  },
+  "handoff_template": {
+    "task_id": "T-###",
+    "from": "agent id",
+    "to": "agent id",
+    "objective": "one-sentence goal",
+    "inputs": [
+      "paths, URLs, or evidence references"
+    ],
+    "artifact_path": "/shared/{specs|artifacts|reviews|decisions}/T-###/",
+    "verification": "command or acceptance criteria",
+    "known_risks": [
+      "risk or blocker"
+    ],
+    "next_action": "expected receiving-agent action"
+  }
+}

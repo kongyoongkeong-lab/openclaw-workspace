@@ -1,0 +1,10 @@
+# Default reviewer for repository-wide changes.
+* @kongyoongkeong-lab
+
+# Agent, memory, and security governance require owner review.
+AGENTS.md @kongyoongkeong-lab
+SOUL.md @kongyoongkeong-lab
+MEMORY.md @kongyoongkeong-lab
+memory/ @kongyoongkeong-lab
+.github/ @kongyoongkeong-lab
+scripts/protocol_audit.py @kongyoongkeong-lab

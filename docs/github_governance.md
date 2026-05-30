@@ -2,7 +2,7 @@
 
 Status: active baseline
 Owner: Jason / Pentagon `@main`
-Date: 2026-05-22
+Date: 2026-05-31
 
 ## Purpose
 
@@ -81,6 +81,52 @@ Before pushing:
 - Generated media and raw memory logs must remain out of git.
 - Public repo risk must be called out explicitly.
 
+## GitHub Governance Status
+
+As of 2026-05-31, GitHub-side governance is split into active protections and
+ready-but-blocked follow-ups.
+
+Active:
+
+- Repository description:
+  `OpenClaw workspace memory, automation, and GitHub governance baseline`
+- Repository topics:
+  `openclaw`, `ai-agent`, `memory-system`, `automation`, `telegram-bot`,
+  `copilot-instructions`, `github-governance`
+- Delete branch on merge is enabled.
+- Secret scanning, push protection, Dependabot vulnerability alerts, and
+  Dependabot security updates are enabled.
+- CodeQL default setup is active for Python.
+- `main` branch protection requires:
+  - PR review count: `1`
+  - CODEOWNERS review
+  - stale review dismissal
+  - conversation resolution
+  - linear history
+  - no force pushes
+  - no branch deletion
+  - required status check: `Analyze (python)`
+- Standard labels exist for priority, type, area, and workflow status:
+  `priority:p0`, `priority:p1`, `priority:p2`, `type:bug`, `type:task`,
+  `type:security`, `area:memory`, `area:automation`, `area:github`,
+  `area:backup`, `status:blocked`, and `status:needs-review`.
+
+Ready but not active:
+
+- Repository ruleset `main-governance-ready` exists in `disabled` mode. It
+  mirrors the active branch protection rule but is not enforced. GitHub Free
+  does not support `evaluate` mode for this repository, and enabling an active
+  ruleset should be a separate decision because rulesets can remove the current
+  admin bypass behavior.
+
+Blocked:
+
+- `.github/workflows/*.yml` files are local-only until the GitHub token has the
+  `workflow` scope. GitHub rejects workflow pushes without that scope.
+- Formal `.github/dependabot.yml` scheduling remains postponed until the remote
+  has tracked dependency manifests or tracked GitHub Actions workflows for
+  Dependabot to update.
+
 ## Copilot Role
 
 GitHub Copilot may help by reviewing PRs, suggesting scoped patches, improving
@@ -100,6 +146,8 @@ Copilot guidance must preserve these boundaries:
 ## Current Baseline Commits
 
 ```text
-f6882c5 Add hybrid model runtime baseline
-659adba Add context-resilient hybrid routing
+6d2e698 Add GitHub-aligned memory structure
+20c9ca4 Add GitHub repository governance
+ec648d4 Remove unusable Dependabot schedule
+2f37cba Add GitHub review and restore gates
 ```

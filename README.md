@@ -14,6 +14,7 @@ This repository contains operational instructions, workflow guardrails, memory s
 - `memory/` - Git-tracked memory structure and reviewed durable context.
 - `docs/` - operational docs and system notes.
 - `docs/backup_restore_playbook.md` - Git-backed backup and restore procedure.
+- `docs/github_governance.md` - GitHub repository settings, protections, and blockers.
 - `tools/` - local automation scripts and health checks.
 - `shared/` - cross-agent handoff bridge for specs, artifacts, reviews, and decisions.
 

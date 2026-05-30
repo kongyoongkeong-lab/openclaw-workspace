@@ -10,8 +10,10 @@ This repository contains operational instructions, workflow guardrails, memory s
 - `.github/copilot-instructions.md` - repository-wide Copilot and agent coding guidance.
 - `.github/instructions/` - path-scoped GitHub Copilot instruction files.
 - `.github/workflows/` - CI checks for protocol hygiene, markdown, and secret scanning.
+- `.github/ISSUE_TEMPLATE/` and `.github/pull_request_template.md` - structured intake and review gates.
 - `memory/` - Git-tracked memory structure and reviewed durable context.
 - `docs/` - operational docs and system notes.
+- `docs/backup_restore_playbook.md` - Git-backed backup and restore procedure.
 - `tools/` - local automation scripts and health checks.
 - `shared/` - cross-agent handoff bridge for specs, artifacts, reviews, and decisions.
 

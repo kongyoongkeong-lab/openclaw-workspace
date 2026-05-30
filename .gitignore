@@ -78,7 +78,8 @@ stop_gateway_shutdown.bat
 # Remote-backed files managed locally
 skills/
 vendor/
-scripts/
+scripts/*
+!scripts/protocol_audit.py
 spikes/
 tessdata/
 reports/
@@ -101,5 +102,5 @@ tools/playwright_cdp_smoke.js
 tools/playwright_cdp_smoke_windows.mjs
 tools/windows_ui/
 
-# GitHub workflows (no workflow scope on push token)
+# GitHub workflows (requires a GitHub token with workflow scope to push)
 .github/workflows/

@@ -28,3 +28,7 @@ For markdown changes, run markdown lint when available:
 ```bash
 npx markdownlint-cli2
 ```
+
+Use the pull request template and issue templates for new work. Follow
+`docs/backup_restore_playbook.md` before restoring files from older commits or
+backup branches.

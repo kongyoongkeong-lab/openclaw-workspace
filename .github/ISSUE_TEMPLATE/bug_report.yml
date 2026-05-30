@@ -1,0 +1,50 @@
+name: Bug report
+description: Report a reproducible OpenClaw workspace problem.
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Do not include access tokens, API keys, cookies, or private chat exports.
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: What failed, and what result did you expect?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Reproduction steps
+      description: List the smallest sequence that reproduces the problem.
+      placeholder: |
+        1. Run ...
+        2. Send ...
+        3. Observe ...
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: Logs, screenshots, or command output with secrets removed.
+      render: text
+    validations:
+      required: false
+  - type: dropdown
+    id: surface
+    attributes:
+      label: Surface
+      options:
+        - Memory
+        - GitHub governance
+        - Web automation
+        - Desktop automation
+        - Photo processing
+        - PDF/document processing
+        - Model routing
+        - Other
+    validations:
+      required: true

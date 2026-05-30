@@ -1,0 +1,38 @@
+name: Task
+description: Track a bounded implementation, governance, or operations task.
+title: "[Task]: "
+labels: ["task"]
+body:
+  - type: textarea
+    id: goal
+    attributes:
+      label: Goal
+      description: What should be true when this task is done?
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope
+      description: Files, systems, or capabilities expected to change.
+    validations:
+      required: true
+  - type: textarea
+    id: verification
+    attributes:
+      label: Verification
+      description: Commands, checks, or manual review needed before closing.
+      placeholder: |
+        - python3 scripts/protocol_audit.py
+        - pnpm dlx markdownlint-cli2 ...
+    validations:
+      required: true
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Safety gates
+      options:
+        - label: No secrets are included.
+          required: true
+        - label: No Qdrant write, production activation, persistent background task, or new agent is required without explicit approval.
+          required: true

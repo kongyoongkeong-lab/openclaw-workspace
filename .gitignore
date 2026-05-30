@@ -24,7 +24,9 @@ hosts.yml
 **/.openclaw/
 workspace-state.json
 memory/.dreams/
-memory/logs/
+memory/logs/*
+!memory/logs/
+!memory/logs/README.md
 memory/runtime/
 news/
 

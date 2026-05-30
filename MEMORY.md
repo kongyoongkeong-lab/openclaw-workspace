@@ -51,13 +51,23 @@ Purpose: curated high-signal memory for Jason's OpenClaw/Pentagon system. This f
 
 ## Memory Hygiene
 - Root `MEMORY.md` is for stable curated facts.
-- Daily/runtime logs belong under `memory/YYYY-MM-DD.md` or future `memory/logs/`.
+- Daily/runtime logs belong under `memory/logs/YYYY-MM-DD.md`; existing
+  `memory/YYYY-MM-DD.md` files are legacy logs kept for retrieval continuity.
 - Preferences belong under `memory/preferences/`.
 - Architecture decisions belong under `memory/decisions/`.
 - Stable execution rules belong under `memory/system/stable_rules.md`.
+- Project context belongs under `memory/projects/<project>/`.
+- Chat/group context belongs under `memory/groups/<surface>/`.
+- Candidate memories awaiting verification belong under `memory/review/`.
 - Old experiments and validation reports should eventually be archived to reduce retrieval noise.
 
 ## Structured Memory Files
 - User preferences: `/home/jason2ykk/.openclaw/workspace/memory/preferences/jason.md`.
 - Architecture/workflow decisions: `/home/jason2ykk/.openclaw/workspace/memory/decisions/openclaw.md`.
 - Stable operational rules: `/home/jason2ykk/.openclaw/workspace/memory/system/stable_rules.md`.
+- Memory contract: `/home/jason2ykk/.openclaw/workspace/memory/system/memory_contract.md`.
+
+## GitHub Memory Guidance
+- Repository-wide GitHub Copilot guidance lives in `.github/copilot-instructions.md`.
+- Path-specific memory guidance lives in `.github/instructions/memory.instructions.md`.
+- `AGENTS.md` remains the agent runtime behavior contract.

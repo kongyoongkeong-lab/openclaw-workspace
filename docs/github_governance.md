@@ -110,6 +110,11 @@ Active:
   `priority:p0`, `priority:p1`, `priority:p2`, `type:bug`, `type:task`,
   `type:security`, `area:memory`, `area:automation`, `area:github`,
   `area:backup`, `status:blocked`, and `status:needs-review`.
+- `CODE_OF_CONDUCT.md` defines review and collaboration boundaries for public
+  GitHub interactions.
+- `LICENSE.md` documents the current all-rights-reserved posture. This
+  repository is public for governance and review visibility, not open-source
+  redistribution.
 
 Ready but not active:
 
@@ -150,4 +155,5 @@ Copilot guidance must preserve these boundaries:
 20c9ca4 Add GitHub repository governance
 ec648d4 Remove unusable Dependabot schedule
 2f37cba Add GitHub review and restore gates
+8feb0e6 Document GitHub governance follow-ups
 ```

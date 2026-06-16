@@ -612,8 +612,22 @@ def cmd_audit(args: argparse.Namespace) -> int:
             row.governance = build_governance(row)
     apply_quarantine(rows)
     summary = summarize(rows)
+    suggestions = fix_suggestions(rows) if args.fix_suggestions else []
+    reports = {}
+    if not args.no_write:
+        json_path, md_path = write_reports(args.out, rows, summary)
+        reports = {
+            "json_report": str(json_path),
+            "markdown_report": str(md_path),
+        }
     if args.json:
-        print(json.dumps({"summary": summary, "rows": [asdict(row) for row in rows]}, indent=2, ensure_ascii=False))
+        payload = {
+            "summary": summary,
+            "rows": [asdict(row) for row in rows],
+            "fix_suggestions": suggestions,
+            "reports": reports,
+        }
+        print(json.dumps(payload, indent=2, ensure_ascii=False))
     else:
         print(f"total={summary['total']}")
         print(f"by_status={summary['by_status']}")
@@ -633,14 +647,11 @@ def cmd_audit(args: argparse.Namespace) -> int:
         print(f"alias_collision_count={governance['alias_collision_count']}")
         print(f"quarantined={governance['quarantined']}")
         if args.fix_suggestions:
-            suggestions = fix_suggestions(rows)
             print(f"fix_suggestion_count={len(suggestions)}")
             for item in suggestions:
                 print(f"fix_suggestion={item['shortcut']}|{item['risk']}|{','.join(item['issues'])}")
-    if not args.no_write:
-        json_path, md_path = write_reports(args.out, rows, summary)
-        print(f"json_report={json_path}")
-        print(f"markdown_report={md_path}")
+        for label, path in reports.items():
+            print(f"{label}={path}")
     connected_missing = any(row.status == "已接入" and row.missing_paths for row in rows)
     return 1 if connected_missing else 0
 

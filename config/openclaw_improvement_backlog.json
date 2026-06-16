@@ -1,0 +1,128 @@
+{
+  "schema": "openclaw.improvement_backlog.v1",
+  "purpose": "Single active list of current and future OpenClaw improvements. TASKS.md remains the historical lifecycle log.",
+  "updated_at": "2026-06-17T01:36:00+08:00",
+  "items": [
+    {
+      "id": "codeql-cleartext-sensitive-logging",
+      "title": "Close CodeQL clear-text sensitive logging alert",
+      "priority": "P0",
+      "status": "approved",
+      "risk": "low",
+      "owner": "@main",
+      "reason": "GitHub reports one high-severity CodeQL alert for secret logging on main.",
+      "next_action": "Publish or merge the minimal observability.py fix and confirm the CodeQL alert closes.",
+      "evidence_path": "tools/observability.py"
+    },
+    {
+      "id": "clean-worktree-release-discipline",
+      "title": "Use clean worktree release discipline",
+      "priority": "P0",
+      "status": "approved",
+      "risk": "medium",
+      "owner": "@main",
+      "reason": "Local main is dirty and diverged, which makes broad staging unsafe for GitHub publishing.",
+      "next_action": "Use clean release branches or temporary worktrees, then stage only exact intended files.",
+      "evidence_path": "TASKS.md"
+    },
+    {
+      "id": "shortcut-doctor-json-purity",
+      "title": "Fix shortcut_doctor JSON purity",
+      "priority": "P0",
+      "status": "approved",
+      "risk": "low",
+      "owner": "@main",
+      "reason": "Automation parsers fail when --json output contains trailing report-path text.",
+      "next_action": "When --json is used, print one JSON object containing summary, rows, fix_suggestions, and reports.",
+      "evidence_path": "tools/shortcut_doctor.py"
+    },
+    {
+      "id": "shortcut-governance-phase-2-merge",
+      "title": "Finish Shortcut Governance Phase 2 PR",
+      "priority": "P1",
+      "status": "waiting",
+      "risk": "medium",
+      "owner": "@main",
+      "reason": "PR #20 is mergeable with passing checks but still draft and review-required.",
+      "next_action": "Final review, mark ready for review, then merge after approval.",
+      "evidence_path": "shared/artifacts/shortcut-governance-phase-2/task_loop.json"
+    },
+    {
+      "id": "loki-log-doctor-release",
+      "title": "Publish Loki and log-doctor repair",
+      "priority": "P1",
+      "status": "approved",
+      "risk": "medium",
+      "owner": "@main",
+      "reason": "The local observability repair is working and should be GitHub-backed.",
+      "next_action": "Create a focused PR for Loki/Promtail/Grafana config and log-doctor classification fixes.",
+      "evidence_path": "shared/artifacts/loki-log-diagnostics-chain/task_loop.json"
+    },
+    {
+      "id": "repair-auth-fail-profiles",
+      "title": "Repair auth-fail profiles",
+      "priority": "P1",
+      "status": "waiting",
+      "risk": "medium",
+      "owner": "@main",
+      "reason": "Profile health affects routing reliability and quota-aware fallback behavior.",
+      "next_action": "Audit failing auth profiles without printing secrets, then repair or quarantine invalid profiles.",
+      "evidence_path": "config/openclaw_profile_quota_cache.json"
+    },
+    {
+      "id": "daily-health-report",
+      "title": "Daily health report",
+      "priority": "P1",
+      "status": "waiting",
+      "risk": "low",
+      "owner": "@main",
+      "reason": "Jason needs one predictable health signal for gateway, Docker, model routing, logs, quota, and GPU state.",
+      "next_action": "Define a read-only daily report command and archive output under D:\\_outbox\\reports.",
+      "evidence_path": "tools/control_room.py"
+    },
+    {
+      "id": "backup-restore-drill",
+      "title": "Backup restore drill",
+      "priority": "P1",
+      "status": "waiting",
+      "risk": "high",
+      "owner": "@main",
+      "reason": "A backup is only proven when restore can be safely rehearsed and verified.",
+      "next_action": "Prepare a read-only restore verification plan using the latest backup archive metadata.",
+      "evidence_path": "docs/backup_restore_playbook.md"
+    },
+    {
+      "id": "production-approval-broker",
+      "title": "Production approval broker",
+      "priority": "P1",
+      "status": "waiting",
+      "risk": "high",
+      "owner": "@main",
+      "reason": "High-risk production changes need durable approval targets and scoped execution receipts.",
+      "next_action": "Centralize pending_action approval IDs for restarts, backups, workflow activation, and remote publishing.",
+      "evidence_path": "tools/pending_action.py"
+    },
+    {
+      "id": "github-release-gate",
+      "title": "Strengthen GitHub release gate",
+      "priority": "P2",
+      "status": "waiting",
+      "risk": "medium",
+      "owner": "@main",
+      "reason": "Branch protection currently requires a narrow status check and should cover security/governance gates.",
+      "next_action": "Require a consolidated governance/security check covering CodeQL, secret scanning, protocol audit, and Python self-tests.",
+      "evidence_path": ".github/workflows"
+    },
+    {
+      "id": "stale-pr-cleanup",
+      "title": "Clean stale draft PR queue",
+      "priority": "P2",
+      "status": "waiting",
+      "risk": "low",
+      "owner": "@main",
+      "reason": "Old draft PRs obscure the true active roadmap.",
+      "next_action": "Merge, supersede, or close stale draft PRs after confirming current relevance.",
+      "evidence_path": "https://github.com/kongyoongkeong-lab/openclaw-workspace/pulls"
+    }
+  ]
+}

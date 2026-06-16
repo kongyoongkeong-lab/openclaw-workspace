@@ -170,7 +170,7 @@ def cmd_set_key(public_key: str, secret_key: str):
     }
     save_config(cfg)
     print(f"🔑 Public key: {public_key}")
-    print(f"🔑 Secret key: {secret_key[:8]}...{secret_key[-4:]}")
+    print("🔑 Secret key: saved (not displayed)")
     print("Run `python3 tools/observability.py --init` to verify connection.")
 
 

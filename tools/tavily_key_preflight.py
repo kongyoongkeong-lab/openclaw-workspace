@@ -118,6 +118,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--check-all", action="store_true", help="Probe every discovered key.")
     parser.add_argument("--list-only", action="store_true", help="List discovered key labels without network probes.")
     parser.add_argument("--no-write", action="store_true", help="Do not update config/tavily_key_state.json.")
+    parser.add_argument("--self-test", action="store_true", help="Run deterministic redaction-safe self-test.")
     parser.add_argument("--query", default="Tavily API health check")
     parser.add_argument("--timeout", type=int, default=20)
     return parser
@@ -125,6 +126,14 @@ def build_parser() -> argparse.ArgumentParser:
 
 def main() -> int:
     args = build_parser().parse_args()
+    if args.self_test:
+        candidates: list[Candidate] = []
+        seen: set[str] = set()
+        add_key(candidates, seen, "TAVILY_API_KEY", "self-test", "tvly-1234567890abcdef")
+        add_key(candidates, seen, "TAVILY_API_KEY", "duplicate", "tvly-1234567890abcdef")
+        assert len(candidates) == 1
+        print("PASS: tavily key preflight self-test passed.")
+        return 0
     candidates = discover_candidates()
 
     print("Tavily key preflight")

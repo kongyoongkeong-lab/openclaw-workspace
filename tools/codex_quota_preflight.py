@@ -121,6 +121,7 @@ def print_table(rows: list[dict[str, str]]) -> None:
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--dry-run", action="store_true", help="Show selected order without writing auth-state.")
+    parser.add_argument("--self-test", action="store_true", help="Run deterministic ordering self-test.")
     parser.add_argument("--provider", default=PROVIDER)
     parser.add_argument("--agents", nargs="+", default=DEFAULT_AGENTS)
     parser.add_argument("--timeout", type=int, default=20)
@@ -134,6 +135,15 @@ def build_parser() -> argparse.ArgumentParser:
 
 def main() -> int:
     args = build_parser().parse_args()
+    if args.self_test:
+        rows = [
+            {"profile": "openai-codex:a@example.com", "email": "a@example.com", "mode": "plus", "state": "blocked until tomorrow"},
+            {"profile": "openai-codex:b@example.com", "email": "b@example.com", "mode": "plus", "state": "ok"},
+        ]
+        ordered = ordered_profiles(rows, {"usageStats": {"openai-codex:a@example.com": {"blockedUntil": 4102444800000}}})
+        assert ordered[0]["profile"] == "openai-codex:b@example.com"
+        print("PASS: codex quota preflight self-test passed.")
+        return 0
     config = load_json(CONFIG_FILE)
     auth_state = load_json(AUTH_STATE_FILE)
     rows = codex_profiles(config)

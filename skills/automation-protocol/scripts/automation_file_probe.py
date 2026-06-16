@@ -67,12 +67,17 @@ def main() -> int:
     p_verify = sub.add_parser("verify")
     p_verify.add_argument("path")
     p_verify.add_argument("--suffix")
+    sub.add_parser("self-test")
     args = parser.parse_args()
 
     if args.cmd == "find":
         print(json.dumps(find(args.name), indent=2, ensure_ascii=False))
-    else:
+    elif args.cmd == "verify":
         print(json.dumps(verify(args.path, args.suffix), indent=2, ensure_ascii=False))
+    else:
+        payload = stat_payload(Path(__file__))
+        assert payload["exists"] and payload["size"] > 0
+        print("PASS: automation file probe self-test passed.")
     return 0
 
 

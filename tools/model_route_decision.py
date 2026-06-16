@@ -110,11 +110,21 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--context-ratio", type=float, default=0.0)
     parser.add_argument("--api-available", action=argparse.BooleanOptionalAction, default=True)
     parser.add_argument("--json", action="store_true", help="Print machine-readable output")
+    parser.add_argument("--self-test", action="store_true", help="Run deterministic routing self-test.")
     return parser
 
 
 def main() -> int:
     args = build_parser().parse_args()
+    if args.self_test:
+        state = {"active_mode": "api", "context_management": {"compression_trigger_ratio": 0.5, "hard_stop_ratio": 0.8}}
+        test_args = argparse.Namespace(mode=None, task_type="long-context", context_ratio=0.0, api_available=True)
+        route, reasons, warnings = choose_route(test_args, state)
+        assert route == "api"
+        assert "api_first_mode" in reasons
+        assert warnings == []
+        print("PASS: model route decision self-test passed.")
+        return 0
     state = load_state()
     route, reasons, warnings = choose_route(args, state)
     payload = {"route": route, "reasons": reasons, "warnings": warnings}

@@ -283,11 +283,16 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--json", action="store_true", help="Emit machine-readable JSON.")
     parser.add_argument("--details", action="store_true", help="Include redacted detailed output.")
     parser.add_argument("--fail-on-warn", action="store_true", help="Return non-zero for warn status.")
+    parser.add_argument("--self-test", action="store_true", help="Run deterministic redaction self-test.")
     return parser
 
 
 def main() -> int:
     args = build_parser().parse_args()
+    if args.self_test:
+        assert "[REDACTED]" in redact("api_key=sk-abcdefghijklmnopqrstuvwxyz123456")
+        print("PASS: system health self-test passed.")
+        return 0
     checks = collect_checks()
     status = overall_status(checks)
     payload = {

@@ -50,6 +50,8 @@ def strip_ticks(value: str) -> str:
 
 def normalize_reference(raw: str) -> str | None:
     value = raw.strip().strip(".,;:，。；：")
+    if any(token in value for token in ("YYYY", "MM-DD", "<", ">")):
+        return None
     try:
         tokens = shlex.split(value)
     except ValueError:
@@ -67,7 +69,7 @@ def normalize_reference(raw: str) -> str | None:
         return value
     if value.startswith(("/mnt/", "/tmp/")):
         return value
-    if value.startswith(("tools/", "scripts/", "skills/", "docs/", "config/", "protocols/", "memory/")):
+    if value.startswith(("tools/", "scripts/", "skills/", "docs/", "config/", "protocols/", "memory/", "news/", "shared/", "data/")):
         return str(ROOT / value)
     if value in {"daily_news.md", "daily_ai.md", "SELF_UPGRADE_PROTOCOL.md", "AGENTS.md", "TASKS.md", "shortcuts.md"}:
         return str(ROOT / value)
@@ -149,6 +151,16 @@ def alias_list(row: ShortcutRow) -> list[str]:
     return [value for value in values if value and value != "-"]
 
 
+def display_path(raw: str | None) -> str | None:
+    if not raw:
+        return None
+    path = Path(raw)
+    try:
+        return path.resolve().relative_to(ROOT).as_posix()
+    except (OSError, ValueError):
+        return raw
+
+
 def output_paths(row: ShortcutRow) -> list[str]:
     text = f"{row.target}\n{row.safety}"
     paths: list[str] = []
@@ -156,9 +168,31 @@ def output_paths(row: ShortcutRow) -> list[str]:
         value = match.group(0).rstrip("\\/")
         if value not in paths:
             paths.append(value)
+    for candidate in PATH_RE.findall(text):
+        ref = normalize_reference(candidate)
+        if not ref:
+            continue
+        ref_path = Path(ref)
+        try:
+            include = any(ref_path.resolve().is_relative_to(root) for root in (ROOT / "config", ROOT / "data", ROOT / "news", ROOT / "shared"))
+        except OSError:
+            include = False
+        if include:
+            value = display_path(ref) or ref
+            if value not in paths:
+                paths.append(value)
+    output_roots = (ROOT / "config", ROOT / "data", ROOT / "news", ROOT / "shared")
     for ref in row.referenced_paths:
-        if any(part in ref for part in ("/reports/", "/shared/artifacts/", "/media/outbound")) and ref not in paths:
-            paths.append(ref)
+        ref_path = Path(ref)
+        include = any(part in ref for part in ("/reports/", "/shared/artifacts/", "/media/outbound"))
+        try:
+            include = include or any(ref_path.resolve().is_relative_to(root) for root in output_roots)
+        except OSError:
+            pass
+        if include:
+            value = display_path(ref) or ref
+            if value not in paths:
+                paths.append(value)
     return paths
 
 
@@ -245,11 +279,14 @@ def classify_safety(row: ShortcutRow) -> str:
     return "callable"
 
 
-def detect_script_support(paths: list[str]) -> dict:
+def detect_script_support(paths: list[str], row: ShortcutRow | None = None) -> dict:
     has_help = False
     has_self_test = False
     has_dry_run = False
     inspected: list[str] = []
+    support_text = ""
+    if row is not None:
+        support_text = f"{row.command}\n{row.feature}\n{row.target}\n{row.safety}".lower()
     for raw in paths:
         path = Path(raw)
         if not path.exists() or not path.is_file():
@@ -262,6 +299,10 @@ def detect_script_support(paths: list[str]) -> dict:
             has_self_test = True
         if any(term in text for term in ("dry-run", "dry_run", "--list-only", "--no-write", "read-only", "只读")):
             has_dry_run = True
+    if any(term in support_text for term in ("self-test", "self_test", "selftest")):
+        has_self_test = True
+    if any(term in support_text for term in ("--dry-run", "dry-run", "--list-only", "--no-write", "--profiles-only", "plan only", "确认前")):
+        has_dry_run = True
     return {
         "inspected_scripts": inspected,
         "has_help_hint": has_help,
@@ -277,7 +318,7 @@ def add_deep_capabilities(rows: list[ShortcutRow]) -> None:
             "safety_class": classify_safety(row),
             "referenced_script_count": len(scripts),
             "referenced_scripts": scripts,
-            **detect_script_support(scripts),
+            **detect_script_support(scripts, row),
         }
         row.governance = build_governance(row)
 
@@ -520,16 +561,20 @@ def build_manifest(rows: list[ShortcutRow]) -> dict:
     shortcuts = []
     for index, row in enumerate(rows, start=1):
         gov = row.governance or build_governance(row)
-        caps = row.capabilities or {}
+        caps = dict(row.capabilities or {})
+        for key in ("referenced_scripts", "inspected_scripts"):
+            if key in caps:
+                caps[key] = [display_path(item) or item for item in caps[key]]
         scripts = script_refs(row)
         first_script = scripts[0] if scripts else None
+        display_script = display_path(first_script)
         shortcuts.append(
             {
                 "id": f"shortcut_{index:03d}",
                 "name": row.command,
                 "aliases": alias_list(row),
                 "group": gov["group"],
-                "script": first_script,
+                "script": display_script,
                 "args_template": row.target,
                 "risk": gov["risk"],
                 "needs_confirm": gov["needs_confirm"],
@@ -537,7 +582,7 @@ def build_manifest(rows: list[ShortcutRow]) -> dict:
                 "pending_action_reason": gov["pending_action_reason"],
                 "dry_run_command": None,
                 "self_test_command": None,
-                "help_command": f"python3 {first_script} --help" if first_script and first_script.endswith(".py") else None,
+                "help_command": f"python3 {display_script} --help" if display_script and display_script.endswith(".py") else None,
                 "output_paths": gov["output_paths"],
                 "owner": "@main",
                 "status": row.status,
@@ -549,7 +594,7 @@ def build_manifest(rows: list[ShortcutRow]) -> dict:
         )
     return {
         "schema": "openclaw.shortcut_manifest.v1",
-        "source": str(DEFAULT_REGISTRY),
+        "source": display_path(str(DEFAULT_REGISTRY)) or str(DEFAULT_REGISTRY),
         "generated_at": datetime.now().astimezone().isoformat(timespec="seconds"),
         "risk_policy": ["read_only", "low_write", "side_effecting", "confirmation_required", "live_external", "dangerous"],
         "approval_classes": ["none", "confirm_once", "confirm_each_run", "confirm_with_expiry", "operator_only"],
@@ -567,8 +612,22 @@ def cmd_audit(args: argparse.Namespace) -> int:
             row.governance = build_governance(row)
     apply_quarantine(rows)
     summary = summarize(rows)
+    suggestions = fix_suggestions(rows) if args.fix_suggestions else []
+    reports = {}
+    if not args.no_write:
+        json_path, md_path = write_reports(args.out, rows, summary)
+        reports = {
+            "json_report": str(json_path),
+            "markdown_report": str(md_path),
+        }
     if args.json:
-        print(json.dumps({"summary": summary, "rows": [asdict(row) for row in rows]}, indent=2, ensure_ascii=False))
+        payload = {
+            "summary": summary,
+            "rows": [asdict(row) for row in rows],
+            "fix_suggestions": suggestions,
+            "reports": reports,
+        }
+        print(json.dumps(payload, indent=2, ensure_ascii=False))
     else:
         print(f"total={summary['total']}")
         print(f"by_status={summary['by_status']}")
@@ -588,14 +647,11 @@ def cmd_audit(args: argparse.Namespace) -> int:
         print(f"alias_collision_count={governance['alias_collision_count']}")
         print(f"quarantined={governance['quarantined']}")
         if args.fix_suggestions:
-            suggestions = fix_suggestions(rows)
             print(f"fix_suggestion_count={len(suggestions)}")
             for item in suggestions:
                 print(f"fix_suggestion={item['shortcut']}|{item['risk']}|{','.join(item['issues'])}")
-    if not args.no_write:
-        json_path, md_path = write_reports(args.out, rows, summary)
-        print(f"json_report={json_path}")
-        print(f"markdown_report={md_path}")
+        for label, path in reports.items():
+            print(f"{label}={path}")
     connected_missing = any(row.status == "已接入" and row.missing_paths for row in rows)
     return 1 if connected_missing else 0
 

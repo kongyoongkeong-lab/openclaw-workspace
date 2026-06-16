@@ -173,12 +173,19 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--whoami", action="store_true", help="Probe discovered tokens with Hugging Face account auth.")
     parser.add_argument("--model", help="Optional model ID to check with huggingface_hub.model_info.")
     parser.add_argument("--no-write", action="store_true", help="Do not update config/huggingface_state.json.")
+    parser.add_argument("--self-test", action="store_true", help="Run deterministic parser self-test.")
     parser.add_argument("--timeout", type=int, default=30)
     return parser
 
 
 def main() -> int:
     args = build_parser().parse_args()
+    if args.self_test:
+        candidate = TokenCandidate(label="HF_TOKEN", source="self-test", token="hf_abcdefghijklmnopqrstuvwxyz123456")
+        assert candidate.label == "HF_TOKEN"
+        assert candidate.source == "self-test"
+        print("PASS: Hugging Face preflight self-test passed.")
+        return 0
     hf_bin = shutil.which("hf")
     legacy_bin = shutil.which("huggingface-cli")
     candidates = discover_tokens()

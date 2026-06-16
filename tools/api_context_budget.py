@@ -100,11 +100,42 @@ def build_parser() -> argparse.ArgumentParser:
         help="Observed current session context cap. Use this with --current-session when session_status has fresher data than config.",
     )
     parser.add_argument("--json", action="store_true")
+    parser.add_argument("--self-test", action="store_true", help="Run deterministic budget math self-test.")
     return parser
 
 
 def main() -> int:
     args = build_parser().parse_args()
+    if args.self_test:
+        state = {
+            "providers": {
+                "api": {
+                    "current_runtime_model": "gpt-5.2",
+                    "configured_runtime_context_window_tokens": 1000,
+                    "budget_policy": {
+                        "reserve_output_ratio": 0.1,
+                        "reserve_reasoning_ratio": 0.1,
+                        "target_fill_ratio": 0.5,
+                        "soft_compact_ratio": 0.6,
+                        "hard_compact_ratio": 0.8,
+                        "absolute_stop_ratio": 0.9,
+                    },
+                    "model_specs": {
+                        "gpt-5.2": {
+                            "context_window_tokens": 2000,
+                            "max_output_tokens": 500,
+                            "source": "self-test",
+                        }
+                    },
+                }
+            }
+        }
+        test_args = argparse.Namespace(model=None, runtime_window=None, current_session=False, current_session_window=None)
+        result = calculate(test_args, state)
+        assert result["effective_context_window_tokens"] == 1000
+        assert result["usable_input_tokens"] == 800
+        print("PASS: api context budget self-test passed.")
+        return 0
     result = calculate(args, load_state())
     if args.json:
         print(json.dumps(result, indent=2))

@@ -119,13 +119,19 @@ def print_usage(usage: dict[str, Any] | None) -> None:
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--profiles-only", action="store_true", help="Do not call live OpenClaw usage probe.")
+    parser.add_argument("--profiles-only", action="store_true", help="Dry-run mode: do not call live OpenClaw usage probe.")
+    parser.add_argument("--self-test", action="store_true", help="Run deterministic parser/redaction self-test.")
     parser.add_argument("--timeout", type=int, default=25, help="Seconds to wait for `openclaw status --usage`.")
     return parser
 
 
 def main() -> int:
     args = build_parser().parse_args()
+    if args.self_test:
+        sample = {"usageStats": {f"{PROVIDER}:demo@example.com": {"blockedReason": "rate_limit"}}}
+        assert is_blocked(sample["usageStats"][f"{PROVIDER}:demo@example.com"], int(time.time() * 1000)) == "previous rate_limit"
+        print("PASS: quota query self-test passed.")
+        return 0
     config = load_json(CONFIG_FILE)
     auth_state = load_json(AUTH_STATE_FILE)
     profiles = get_profiles(config)

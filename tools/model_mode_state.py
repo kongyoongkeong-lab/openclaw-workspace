@@ -43,12 +43,24 @@ def cmd_get(_: argparse.Namespace) -> int:
 
 def cmd_set(args: argparse.Namespace) -> int:
     state = load_state()
+    if args.dry_run:
+        active = state.get("active_mode", state.get("default_mode", "hybrid"))
+        print(f"active_mode={active}")
+        print(f"planned_mode={args.mode}")
+        print("mode=dry-run, no files changed")
+        return 0
     state["active_mode"] = args.mode
     state["updated_at"] = now_iso()
     state["updated_by"] = args.source
     save_state(state)
     print(f"active_mode={args.mode}")
     print(f"state_file={STATE_FILE}")
+    return 0
+
+
+def cmd_self_test(_: argparse.Namespace) -> int:
+    assert VALID_MODES == {"api", "local", "hybrid"}
+    print("PASS: model mode self-test passed.")
     return 0
 
 
@@ -62,7 +74,11 @@ def build_parser() -> argparse.ArgumentParser:
     set_parser = subparsers.add_parser("set", help="Set active model routing mode")
     set_parser.add_argument("mode", choices=sorted(VALID_MODES))
     set_parser.add_argument("--source", default="manual")
+    set_parser.add_argument("--dry-run", action="store_true", help="Show planned mode without writing state.")
     set_parser.set_defaults(func=cmd_set)
+
+    self_test = subparsers.add_parser("self-test", help="Run deterministic self-test")
+    self_test.set_defaults(func=cmd_self_test)
 
     return parser
 

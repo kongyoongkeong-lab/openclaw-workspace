@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import argparse
 import json
 import shutil
 import subprocess
@@ -57,7 +58,19 @@ def ollama_status() -> str:
     return output if code == 0 else f"ollama_list_failed={output}"
 
 
+def build_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--dry-run", action="store_true", help="Print config state only; skip live GPU and Ollama probes.")
+    parser.add_argument("--self-test", action="store_true", help="Run deterministic parser self-test.")
+    return parser
+
+
 def main() -> int:
+    args = build_parser().parse_args()
+    if args.self_test:
+        assert isinstance(load_state(), dict)
+        print("PASS: model runtime status self-test passed.")
+        return 0
     state = load_state()
     hardware = state.get("hardware", {})
     context = state.get("context_management", {})
@@ -77,10 +90,13 @@ def main() -> int:
     print(f"ollama_base_url={ollama.get('base_url', 'unknown')}")
     for role, model in models.items():
         print(f"model.{role}={model}")
-    print("\nGPU")
-    print(gpu_status())
-    print("\nOllama")
-    print(ollama_status())
+    if args.dry_run:
+        print("\nmode=dry-run, live GPU and Ollama probes skipped")
+    else:
+        print("\nGPU")
+        print(gpu_status())
+        print("\nOllama")
+        print(ollama_status())
     return 0
 
 

@@ -2,7 +2,7 @@
 """Safe Hugging Face model download helper for OpenClaw.
 
 The helper validates account/model access and disk capacity before invoking
-`hf download`. It never prints token material.
+`hf download`. Without --yes it is a dry-run planner. It never prints token material.
 """
 
 from __future__ import annotations
@@ -214,7 +214,7 @@ def build_download_command(plan: ModelPlan, revision: str | None) -> list[str]:
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("model_id", help="Hugging Face model ID, for example Qwen/Qwen2.5-0.5B-Instruct.")
+    parser.add_argument("model_id", nargs="?", help="Hugging Face model ID, for example Qwen/Qwen2.5-0.5B-Instruct.")
     parser.add_argument("--base-dir", default=str(DEFAULT_BASE_DIR), help=f"Base model directory. Default: {DEFAULT_BASE_DIR}")
     parser.add_argument("--local-dir", help="Exact target directory. Overrides --base-dir.")
     parser.add_argument("--revision", help="Optional branch, tag, or commit revision.")
@@ -222,11 +222,18 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--timeout", type=int, default=3600)
     parser.add_argument("--yes", action="store_true", help="Actually download. Without this flag the helper only prints a plan.")
     parser.add_argument("--force", action="store_true", help="Allow downloading into an existing non-empty target directory.")
+    parser.add_argument("--self-test", action="store_true", help="Run deterministic path planning self-test.")
     return parser
 
 
 def main() -> int:
     args = build_parser().parse_args()
+    if args.self_test:
+        assert safe_model_dir_name("Qwen/Qwen2.5-0.5B-Instruct") == "Qwen__Qwen2.5-0.5B-Instruct"
+        print("PASS: Hugging Face download self-test passed.")
+        return 0
+    if not args.model_id:
+        raise SystemExit("model_id is required unless --self-test is used")
     token = discover_token()
     target_dir = resolve_target_dir(args.model_id, Path(args.base_dir).expanduser(), args.local_dir)
 

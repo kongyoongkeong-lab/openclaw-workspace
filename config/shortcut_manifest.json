@@ -1,0 +1,1109 @@
+{
+  "schema": "openclaw.shortcut_manifest.v1",
+  "source": "/mnt/d/_outbox/temp/shortcut-governance-phase-1/shortcuts.md",
+  "generated_at": "2026-06-16T21:48:23+08:00",
+  "risk_policy": [
+    "read_only",
+    "low_write",
+    "side_effecting",
+    "confirmation_required",
+    "live_external",
+    "dangerous"
+  ],
+  "approval_classes": [
+    "none",
+    "confirm_once",
+    "confirm_each_run",
+    "confirm_with_expiry",
+    "operator_only"
+  ],
+  "summary": {
+    "generated_at": "2026-06-16T21:48:23+08:00",
+    "total": 30,
+    "by_status": {
+      "已接入": 29,
+      "待确认": 1
+    },
+    "missing_path_count": 1,
+    "rows_with_missing_paths": 1,
+    "rows_with_warnings": 0,
+    "deep": {
+      "enabled": true,
+      "safety_classes": {
+        "read_only": 8,
+        "callable": 10,
+        "confirmation_required": 8,
+        "side_effecting": 3,
+        "not_connected": 1
+      },
+      "rows_with_scripts": 21,
+      "rows_with_help_hint": 18,
+      "rows_with_self_test_hint": 3,
+      "rows_with_dry_run_hint": 6
+    },
+    "governance": {
+      "risk_classes": {
+        "read_only": 8,
+        "side_effecting": 9,
+        "low_write": 3,
+        "confirmation_required": 9,
+        "live_external": 1
+      },
+      "groups": {
+        "system": 9,
+        "github": 2,
+        "backup": 3,
+        "news": 2,
+        "model": 12,
+        "photo": 2
+      },
+      "needs_confirm": 9,
+      "alias_collision_count": 0,
+      "alias_collisions": [],
+      "quarantined": 0
+    }
+  },
+  "shortcuts": [
+    {
+      "id": "shortcut_001",
+      "name": "指令列表",
+      "aliases": [],
+      "group": "system",
+      "script": null,
+      "args_template": "读取 `shortcuts.md`",
+      "risk": "read_only",
+      "needs_confirm": false,
+      "approval_class": "none",
+      "pending_action_reason": null,
+      "dry_run_command": null,
+      "self_test_command": null,
+      "help_command": null,
+      "output_paths": [],
+      "owner": "@main",
+      "status": "已接入",
+      "last_checked": "2026-06-16T21:48:23+08:00",
+      "quarantined": false,
+      "recent_failures": 0,
+      "capabilities": {
+        "safety_class": "read_only",
+        "referenced_script_count": 0,
+        "referenced_scripts": [],
+        "inspected_scripts": [],
+        "has_help_hint": false,
+        "has_self_test_hint": false,
+        "has_dry_run_hint": false
+      }
+    },
+    {
+      "id": "shortcut_002",
+      "name": "指令体检",
+      "aliases": [
+        "快捷体检",
+        "Shortcut体检",
+        "shortcut audit"
+      ],
+      "group": "system",
+      "script": "/mnt/d/_outbox/temp/shortcut-governance-phase-1/tools/shortcut_doctor.py",
+      "args_template": "`python3 tools/shortcut_doctor.py audit --deep`，报告写入 `D:\\_outbox\\reports\\shortcut_doctor\\`",
+      "risk": "read_only",
+      "needs_confirm": false,
+      "approval_class": "none",
+      "pending_action_reason": null,
+      "dry_run_command": null,
+      "self_test_command": null,
+      "help_command": "python3 /mnt/d/_outbox/temp/shortcut-governance-phase-1/tools/shortcut_doctor.py --help",
+      "output_paths": [
+        "D:\\_outbox\\reports\\shortcut_doctor"
+      ],
+      "owner": "@main",
+      "status": "已接入",
+      "last_checked": "2026-06-16T21:48:23+08:00",
+      "quarantined": false,
+      "recent_failures": 0,
+      "capabilities": {
+        "safety_class": "read_only",
+        "referenced_script_count": 1,
+        "referenced_scripts": [
+          "/mnt/d/_outbox/temp/shortcut-governance-phase-1/tools/shortcut_doctor.py"
+        ],
+        "inspected_scripts": [
+          "/mnt/d/_outbox/temp/shortcut-governance-phase-1/tools/shortcut_doctor.py"
+        ],
+        "has_help_hint": true,
+        "has_self_test_hint": true,
+        "has_dry_run_hint": true
+      }
+    },
+    {
+      "id": "shortcut_003",
+      "name": "快捷状态",
+      "aliases": [
+        "shortcut_status",
+        "/shortcut_status"
+      ],
+      "group": "github",
+      "script": "/mnt/d/_outbox/temp/shortcut-governance-phase-1/tools/shortcut_status.py",
+      "args_template": "`python3 tools/shortcut_status.py status [group]`；结构化 manifest 由 `python3 tools/shortcut_doctor.py manifest --write config/shortcut_manifest.json` 生成；usage log 写入 `data/shortcut_usage/shortcut_usage.jsonl`",
+      "risk": "read_only",
+      "needs_confirm": false,
+      "approval_class": "none",
+      "pending_action_reason": null,
+      "dry_run_command": null,
+      "self_test_command": null,
+      "help_command": "python3 /mnt/d/_outbox/temp/shortcut-governance-phase-1/tools/shortcut_status.py --help",
+      "output_paths": [],
+      "owner": "@main",
+      "status": "已接入",
+      "last_checked": "2026-06-16T21:48:23+08:00",
+      "quarantined": false,
+      "recent_failures": 0,
+      "capabilities": {
+        "safety_class": "read_only",
+        "referenced_script_count": 2,
+        "referenced_scripts": [
+          "/mnt/d/_outbox/temp/shortcut-governance-phase-1/tools/shortcut_status.py",
+          "/mnt/d/_outbox/temp/shortcut-governance-phase-1/tools/shortcut_doctor.py"
+        ],
+        "inspected_scripts": [
+          "/mnt/d/_outbox/temp/shortcut-governance-phase-1/tools/shortcut_status.py",
+          "/mnt/d/_outbox/temp/shortcut-governance-phase-1/tools/shortcut_doctor.py"
+        ],
+        "has_help_hint": true,
+        "has_self_test_hint": true,
+        "has_dry_run_hint": true
+      }
+    },
+    {
+      "id": "shortcut_004",
+      "name": "今日新闻",
+      "aliases": [
+        "每日新闻",
+        "daily news"
+      ],
+      "group": "backup",
+      "script": null,
+      "args_template": "执行 `daily_news.md` workflow spec，归档到 `news/YYYY-MM-DD_daily_news.md`",
+      "risk": "side_effecting",
+      "needs_confirm": false,
+      "approval_class": "none",
+      "pending_action_reason": null,
+      "dry_run_command": null,
+      "self_test_command": null,
+      "help_command": null,
+      "output_paths": [],
+      "owner": "@main",
+      "status": "已接入",
+      "last_checked": "2026-06-16T21:48:23+08:00",
+      "quarantined": false,
+      "recent_failures": 0,
+      "capabilities": {
+        "safety_class": "callable",
+        "referenced_script_count": 0,
+        "referenced_scripts": [],
+        "inspected_scripts": [],
+        "has_help_hint": false,
+        "has_self_test_hint": false,
+        "has_dry_run_hint": false
+      }
+    },
+    {
+      "id": "shortcut_005",
+      "name": "刷新新闻",
+      "aliases": [
+        "重新抓取",
+        "重新生成今日新闻",
+        "deep search",
+        "深度搜索"
+      ],
+      "group": "news",
+      "script": null,
+      "args_template": "`daily_news.md` / `daily_ai.md` workflow 的刷新模式",
+      "risk": "low_write",
+      "needs_confirm": false,
+      "approval_class": "none",
+      "pending_action_reason": null,
+      "dry_run_command": null,
+      "self_test_command": null,
+      "help_command": null,
+      "output_paths": [],
+      "owner": "@main",
+      "status": "已接入",
+      "last_checked": "2026-06-16T21:48:23+08:00",
+      "quarantined": false,
+      "recent_failures": 0,
+      "capabilities": {
+        "safety_class": "callable",
+        "referenced_script_count": 0,
+        "referenced_scripts": [],
+        "inspected_scripts": [],
+        "has_help_hint": false,
+        "has_self_test_hint": false,
+        "has_dry_run_hint": false
+      }
+    },
+    {
+      "id": "shortcut_006",
+      "name": "今日AI",
+      "aliases": [
+        "今日 AI",
+        "AI日报",
+        "最新AI动态"
+      ],
+      "group": "backup",
+      "script": null,
+      "args_template": "执行 `daily_ai.md` workflow spec，归档到 `news/ai/YYYY-MM-DD_daily_ai.md`",
+      "risk": "side_effecting",
+      "needs_confirm": false,
+      "approval_class": "none",
+      "pending_action_reason": null,
+      "dry_run_command": null,
+      "self_test_command": null,
+      "help_command": null,
+      "output_paths": [],
+      "owner": "@main",
+      "status": "已接入",
+      "last_checked": "2026-06-16T21:48:23+08:00",
+      "quarantined": false,
+      "recent_failures": 0,
+      "capabilities": {
+        "safety_class": "callable",
+        "referenced_script_count": 0,
+        "referenced_scripts": [],
+        "inspected_scripts": [],
+        "has_help_hint": false,
+        "has_self_test_hint": false,
+        "has_dry_run_hint": false
+      }
+    },
+    {
+      "id": "shortcut_007",
+      "name": "额度查询",
+      "aliases": [],
+      "group": "model",
+      "script": "/mnt/d/_outbox/temp/shortcut-governance-phase-1/tools/quota_query.py",
+      "args_template": "`python3 tools/quota_query.py`",
+      "risk": "side_effecting",
+      "needs_confirm": false,
+      "approval_class": "none",
+      "pending_action_reason": null,
+      "dry_run_command": null,
+      "self_test_command": null,
+      "help_command": "python3 /mnt/d/_outbox/temp/shortcut-governance-phase-1/tools/quota_query.py --help",
+      "output_paths": [],
+      "owner": "@main",
+      "status": "已接入",
+      "last_checked": "2026-06-16T21:48:23+08:00",
+      "quarantined": false,
+      "recent_failures": 0,
+      "capabilities": {
+        "safety_class": "callable",
+        "referenced_script_count": 1,
+        "referenced_scripts": [
+          "/mnt/d/_outbox/temp/shortcut-governance-phase-1/tools/quota_query.py"
+        ],
+        "inspected_scripts": [
+          "/mnt/d/_outbox/temp/shortcut-governance-phase-1/tools/quota_query.py"
+        ],
+        "has_help_hint": true,
+        "has_self_test_hint": false,
+        "has_dry_run_hint": false
+      }
+    },
+    {
+      "id": "shortcut_008",
+      "name": "额度切换",
+      "aliases": [
+        "Codex切换",
+        "账号切换"
+      ],
+      "group": "model",
+      "script": "/mnt/d/_outbox/temp/shortcut-governance-phase-1/tools/codex_quota_preflight.py",
+      "args_template": "`python3 tools/codex_quota_preflight.py`",
+      "risk": "confirmation_required",
+      "needs_confirm": true,
+      "approval_class": "confirm_each_run",
+      "pending_action_reason": "profile_switch",
+      "dry_run_command": null,
+      "self_test_command": null,
+      "help_command": "python3 /mnt/d/_outbox/temp/shortcut-governance-phase-1/tools/codex_quota_preflight.py --help",
+      "output_paths": [],
+      "owner": "@main",
+      "status": "已接入",
+      "last_checked": "2026-06-16T21:48:23+08:00",
+      "quarantined": false,
+      "recent_failures": 0,
+      "capabilities": {
+        "safety_class": "confirmation_required",
+        "referenced_script_count": 1,
+        "referenced_scripts": [
+          "/mnt/d/_outbox/temp/shortcut-governance-phase-1/tools/codex_quota_preflight.py"
+        ],
+        "inspected_scripts": [
+          "/mnt/d/_outbox/temp/shortcut-governance-phase-1/tools/codex_quota_preflight.py"
+        ],
+        "has_help_hint": true,
+        "has_self_test_hint": false,
+        "has_dry_run_hint": true
+      }
+    },
+    {
+      "id": "shortcut_009",
+      "name": "塔维切换",
+      "aliases": [
+        "Tavily切换",
+        "搜索切换",
+        "塔维账号"
+      ],
+      "group": "news",
+      "script": "/mnt/d/_outbox/temp/shortcut-governance-phase-1/tools/tavily_key_preflight.py",
+      "args_template": "`python3 tools/tavily_key_preflight.py --check-all`",
+      "risk": "side_effecting",
+      "needs_confirm": false,
+      "approval_class": "none",
+      "pending_action_reason": null,
+      "dry_run_command": null,
+      "self_test_command": null,
+      "help_command": "python3 /mnt/d/_outbox/temp/shortcut-governance-phase-1/tools/tavily_key_preflight.py --help",
+      "output_paths": [],
+      "owner": "@main",
+      "status": "已接入",
+      "last_checked": "2026-06-16T21:48:23+08:00",
+      "quarantined": false,
+      "recent_failures": 0,
+      "capabilities": {
+        "safety_class": "callable",
+        "referenced_script_count": 1,
+        "referenced_scripts": [
+          "/mnt/d/_outbox/temp/shortcut-governance-phase-1/tools/tavily_key_preflight.py"
+        ],
+        "inspected_scripts": [
+          "/mnt/d/_outbox/temp/shortcut-governance-phase-1/tools/tavily_key_preflight.py"
+        ],
+        "has_help_hint": true,
+        "has_self_test_hint": false,
+        "has_dry_run_hint": true
+      }
+    },
+    {
+      "id": "shortcut_010",
+      "name": "HF状态",
+      "aliases": [
+        "Hugging Face",
+        "模型仓库"
+      ],
+      "group": "model",
+      "script": "/mnt/d/_outbox/temp/shortcut-governance-phase-1/tools/huggingface_preflight.py",
+      "args_template": "`python3 tools/huggingface_preflight.py --list-only`；需要账号验证时使用 `--whoami`",
+      "risk": "side_effecting",
+      "needs_confirm": false,
+      "approval_class": "none",
+      "pending_action_reason": null,
+      "dry_run_command": null,
+      "self_test_command": null,
+      "help_command": "python3 /mnt/d/_outbox/temp/shortcut-governance-phase-1/tools/huggingface_preflight.py --help",
+      "output_paths": [],
+      "owner": "@main",
+      "status": "已接入",
+      "last_checked": "2026-06-16T21:48:23+08:00",
+      "quarantined": false,
+      "recent_failures": 0,
+      "capabilities": {
+        "safety_class": "callable",
+        "referenced_script_count": 1,
+        "referenced_scripts": [
+          "/mnt/d/_outbox/temp/shortcut-governance-phase-1/tools/huggingface_preflight.py"
+        ],
+        "inspected_scripts": [
+          "/mnt/d/_outbox/temp/shortcut-governance-phase-1/tools/huggingface_preflight.py"
+        ],
+        "has_help_hint": true,
+        "has_self_test_hint": false,
+        "has_dry_run_hint": true
+      }
+    },
+    {
+      "id": "shortcut_011",
+      "name": "模型下载",
+      "aliases": [
+        "HF下载",
+        "下载模型"
+      ],
+      "group": "model",
+      "script": "/mnt/d/_outbox/temp/shortcut-governance-phase-1/tools/huggingface_download.py",
+      "args_template": "先运行 `python3 tools/huggingface_download.py <org/model-id>`；实际下载需加 `--yes`",
+      "risk": "side_effecting",
+      "needs_confirm": false,
+      "approval_class": "none",
+      "pending_action_reason": null,
+      "dry_run_command": null,
+      "self_test_command": null,
+      "help_command": "python3 /mnt/d/_outbox/temp/shortcut-governance-phase-1/tools/huggingface_download.py --help",
+      "output_paths": [],
+      "owner": "@main",
+      "status": "已接入",
+      "last_checked": "2026-06-16T21:48:23+08:00",
+      "quarantined": false,
+      "recent_failures": 0,
+      "capabilities": {
+        "safety_class": "side_effecting",
+        "referenced_script_count": 1,
+        "referenced_scripts": [
+          "/mnt/d/_outbox/temp/shortcut-governance-phase-1/tools/huggingface_download.py"
+        ],
+        "inspected_scripts": [
+          "/mnt/d/_outbox/temp/shortcut-governance-phase-1/tools/huggingface_download.py"
+        ],
+        "has_help_hint": true,
+        "has_self_test_hint": false,
+        "has_dry_run_hint": false
+      }
+    },
+    {
+      "id": "shortcut_012",
+      "name": "当前模式",
+      "aliases": [],
+      "group": "system",
+      "script": "/mnt/d/_outbox/temp/shortcut-governance-phase-1/tools/protocol_mode_state.py",
+      "args_template": "`python3 tools/protocol_mode_state.py get`",
+      "risk": "read_only",
+      "needs_confirm": false,
+      "approval_class": "none",
+      "pending_action_reason": null,
+      "dry_run_command": null,
+      "self_test_command": null,
+      "help_command": "python3 /mnt/d/_outbox/temp/shortcut-governance-phase-1/tools/protocol_mode_state.py --help",
+      "output_paths": [],
+      "owner": "@main",
+      "status": "已接入",
+      "last_checked": "2026-06-16T21:48:23+08:00",
+      "quarantined": false,
+      "recent_failures": 0,
+      "capabilities": {
+        "safety_class": "read_only",
+        "referenced_script_count": 1,
+        "referenced_scripts": [
+          "/mnt/d/_outbox/temp/shortcut-governance-phase-1/tools/protocol_mode_state.py"
+        ],
+        "inspected_scripts": [
+          "/mnt/d/_outbox/temp/shortcut-governance-phase-1/tools/protocol_mode_state.py"
+        ],
+        "has_help_hint": true,
+        "has_self_test_hint": false,
+        "has_dry_run_hint": false
+      }
+    },
+    {
+      "id": "shortcut_013",
+      "name": "架构模式",
+      "aliases": [],
+      "group": "system",
+      "script": "/mnt/d/_outbox/temp/shortcut-governance-phase-1/tools/protocol_mode_state.py",
+      "args_template": "`python3 tools/protocol_mode_state.py set architect_mode --source shortcut`",
+      "risk": "side_effecting",
+      "needs_confirm": false,
+      "approval_class": "none",
+      "pending_action_reason": null,
+      "dry_run_command": null,
+      "self_test_command": null,
+      "help_command": "python3 /mnt/d/_outbox/temp/shortcut-governance-phase-1/tools/protocol_mode_state.py --help",
+      "output_paths": [],
+      "owner": "@main",
+      "status": "已接入",
+      "last_checked": "2026-06-16T21:48:23+08:00",
+      "quarantined": false,
+      "recent_failures": 0,
+      "capabilities": {
+        "safety_class": "side_effecting",
+        "referenced_script_count": 1,
+        "referenced_scripts": [
+          "/mnt/d/_outbox/temp/shortcut-governance-phase-1/tools/protocol_mode_state.py"
+        ],
+        "inspected_scripts": [
+          "/mnt/d/_outbox/temp/shortcut-governance-phase-1/tools/protocol_mode_state.py"
+        ],
+        "has_help_hint": true,
+        "has_self_test_hint": false,
+        "has_dry_run_hint": false
+      }
+    },
+    {
+      "id": "shortcut_014",
+      "name": "稳定模式",
+      "aliases": [],
+      "group": "system",
+      "script": "/mnt/d/_outbox/temp/shortcut-governance-phase-1/tools/protocol_mode_state.py",
+      "args_template": "`python3 tools/protocol_mode_state.py set stable --source shortcut`",
+      "risk": "side_effecting",
+      "needs_confirm": false,
+      "approval_class": "none",
+      "pending_action_reason": null,
+      "dry_run_command": null,
+      "self_test_command": null,
+      "help_command": "python3 /mnt/d/_outbox/temp/shortcut-governance-phase-1/tools/protocol_mode_state.py --help",
+      "output_paths": [],
+      "owner": "@main",
+      "status": "已接入",
+      "last_checked": "2026-06-16T21:48:23+08:00",
+      "quarantined": false,
+      "recent_failures": 0,
+      "capabilities": {
+        "safety_class": "side_effecting",
+        "referenced_script_count": 1,
+        "referenced_scripts": [
+          "/mnt/d/_outbox/temp/shortcut-governance-phase-1/tools/protocol_mode_state.py"
+        ],
+        "inspected_scripts": [
+          "/mnt/d/_outbox/temp/shortcut-governance-phase-1/tools/protocol_mode_state.py"
+        ],
+        "has_help_hint": true,
+        "has_self_test_hint": false,
+        "has_dry_run_hint": false
+      }
+    },
+    {
+      "id": "shortcut_015",
+      "name": "API模型",
+      "aliases": [],
+      "group": "model",
+      "script": "/mnt/d/_outbox/temp/shortcut-governance-phase-1/tools/model_mode_state.py",
+      "args_template": "`python3 tools/model_mode_state.py set api --source shortcut`",
+      "risk": "confirmation_required",
+      "needs_confirm": true,
+      "approval_class": "confirm_each_run",
+      "pending_action_reason": "model_default_change",
+      "dry_run_command": null,
+      "self_test_command": null,
+      "help_command": "python3 /mnt/d/_outbox/temp/shortcut-governance-phase-1/tools/model_mode_state.py --help",
+      "output_paths": [],
+      "owner": "@main",
+      "status": "已接入",
+      "last_checked": "2026-06-16T21:48:23+08:00",
+      "quarantined": false,
+      "recent_failures": 0,
+      "capabilities": {
+        "safety_class": "confirmation_required",
+        "referenced_script_count": 1,
+        "referenced_scripts": [
+          "/mnt/d/_outbox/temp/shortcut-governance-phase-1/tools/model_mode_state.py"
+        ],
+        "inspected_scripts": [
+          "/mnt/d/_outbox/temp/shortcut-governance-phase-1/tools/model_mode_state.py"
+        ],
+        "has_help_hint": true,
+        "has_self_test_hint": false,
+        "has_dry_run_hint": false
+      }
+    },
+    {
+      "id": "shortcut_016",
+      "name": "本地模型",
+      "aliases": [],
+      "group": "model",
+      "script": "/mnt/d/_outbox/temp/shortcut-governance-phase-1/tools/model_mode_state.py",
+      "args_template": "`python3 tools/model_mode_state.py set local --source shortcut`",
+      "risk": "confirmation_required",
+      "needs_confirm": true,
+      "approval_class": "confirm_each_run",
+      "pending_action_reason": "model_default_change",
+      "dry_run_command": null,
+      "self_test_command": null,
+      "help_command": "python3 /mnt/d/_outbox/temp/shortcut-governance-phase-1/tools/model_mode_state.py --help",
+      "output_paths": [],
+      "owner": "@main",
+      "status": "已接入",
+      "last_checked": "2026-06-16T21:48:23+08:00",
+      "quarantined": false,
+      "recent_failures": 0,
+      "capabilities": {
+        "safety_class": "confirmation_required",
+        "referenced_script_count": 1,
+        "referenced_scripts": [
+          "/mnt/d/_outbox/temp/shortcut-governance-phase-1/tools/model_mode_state.py"
+        ],
+        "inspected_scripts": [
+          "/mnt/d/_outbox/temp/shortcut-governance-phase-1/tools/model_mode_state.py"
+        ],
+        "has_help_hint": true,
+        "has_self_test_hint": false,
+        "has_dry_run_hint": false
+      }
+    },
+    {
+      "id": "shortcut_017",
+      "name": "混合模型",
+      "aliases": [],
+      "group": "model",
+      "script": "/mnt/d/_outbox/temp/shortcut-governance-phase-1/tools/model_mode_state.py",
+      "args_template": "`python3 tools/model_mode_state.py set hybrid --source shortcut`",
+      "risk": "confirmation_required",
+      "needs_confirm": true,
+      "approval_class": "confirm_each_run",
+      "pending_action_reason": "model_default_change",
+      "dry_run_command": null,
+      "self_test_command": null,
+      "help_command": "python3 /mnt/d/_outbox/temp/shortcut-governance-phase-1/tools/model_mode_state.py --help",
+      "output_paths": [],
+      "owner": "@main",
+      "status": "已接入",
+      "last_checked": "2026-06-16T21:48:23+08:00",
+      "quarantined": false,
+      "recent_failures": 0,
+      "capabilities": {
+        "safety_class": "confirmation_required",
+        "referenced_script_count": 1,
+        "referenced_scripts": [
+          "/mnt/d/_outbox/temp/shortcut-governance-phase-1/tools/model_mode_state.py"
+        ],
+        "inspected_scripts": [
+          "/mnt/d/_outbox/temp/shortcut-governance-phase-1/tools/model_mode_state.py"
+        ],
+        "has_help_hint": true,
+        "has_self_test_hint": false,
+        "has_dry_run_hint": false
+      }
+    },
+    {
+      "id": "shortcut_018",
+      "name": "当前模型",
+      "aliases": [],
+      "group": "model",
+      "script": "/mnt/d/_outbox/temp/shortcut-governance-phase-1/tools/model_runtime_status.py",
+      "args_template": "`session_status` + `tools/model_runtime_status.py`",
+      "risk": "side_effecting",
+      "needs_confirm": false,
+      "approval_class": "none",
+      "pending_action_reason": null,
+      "dry_run_command": null,
+      "self_test_command": null,
+      "help_command": "python3 /mnt/d/_outbox/temp/shortcut-governance-phase-1/tools/model_runtime_status.py --help",
+      "output_paths": [],
+      "owner": "@main",
+      "status": "已接入",
+      "last_checked": "2026-06-16T21:48:23+08:00",
+      "quarantined": false,
+      "recent_failures": 0,
+      "capabilities": {
+        "safety_class": "callable",
+        "referenced_script_count": 1,
+        "referenced_scripts": [
+          "/mnt/d/_outbox/temp/shortcut-governance-phase-1/tools/model_runtime_status.py"
+        ],
+        "inspected_scripts": [
+          "/mnt/d/_outbox/temp/shortcut-governance-phase-1/tools/model_runtime_status.py"
+        ],
+        "has_help_hint": false,
+        "has_self_test_hint": false,
+        "has_dry_run_hint": false
+      }
+    },
+    {
+      "id": "shortcut_019",
+      "name": "模型策略",
+      "aliases": [],
+      "group": "model",
+      "script": null,
+      "args_template": "总结 `docs/model_runtime_strategy.md`",
+      "risk": "read_only",
+      "needs_confirm": false,
+      "approval_class": "none",
+      "pending_action_reason": null,
+      "dry_run_command": null,
+      "self_test_command": null,
+      "help_command": null,
+      "output_paths": [],
+      "owner": "@main",
+      "status": "已接入",
+      "last_checked": "2026-06-16T21:48:23+08:00",
+      "quarantined": false,
+      "recent_failures": 0,
+      "capabilities": {
+        "safety_class": "read_only",
+        "referenced_script_count": 0,
+        "referenced_scripts": [],
+        "inspected_scripts": [],
+        "has_help_hint": false,
+        "has_self_test_hint": false,
+        "has_dry_run_hint": false
+      }
+    },
+    {
+      "id": "shortcut_020",
+      "name": "上下文预算",
+      "aliases": [
+        "Context预算"
+      ],
+      "group": "model",
+      "script": "/mnt/d/_outbox/temp/shortcut-governance-phase-1/tools/api_context_budget.py",
+      "args_template": "`python3 tools/api_context_budget.py`；当前 session 用 `--current-session`",
+      "risk": "read_only",
+      "needs_confirm": false,
+      "approval_class": "none",
+      "pending_action_reason": null,
+      "dry_run_command": null,
+      "self_test_command": null,
+      "help_command": "python3 /mnt/d/_outbox/temp/shortcut-governance-phase-1/tools/api_context_budget.py --help",
+      "output_paths": [],
+      "owner": "@main",
+      "status": "已接入",
+      "last_checked": "2026-06-16T21:48:23+08:00",
+      "quarantined": false,
+      "recent_failures": 0,
+      "capabilities": {
+        "safety_class": "read_only",
+        "referenced_script_count": 1,
+        "referenced_scripts": [
+          "/mnt/d/_outbox/temp/shortcut-governance-phase-1/tools/api_context_budget.py"
+        ],
+        "inspected_scripts": [
+          "/mnt/d/_outbox/temp/shortcut-governance-phase-1/tools/api_context_budget.py"
+        ],
+        "has_help_hint": true,
+        "has_self_test_hint": false,
+        "has_dry_run_hint": false
+      }
+    },
+    {
+      "id": "shortcut_021",
+      "name": "路由决策",
+      "aliases": [],
+      "group": "model",
+      "script": "/mnt/d/_outbox/temp/shortcut-governance-phase-1/tools/model_route_decision.py",
+      "args_template": "`python3 tools/model_route_decision.py --task-type <type>`",
+      "risk": "low_write",
+      "needs_confirm": false,
+      "approval_class": "none",
+      "pending_action_reason": null,
+      "dry_run_command": null,
+      "self_test_command": null,
+      "help_command": "python3 /mnt/d/_outbox/temp/shortcut-governance-phase-1/tools/model_route_decision.py --help",
+      "output_paths": [],
+      "owner": "@main",
+      "status": "已接入",
+      "last_checked": "2026-06-16T21:48:23+08:00",
+      "quarantined": false,
+      "recent_failures": 0,
+      "capabilities": {
+        "safety_class": "callable",
+        "referenced_script_count": 1,
+        "referenced_scripts": [
+          "/mnt/d/_outbox/temp/shortcut-governance-phase-1/tools/model_route_decision.py"
+        ],
+        "inspected_scripts": [
+          "/mnt/d/_outbox/temp/shortcut-governance-phase-1/tools/model_route_decision.py"
+        ],
+        "has_help_hint": true,
+        "has_self_test_hint": false,
+        "has_dry_run_hint": false
+      }
+    },
+    {
+      "id": "shortcut_022",
+      "name": "服务检查",
+      "aliases": [
+        "系统检查"
+      ],
+      "group": "photo",
+      "script": "/mnt/d/_outbox/temp/shortcut-governance-phase-1/tools/system_health_check.py",
+      "args_template": "`python3 tools/system_health_check.py`；详细输出用 `--details`；机器输出用 `--json`",
+      "risk": "read_only",
+      "needs_confirm": false,
+      "approval_class": "none",
+      "pending_action_reason": null,
+      "dry_run_command": null,
+      "self_test_command": null,
+      "help_command": "python3 /mnt/d/_outbox/temp/shortcut-governance-phase-1/tools/system_health_check.py --help",
+      "output_paths": [],
+      "owner": "@main",
+      "status": "已接入",
+      "last_checked": "2026-06-16T21:48:23+08:00",
+      "quarantined": false,
+      "recent_failures": 0,
+      "capabilities": {
+        "safety_class": "read_only",
+        "referenced_script_count": 1,
+        "referenced_scripts": [
+          "/mnt/d/_outbox/temp/shortcut-governance-phase-1/tools/system_health_check.py"
+        ],
+        "inspected_scripts": [
+          "/mnt/d/_outbox/temp/shortcut-governance-phase-1/tools/system_health_check.py"
+        ],
+        "has_help_hint": true,
+        "has_self_test_hint": false,
+        "has_dry_run_hint": true
+      }
+    },
+    {
+      "id": "shortcut_023",
+      "name": "GitHub状态",
+      "aliases": [
+        "仓库状态"
+      ],
+      "group": "github",
+      "script": null,
+      "args_template": "`git status`, `git fetch origin --prune`, `gh repo view`",
+      "risk": "confirmation_required",
+      "needs_confirm": true,
+      "approval_class": "confirm_each_run",
+      "pending_action_reason": "browser_live_generation",
+      "dry_run_command": null,
+      "self_test_command": null,
+      "help_command": null,
+      "output_paths": [],
+      "owner": "@main",
+      "status": "已接入",
+      "last_checked": "2026-06-16T21:48:23+08:00",
+      "quarantined": false,
+      "recent_failures": 0,
+      "capabilities": {
+        "safety_class": "confirmation_required",
+        "referenced_script_count": 0,
+        "referenced_scripts": [],
+        "inspected_scripts": [],
+        "has_help_hint": false,
+        "has_self_test_hint": false,
+        "has_dry_run_hint": false
+      }
+    },
+    {
+      "id": "shortcut_024",
+      "name": "重启网关",
+      "aliases": [],
+      "group": "system",
+      "script": "/mnt/d/_outbox/temp/shortcut-governance-phase-1/tools/pending_action.py",
+      "args_template": "先运行 `python3 tools/pending_action.py ask --id gateway-restart --title \"Restart OpenClaw Gateway\" --summary \"Restart OpenClaw gateway; active sessions may disconnect briefly.\" --risk medium --source telegram-prompt`；确认后才执行 `openclaw gateway restart`",
+      "risk": "confirmation_required",
+      "needs_confirm": true,
+      "approval_class": "confirm_each_run",
+      "pending_action_reason": "gateway_restart",
+      "dry_run_command": null,
+      "self_test_command": null,
+      "help_command": "python3 /mnt/d/_outbox/temp/shortcut-governance-phase-1/tools/pending_action.py --help",
+      "output_paths": [],
+      "owner": "@main",
+      "status": "已接入",
+      "last_checked": "2026-06-16T21:48:23+08:00",
+      "quarantined": false,
+      "recent_failures": 0,
+      "capabilities": {
+        "safety_class": "confirmation_required",
+        "referenced_script_count": 1,
+        "referenced_scripts": [
+          "/mnt/d/_outbox/temp/shortcut-governance-phase-1/tools/pending_action.py"
+        ],
+        "inspected_scripts": [
+          "/mnt/d/_outbox/temp/shortcut-governance-phase-1/tools/pending_action.py"
+        ],
+        "has_help_hint": true,
+        "has_self_test_hint": true,
+        "has_dry_run_hint": false
+      }
+    },
+    {
+      "id": "shortcut_025",
+      "name": "自动协议",
+      "aliases": [
+        "automation-protocol"
+      ],
+      "group": "model",
+      "script": "/mnt/d/_outbox/temp/shortcut-governance-phase-1/skills/automation-protocol/scripts/automation_file_probe.py",
+      "args_template": "`skills/automation-protocol/SKILL.md`；文件探测 `python3 skills/automation-protocol/scripts/automation_file_probe.py`",
+      "risk": "live_external",
+      "needs_confirm": false,
+      "approval_class": "none",
+      "pending_action_reason": null,
+      "dry_run_command": null,
+      "self_test_command": null,
+      "help_command": "python3 /mnt/d/_outbox/temp/shortcut-governance-phase-1/skills/automation-protocol/scripts/automation_file_probe.py --help",
+      "output_paths": [],
+      "owner": "@main",
+      "status": "已接入",
+      "last_checked": "2026-06-16T21:48:23+08:00",
+      "quarantined": false,
+      "recent_failures": 0,
+      "capabilities": {
+        "safety_class": "callable",
+        "referenced_script_count": 1,
+        "referenced_scripts": [
+          "/mnt/d/_outbox/temp/shortcut-governance-phase-1/skills/automation-protocol/scripts/automation_file_probe.py"
+        ],
+        "inspected_scripts": [
+          "/mnt/d/_outbox/temp/shortcut-governance-phase-1/skills/automation-protocol/scripts/automation_file_probe.py"
+        ],
+        "has_help_hint": true,
+        "has_self_test_hint": false,
+        "has_dry_run_hint": false
+      }
+    },
+    {
+      "id": "shortcut_026",
+      "name": "PDF转PPT",
+      "aliases": [
+        "PDF转PPTX",
+        "pdf2pptx"
+      ],
+      "group": "system",
+      "script": "/mnt/c/Users/jason/OpenClaw/tools/pdf2pptx_convert.mjs",
+      "args_template": "优先按 `automation-protocol` 使用 iLovePDF CDP 流程；已验证脚本 `/mnt/c/Users/jason/OpenClaw/tools/pdf2pptx_convert.mjs`；输出验证用 `automation_file_probe.py verify`",
+      "risk": "confirmation_required",
+      "needs_confirm": true,
+      "approval_class": "confirm_each_run",
+      "pending_action_reason": "browser_live_generation",
+      "dry_run_command": null,
+      "self_test_command": null,
+      "help_command": null,
+      "output_paths": [
+        "/mnt/c/Users/jason/OpenClaw/tools/pdf2pptx_convert.mjs"
+      ],
+      "owner": "@main",
+      "status": "已接入",
+      "last_checked": "2026-06-16T21:48:23+08:00",
+      "quarantined": false,
+      "recent_failures": 0,
+      "capabilities": {
+        "safety_class": "confirmation_required",
+        "referenced_script_count": 1,
+        "referenced_scripts": [
+          "/mnt/c/Users/jason/OpenClaw/tools/pdf2pptx_convert.mjs"
+        ],
+        "inspected_scripts": [
+          "/mnt/c/Users/jason/OpenClaw/tools/pdf2pptx_convert.mjs"
+        ],
+        "has_help_hint": false,
+        "has_self_test_hint": false,
+        "has_dry_run_hint": false
+      }
+    },
+    {
+      "id": "shortcut_027",
+      "name": "检查浏览器",
+      "aliases": [
+        "Chrome检查",
+        "浏览器检查"
+      ],
+      "group": "system",
+      "script": null,
+      "args_template": "`automation-protocol` + Playwright CDP tab probe",
+      "risk": "read_only",
+      "needs_confirm": false,
+      "approval_class": "none",
+      "pending_action_reason": null,
+      "dry_run_command": null,
+      "self_test_command": null,
+      "help_command": null,
+      "output_paths": [],
+      "owner": "@main",
+      "status": "已接入",
+      "last_checked": "2026-06-16T21:48:23+08:00",
+      "quarantined": false,
+      "recent_failures": 0,
+      "capabilities": {
+        "safety_class": "read_only",
+        "referenced_script_count": 0,
+        "referenced_scripts": [],
+        "inspected_scripts": [],
+        "has_help_hint": false,
+        "has_self_test_hint": false,
+        "has_dry_run_hint": false
+      }
+    },
+    {
+      "id": "shortcut_028",
+      "name": "视频重试",
+      "aliases": [
+        "重试视频",
+        "豆包重试",
+        "Gemini重试"
+      ],
+      "group": "photo",
+      "script": null,
+      "args_template": "`automation-protocol` 中的 Gemini/Doubao 模板；沿用上次 prompt、图片路径、服务错误记录",
+      "risk": "confirmation_required",
+      "needs_confirm": true,
+      "approval_class": "confirm_each_run",
+      "pending_action_reason": "browser_live_generation",
+      "dry_run_command": null,
+      "self_test_command": null,
+      "help_command": null,
+      "output_paths": [],
+      "owner": "@main",
+      "status": "已接入",
+      "last_checked": "2026-06-16T21:48:23+08:00",
+      "quarantined": false,
+      "recent_failures": 0,
+      "capabilities": {
+        "safety_class": "confirmation_required",
+        "referenced_script_count": 0,
+        "referenced_scripts": [],
+        "inspected_scripts": [],
+        "has_help_hint": false,
+        "has_self_test_hint": false,
+        "has_dry_run_hint": false
+      }
+    },
+    {
+      "id": "shortcut_029",
+      "name": "技能更新",
+      "aliases": [
+        "更新技能",
+        "创建技能"
+      ],
+      "group": "system",
+      "script": null,
+      "args_template": "使用 `skill-creator` skill；验证命令 `python3 .../skill-creator/scripts/quick_validate.py <skill-dir>`",
+      "risk": "low_write",
+      "needs_confirm": false,
+      "approval_class": "none",
+      "pending_action_reason": null,
+      "dry_run_command": null,
+      "self_test_command": null,
+      "help_command": null,
+      "output_paths": [],
+      "owner": "@main",
+      "status": "已接入",
+      "last_checked": "2026-06-16T21:48:23+08:00",
+      "quarantined": false,
+      "recent_failures": 0,
+      "capabilities": {
+        "safety_class": "callable",
+        "referenced_script_count": 0,
+        "referenced_scripts": [],
+        "inspected_scripts": [],
+        "has_help_hint": false,
+        "has_self_test_hint": false,
+        "has_dry_run_hint": false
+      }
+    },
+    {
+      "id": "shortcut_030",
+      "name": "系统备份",
+      "aliases": [],
+      "group": "backup",
+      "script": "/mnt/d/_outbox/temp/shortcut-governance-phase-1/scripts/backup.sh",
+      "args_template": "使用 `openclaw-backup` skill 的 `scripts/backup.sh`",
+      "risk": "confirmation_required",
+      "needs_confirm": true,
+      "approval_class": "confirm_each_run",
+      "pending_action_reason": "backup_restore",
+      "dry_run_command": null,
+      "self_test_command": null,
+      "help_command": null,
+      "output_paths": [],
+      "owner": "@main",
+      "status": "待确认",
+      "last_checked": "2026-06-16T21:48:23+08:00",
+      "quarantined": false,
+      "recent_failures": 0,
+      "capabilities": {
+        "safety_class": "not_connected",
+        "referenced_script_count": 1,
+        "referenced_scripts": [
+          "/mnt/d/_outbox/temp/shortcut-governance-phase-1/scripts/backup.sh"
+        ],
+        "inspected_scripts": [],
+        "has_help_hint": false,
+        "has_self_test_hint": false,
+        "has_dry_run_hint": false
+      }
+    }
+  ]
+}

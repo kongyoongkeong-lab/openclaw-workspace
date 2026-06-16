@@ -4,6 +4,7 @@
 
 | ID | Description | State | Agent | Artifact | Created | Done |
 |----|------------|-------|-------|----------|---------|------|
+| T-089 | Add Shortcut Governance Phase 1 | Done | @main | `tools/shortcut_doctor.py`; `tools/shortcut_status.py`; `tools/pending_action.py`; `config/shortcut_manifest.json`; `data/shortcut_usage/shortcut_usage.jsonl` | 2026-06-16 | 2026-06-16 |
 | T-004 | Create reusable automation protocol skill and shortcut routing | Done | @main | `skills/automation-protocol/`; `shortcuts.md`; `memory/system/capability_map.md` | 2026-05-25 | 2026-05-25 |
 | T-003 | Add safe Hugging Face model download helper | Done | @main | `tools/huggingface_download.py`; `docs/huggingface_setup.md` | 2026-05-25 | 2026-05-25 |
 | T-002 | Finalize Hugging Face CLI/token/account preflight | Done | @main | `tools/huggingface_preflight.py`; `docs/huggingface_setup.md` | 2026-05-25 | 2026-05-25 |
